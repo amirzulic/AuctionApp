@@ -1,0 +1,82 @@
+.landingPage {
+    position: relative;
+    width: auto;
+    height: auto;
+    background: #FFFFFF;
+}
+
+.header {
+    position: static;
+    width: 1440px;
+    height: 40px;
+    left: 0px;
+    top: 0px;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    margin: 16px 0px;
+}
+
+.navbarBlack {
+    color: white;
+}
+
+.navbarWhite {
+    color: black;
+}
+
+.icon {
+    padding-left: 10px;
+}
+
+
+.footer {
+    position: absolute;
+    width: auto;
+    height: 356px;
+    left: 0px;
+    top: 2963px;
+
+    background: #252525;
+}
+
+.footerTitleButton {
+    position: static;
+    width: 112px;
+    height: 24px;
+    left: 0px;
+    top: 0px;
+    font-family: Lato;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 24px;
+
+    color: #FFFFFF;
+
+    opacity: 0.5;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    margin: 24px 0px;
+}
+
+.footerText {
+    position: static;
+    width: 348px;
+    height: 48px;
+    left: 0px;
+    top: 0px;
+    font-family: Lato;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 24px;
+    color: #D8D8D8;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    margin: 12px 0px;
+}
+
+
