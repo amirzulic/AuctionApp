@@ -7,15 +7,21 @@ import google from "../images/google.svg";
 
 function Footer() {
     return (
-        <div className="footer fixed-bottom">
+        <div className="footer">
             <div className="container">
                 <div className="row">
                     <div className="col-md-3 col-sm-6">
                         <h4 className="footerTitleButton">AUCTION</h4>
                         <ul className="list-unstyled footerText">
-                            <li>About us</li>
-                            <li>Terms and Conditions</li>
-                            <li>Privacy and Policy</li>
+                            <a href="/about-us" className="hrefText">
+                                <li>About us</li>
+                            </a>
+                            <a href="/terms-and-conditions" className="hrefText">
+                                <li>Terms and Conditions</li>
+                            </a>
+                            <a href="/privacy-and-policy" className="hrefText">
+                                <li>Privacy and Policy</li>
+                            </a>
                         </ul>
                     </div>
 
@@ -25,22 +31,21 @@ function Footer() {
                             <li>Call us at +123 797-567-2535</li>
                             <li>support@auction.com</li>
                             <li>
-                                <img src={facebook} className="icon"/>
-                                <img src={instagram} className="icon"/>
-                                <img src={twitter} className="icon"/>
-                                <img src={google} className="icon"/>
+                                <a href="https://facebook.com">
+                                    <img src={facebook} className="icon"/>
+                                </a>
+                                <a href="https://instagram.com">
+                                    <img src={instagram} className="icon"/>
+                                </a>
+                                <a href="https://twitter.com">
+                                    <img src={twitter} className="icon"/>
+                                </a>
+                                <a href="https://myaccount.google.com/">
+                                    <img src={google} className="icon"/>
+                                </a>
                             </li>
                         </ul>
                     </div>
-
-                    <div className="col-md-3 col-sm-6">
-                        <h4 className="footerTitleButton">NEWSLETTER</h4>
-                        <ul className="list-unstyled footerText">
-                            <li>Enter your email address and get notified about new products. We hate spam!</li>
-                            <li>Input form</li>
-                        </ul>
-                    </div>
-
                 </div>
             </div>
         </div>

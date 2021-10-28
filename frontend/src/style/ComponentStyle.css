@@ -1,42 +1,47 @@
 .landingPage {
     position: relative;
-    width: auto;
-    height: auto;
     background: #FFFFFF;
-}
-
-.header {
-    position: static;
-    width: 1440px;
-    height: 40px;
-    left: 0px;
-    top: 0px;
-    flex: none;
-    order: 0;
-    flex-grow: 0;
-    margin: 16px 0px;
+    font-family: Lato;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
 }
 
 .navbarBlack {
+    color: grey;
+}
+
+.hrefText {
+    text-decoration: none;
     color: white;
 }
 
-.navbarWhite {
-    color: black;
+.searchBar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 20px;
+
+    position: static;
+    width: 548px;
+    height: 57.94px;
+    left: 0px;
+    top: 0px;
+
+    background: #FFFFFF;
+    border: 1px solid #E3E3E3;
+    box-sizing: border-box;
+
+    flex: none;
 }
 
 .icon {
     padding-left: 10px;
 }
 
-
 .footer {
-    position: absolute;
-    width: auto;
     height: 356px;
-    left: 0px;
-    top: 2963px;
-
     background: #252525;
 }
 

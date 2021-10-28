@@ -12,18 +12,26 @@ function NavbarBlack() {
         <div>
             <Navbar bg="dark" className="navbarBlack">
                 <div className="container">
-                    <div className="row container-fluid">
+                    <div className="row container">
                         <div className="col">
-                                <img src={facebook} className="icon"/>
-                                <img src={instagram} className="icon"/>
-                                <img src={twitter} className="icon"/>
-                                <img src={google} className="icon"/>
+                                <a href="https://facebook.com">
+                                    <img src={facebook} className="icon"/>
+                                </a>
+                                <a href="https://instagram.com">
+                                    <img src={instagram} className="icon"/>
+                                </a>
+                                <a href="https://twitter.com">
+                                    <img src={twitter} className="icon"/>
+                                </a>
+                                <a href="https://myaccount.google.com/">
+                                    <img src={google} className="icon"/>
+                                </a>
                         </div>
-                        <div className="col">
+                        <div className="col text-lg-end">
                             <div className="container-fluid">
-                                <a href="#">Login </a>
+                                <a href="/login" className="hrefText">Login </a>
                                 or
-                                <a href="#"> Create an account</a>
+                                <a href="#" className="hrefText"> Create an account</a>
                             </div>
                         </div>
                     </div>
