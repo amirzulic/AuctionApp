@@ -1,0 +1,240 @@
+.loginForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px 0px 64px;
+
+    position: static;
+    width: 738px;
+    height: 755px;
+    left: 0px;
+    top: 0px;
+
+    background: #FFFFFF;
+
+    border: 1px solid #D8D8D8;
+    box-sizing: border-box;
+
+}
+
+.loginButton {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 16px 56px;
+
+    position: static;
+    width: 548px;
+    height: 59px;
+    left: 0px;
+    top: 0px;
+
+    background: #8367D8;
+}
+
+.loginButtonFacebook {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 16px 56px;
+
+    position: static;
+    width: 256px;
+    height: 59px;
+    left: 0px;
+    top: 0px;
+
+    background: #0066CC;
+
+    /* Inside Auto Layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    margin: 0px 24px;
+}
+
+.loginButtonGmail {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 16px 56px;
+
+    position: static;
+    width: 256px;
+    height: 59px;
+    top: 0px;
+
+    background: #CC0000;
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    margin: 0px 24px;
+}
+
+.outerLogin {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+
+    position: static;
+    width: 548px;
+    height: 59px;
+    left: 0px;
+    top: 83px;
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    margin: 24px 0px;
+}
+
+.loginFormTitle {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 23px 301px;
+
+    height: 75px;
+
+    background: #FCFCFC;
+}
+
+.loginFormContent {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+
+    position: static;
+    width: 548px;
+    height: 501px;
+    left: 95px;
+    top: 123px;
+
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    margin: 48px 0px;
+}
+
+.loginTextInput {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 18px 42px 18px 24px;
+
+    position: static;
+    width: 548px;
+    height: 63px;
+    left: 0px;
+    top: 43px;
+}
+
+.inputFields {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+
+    position: static;
+    width: 548px;
+    height: 295px;
+    left: 0px;
+    top: 0px;
+
+}
+
+.singleInputField {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+
+    position: static;
+    width: 548px;
+    height: 157px;
+    left: 0px;
+    top: 138px;
+
+}
+
+.pageName {
+    width: available;
+    height: 60px;
+    background-color: #FCFCFC;
+}
+
+.loginTitle {
+    width: 200px;
+    height: 19px;
+    left: 160px;
+    top: 151px;
+
+    /* Link/Active */
+
+    font-family: Lato;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 19px;
+
+    /* Text/Dark */
+
+    color: #252525;
+}
+
+.loginButtons {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+
+    position: static;
+    width: 548px;
+    height: 142px;
+}
+
+.forgotPasswordBox {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+
+    position: static;
+    width: 200px;
+    height: 19px;
+
+    flex: none;
+    order: 2;
+    flex-grow: 0;
+    margin: 48px 0px;
+}
+
+.forgotPassword {
+    position: static;
+    width: 200px;
+    height: 19px;
+    top: 0px;
+
+    text-decoration: none;
+
+    font-family: Lato;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 19px;
+
+    /* Primary */
+
+    color: #8367D8;
+}
+

@@ -1,0 +1,58 @@
+.pageName {
+    width: available;
+    height: 60px;
+    background-color: #FCFCFC;
+}
+
+.privacyAndPolicyTitle {
+    position: absolute;
+    width: 200px;
+    height: 19px;
+
+    /* Link/Active */
+
+    font-family: Lato;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 19px;
+
+    /* Text/Dark */
+
+    color: #252525;
+}
+
+.privacyAndPolicyContentBox {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+
+    position: sticky;
+    width: 556px;
+    height: 701px;
+    left: 446px;
+    top: 256px;
+}
+
+.privacyAndPolicyText {
+    position: static;
+    width: 556px;
+    height: 604px;
+    left: 0px;
+    top: 83px;
+
+    /* Body */
+
+    font-family: Lato;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+    /* or 150% */
+
+
+    /* Text/Secondary */
+
+    color: #9B9B9B;
+}
