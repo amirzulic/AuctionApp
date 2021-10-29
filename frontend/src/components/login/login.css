@@ -1,20 +1,20 @@
 .loginForm {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     padding: 0px 0px 64px;
 
     position: static;
     width: 738px;
     height: 755px;
-
-    /* White */
+    left: 0px;
+    top: 0px;
 
     background: #FFFFFF;
 
     border: 1px solid #D8D8D8;
     box-sizing: border-box;
+
 }
 
 .loginButton {
@@ -33,7 +33,7 @@
     background: #8367D8;
 }
 
-.loginButtonFacebok {
+.loginButtonFacebook {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -41,12 +41,19 @@
     padding: 16px 56px;
 
     position: static;
-    width: 262px;
+    width: 256px;
     height: 59px;
     left: 0px;
     top: 0px;
 
     background: #0066CC;
+
+    /* Inside Auto Layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    margin: 0px 24px;
 }
 
 .loginButtonGmail {
@@ -57,19 +64,22 @@
     padding: 16px 56px;
 
     position: static;
-    width: 262px;
+    width: 256px;
     height: 59px;
-    left: 286px;
     top: 0px;
 
-    /* Red */
-
     background: #CC0000;
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    margin: 0px 24px;
 }
 
 .outerLogin {
     display: flex;
     flex-direction: row;
+    justify-content: center;
     align-items: center;
     padding: 0px;
 
@@ -90,6 +100,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 23px 301px;
 
     height: 75px;
 
@@ -105,6 +116,8 @@
     position: static;
     width: 548px;
     height: 501px;
+    left: 95px;
+    top: 123px;
 
 
     flex: none;
@@ -135,6 +148,9 @@
     position: static;
     width: 548px;
     height: 295px;
+    left: 0px;
+    top: 0px;
+
 }
 
 .singleInputField {
@@ -148,6 +164,7 @@
     height: 157px;
     left: 0px;
     top: 138px;
+
 }
 
 .pageName {
@@ -184,11 +201,40 @@
     position: static;
     width: 548px;
     height: 142px;
-    left: 0px;
-    top: 359px;
+}
+
+.forgotPasswordBox {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+
+    position: static;
+    width: 200px;
+    height: 19px;
 
     flex: none;
-    order: 1;
+    order: 2;
     flex-grow: 0;
-    margin: 64px 0px;
+    margin: 48px 0px;
 }
+
+.forgotPassword {
+    position: static;
+    width: 200px;
+    height: 19px;
+    top: 0px;
+
+    text-decoration: none;
+
+    font-family: Lato;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 19px;
+
+    /* Primary */
+
+    color: #8367D8;
+}
+

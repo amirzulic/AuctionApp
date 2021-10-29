@@ -16,12 +16,11 @@ function Login() {
                 </div>
                 <div className="container loginFormContent">
                     <form>
-
                         <div className="inputFields">
                             <div className="form-group singleInputField">
                                 <label htmlFor="exampleInputEmail1">Enter email</label>
                                 <input type="email" className="form-control loginTextInput" id="exampleInputEmail1"
-                                       aria-describedby="emailHelp" placeholder="Enter email"/>
+                                       placeholder="Enter email"/>
                             </div>
                             <div className="form-group singleInputField">
                                 <label htmlFor="exampleInputPassword1">Password</label>
@@ -32,16 +31,19 @@ function Login() {
                                 <input type="checkbox" className="form-check-input" id="exampleCheck1"/>
                                 <label className="form-check-label" htmlFor="exampleCheck1">Remember me</label>
                             </div>
-                        </div>
 
-                        <div className="loginButtons">
-                            <button type="submit" className="btn btn-primary loginButton">LOGIN</button>
-                            <div className="container outerLogin">
-                                <button type="button" className="btn btn-primary loginButtonFacebok">LOGIN WITH FACEBOOK</button>
-                                <button type="button" className="btn btn-primary loginButtonGmail">LOGIN WITH GMAIL</button>
+                            <div className="loginButtons">
+                                <button type="submit" className="btn btn-primary loginButton">LOGIN</button>
+                                <div className="container outerLogin">
+                                    <button type="button" className="btn btn-primary loginButtonFacebook">LOGIN WITH FACEBOOK</button>
+                                    <button type="button" className="btn btn-primary loginButtonGmail">LOGIN WITH GMAIL</button>
+                                </div>
                             </div>
                         </div>
                     </form>
+                    <div className="container forgotPasswordBox">
+                        <a href="#" className="forgotPassword"><p>Forgot your password?</p></a>
+                    </div>
                 </div>
             </div>
         </div>

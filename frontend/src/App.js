@@ -9,6 +9,7 @@ import LandingPage from "./components/landing_page/LandingPage";
 import AboutUs from "./components/about_us/AboutUs";
 import TermsAndConditions from "./components/terms_and_conditions/TermsAndConditions";
 import PrivacyAndPolicy from "./components/privacy_and_policy/PrivacyAndPolicy";
+import Register from "./components/register/Register";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
                   <Route path="/terms-and-conditions" component={TermsAndConditions}/>
                   <Route path="/privacy-and-policy" component={PrivacyAndPolicy}/>
                   <Route path="/login" component={Login}/>
+                  <Route path="/register" component={Register}/>
               </Switch>
 
             <Footer/>

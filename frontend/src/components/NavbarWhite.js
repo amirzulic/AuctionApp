@@ -2,28 +2,29 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Search from '../images/search.svg';
 import Logo from '../images/app-logo.png';
+import {Link} from "react-router-dom";
 
 function NavbarWhite() {
     return (
         <div>
             <nav className="navbar navbar-expand-lg navbar-light bg-transparent">
                 <div className="text-center container navbarWhite">
-                    <a className="navbar-brand" href="/">
+                    <Link className="navbar-brand" to="/">
                         <img src={Logo} alt="Logo"/>
-                    </a>
+                    </Link>
                     <div>
                         <input className="form-control searchBar border" type="text" placeholder="Try enter:  Shoes"/>
                     </div>
                     <div>
                         <ul className="navbar-nav mr-auto">
                             <li className="nav-item">
-                                <a className="nav-link" href="#">HOME</a>
+                                <Link className="nav-link" to="/">HOME</Link>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="#">SHOP</a>
+                                <Link className="nav-link" to="#">SHOP</Link>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="#">MY ACCOUNT</a>
+                                <Link className="nav-link" to="#">MY ACCOUNT</Link>
                             </li>
                         </ul>
                     </div>

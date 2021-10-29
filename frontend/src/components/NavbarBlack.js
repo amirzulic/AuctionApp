@@ -6,6 +6,7 @@ import facebook from '../images/facebook.svg';
 import instagram from '../images/instagram.svg';
 import twitter from '../images/twitter.svg';
 import google from '../images/google.svg';
+import {Link} from "react-router-dom";
 
 function NavbarBlack() {
     return (
@@ -29,9 +30,9 @@ function NavbarBlack() {
                         </div>
                         <div className="col text-lg-end">
                             <div className="container-fluid">
-                                <a href="/login" className="hrefText">Login </a>
+                                <Link to="/login" className="hrefText">Login </Link>
                                 or
-                                <a href="#" className="hrefText"> Create an account</a>
+                                <Link to="/register" className="hrefText"> Create an account</Link>
                             </div>
                         </div>
                     </div>

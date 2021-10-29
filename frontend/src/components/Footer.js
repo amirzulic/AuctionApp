@@ -4,6 +4,7 @@ import facebook from "../images/facebook.svg";
 import instagram from "../images/instagram.svg";
 import twitter from "../images/twitter.svg";
 import google from "../images/google.svg";
+import {Link} from "react-router-dom";
 
 function Footer() {
     return (
@@ -13,15 +14,15 @@ function Footer() {
                     <div className="col-md-3 col-sm-6">
                         <h4 className="footerTitleButton">AUCTION</h4>
                         <ul className="list-unstyled footerText">
-                            <a href="/about-us" className="hrefText">
+                            <Link to="/about-us" className="hrefText">
                                 <li>About us</li>
-                            </a>
-                            <a href="/terms-and-conditions" className="hrefText">
+                            </Link>
+                            <Link to="/terms-and-conditions" className="hrefText">
                                 <li>Terms and Conditions</li>
-                            </a>
-                            <a href="/privacy-and-policy" className="hrefText">
+                            </Link>
+                            <Link to="/privacy-and-policy" className="hrefText">
                                 <li>Privacy and Policy</li>
-                            </a>
+                            </Link>
                         </ul>
                     </div>
 
