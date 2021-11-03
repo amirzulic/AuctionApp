@@ -1,5 +1,7 @@
 package com.auction.auctionapp.model;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 import javax.persistence.*;
 
 @Entity
@@ -22,14 +24,14 @@ public class User {
     @Column(name = "password")
     private String password;
 
-    public User() {}
-
     public User(String firstName, String lastName, String email, String password) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
     }
+
+    public User() {}
 
     public int getUserId() {
         return userid;

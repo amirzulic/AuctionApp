@@ -1,21 +1,23 @@
 package com.auction.auctionapp.rest.controller;
 
 import com.auction.auctionapp.model.User;
+import com.auction.auctionapp.rest.RegisterRequest;
+import com.auction.auctionapp.rest.exception.RegisterException;
 import com.auction.auctionapp.rest.service.UserService;
 import com.auction.auctionapp.store.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 public class UserController {
 
@@ -34,7 +36,7 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public void registerUser(User user) {
+    public void registerUser(@RequestBody RegisterRequest user) {
         userService.saveUser(user);
     }
 
