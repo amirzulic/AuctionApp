@@ -2,6 +2,7 @@ package com.auction.auctionapp.rest.controller;
 
 import com.auction.auctionapp.model.User;
 import com.auction.auctionapp.rest.RegisterRequest;
+import com.auction.auctionapp.rest.RegisterResponse;
 import com.auction.auctionapp.rest.exception.RegisterException;
 import com.auction.auctionapp.rest.service.UserService;
 import com.auction.auctionapp.store.UserRepository;
@@ -36,8 +37,9 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public void registerUser(@RequestBody RegisterRequest user) {
-        userService.saveUser(user);
+    public ResponseEntity<RegisterResponse> registerUser(RegisterRequest user) {
+        User createdUser = userService.saveUser(user);
+        return ResponseEntity.ok(new RegisterResponse(createdUser.getUserId(), createdUser.getEmail()));
     }
 
     @PostMapping("/login")
