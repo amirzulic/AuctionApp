@@ -4,11 +4,12 @@ import Footer from "../Footer";
 import './login.css';
 import {useFormik} from "formik";
 import * as Yup from 'yup';
+import UserService from "../../services/UserService";
+import {useHistory} from "react-router-dom";
 
 function Login() {
 
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
+    let history = useHistory();
 
     const formik = useFormik({
         initialValues: {
@@ -22,24 +23,33 @@ function Login() {
                 .required('Required')
         }),
         onSubmit: values => {
-            alert(JSON.stringify(values, null, 2));
+
+            const header = new Headers();
+            header.append('Authorization', '*');
+
+            console.log(header.get('Authorization'));
+
+            let user = {
+                email: formik.values.email,
+                password: formik.values.password
+            }
+
+            UserService.loginUser(user, header).then(res => {
+                let jwt = res.data.jwtoken;
+                header.append('Authorization', jwt)
+                console.log("Poslije logina header: ", header.get("Authorization"));
+                history.push("/");
+            }).catch((err) => {
+                console.log(err);
+                alert(err);
+            })
+
         }
     })
 
-    function handleSubmit(e) {
-        e.preventDefault()
-
-        let user = {
-            email: email,
-            password: password
-        }
-
-        //console.log('user -> ' + JSON.stringify(user));
-    }
-
     return(
         <div>
-            <div className="pageName">
+            <div className="row pageName align-items-center">
                 <h1 className="loginTitle">Login</h1>
             </div>
             <div className="container loginForm">

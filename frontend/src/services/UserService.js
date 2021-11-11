@@ -1,16 +1,20 @@
 import axios from 'axios';
 
-const API_BASE_URL = "http://localhost:8080";
-const USER_API_REGISTRATION_URL = "http://localhost:8080/register";
+const BASE_URL = "http://localhost:8080";
 
 class UserService {
 
-    getUsers() {
-        return axios.get(API_BASE_URL);
+    setLandingPage() {
+        return axios.get(BASE_URL);
     }
 
     registerUser(user) {
-        return axios.post(USER_API_REGISTRATION_URL, user);
+        console.log(JSON.stringify(user))
+        return axios.post(BASE_URL + "/register", user);
+    }
+
+    loginUser(user, header) {
+        return axios.post(BASE_URL + "/login", user, header)
     }
 
 }

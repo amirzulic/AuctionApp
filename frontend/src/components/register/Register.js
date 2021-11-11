@@ -26,6 +26,7 @@ function Register() {
             email: Yup.string().email('Invalid email address').required('Required'),
             password: Yup.string()
                 .min(8, 'Must be 8 charactrs or more')
+                .max(15, 'Must be 15 characters or less')
                 .required('Required')
         }),
         onSubmit: values => {
@@ -35,10 +36,12 @@ function Register() {
                 email: formik.values.email,
                 password: formik.values.password
             }
+            
             UserService.registerUser(user).then(res => {
+                console.log(res);
                 history.push("/");
             }).catch((err) => {
-                console.log(user);
+                console.log(err);
                 alert(err);
             })
         }

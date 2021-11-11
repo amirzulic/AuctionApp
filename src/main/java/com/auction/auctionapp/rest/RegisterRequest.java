@@ -7,6 +7,13 @@ public class RegisterRequest {
     private String email;
     private String password;
 
+    public RegisterRequest(String firstName, String lastName, String email, String password) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+    }
+
     public String getFirstName() {
         return firstName;
     }
@@ -38,13 +45,4 @@ public class RegisterRequest {
     public void setPassword(String password) {
         this.password = password;
     }
-
-    public RegisterRequest(String firstName, String lastName, String email, String password) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.password = password;
-    }
-
-
 }

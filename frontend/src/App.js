@@ -10,13 +10,13 @@ import AboutUs from "./components/about_us/AboutUs";
 import TermsAndConditions from "./components/terms_and_conditions/TermsAndConditions";
 import PrivacyAndPolicy from "./components/privacy_and_policy/PrivacyAndPolicy";
 import Register from "./components/register/Register";
+import SingleProduct from "./components/single_product/SingleProduct";
 
 function App() {
   return (
       <Router>
         <div className="landingPage">
             <Header/>
-
               <Switch>
                   <Route path="/" exact component={LandingPage}/>
                   <Route path="/about-us" component={AboutUs}/>
@@ -24,6 +24,7 @@ function App() {
                   <Route path="/privacy-and-policy" component={PrivacyAndPolicy}/>
                   <Route path="/login" component={Login}/>
                   <Route path="/register" component={Register}/>
+                  <Route path="/product" component={SingleProduct}/>
               </Switch>
 
             <Footer/>

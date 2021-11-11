@@ -22,4 +22,15 @@ public class ApiExceptionHandler {
         return new ResponseEntity<>(exception, HttpStatus.BAD_REQUEST);
     }
 
+    @ExceptionHandler(value = {LoginException.class})
+    public ResponseEntity<Object> handleLoginException(LoginException e) {
+        ApiException exception = new ApiException(
+                e.getMessage(),
+                e,
+                HttpStatus.BAD_REQUEST,
+                ZonedDateTime.now(ZoneId.of("Z"))
+        );
+        return new ResponseEntity<>(exception, HttpStatus.BAD_REQUEST);
+    }
+
 }
