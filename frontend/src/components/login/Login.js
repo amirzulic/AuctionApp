@@ -25,9 +25,6 @@ function Login() {
         onSubmit: values => {
 
             const header = new Headers();
-            header.append('Authorization', '*');
-
-            console.log(header.get('Authorization'));
 
             let user = {
                 email: formik.values.email,
@@ -37,7 +34,7 @@ function Login() {
             UserService.loginUser(user, header).then(res => {
                 let jwt = res.data.jwtoken;
                 header.append('Authorization', jwt)
-                console.log("Poslije logina header: ", header.get("Authorization"));
+                localStorage.setItem('Authorization', jwt);
                 history.push("/");
             }).catch((err) => {
                 console.log(err);
