@@ -1,0 +1,381 @@
+.categoriesCollection {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    height: 616px;
+    top: 0px;
+
+    background: #FCFCFC;
+}
+
+.sectionCategories {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px;
+
+    position: static;
+    height: 616px;
+}
+
+.categoriesBoxItem th {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 16px;
+
+    width: 262px;
+    height: 56px;
+
+    font-family: Lato;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 24px;
+
+    background-color: transparent;
+
+    color: #8367D8;
+}
+
+.categoriesTitle h1 {
+    position: static;
+    width: 97px;
+    height: 24px;
+}
+
+.categoriesBox {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+
+    width: 262px;
+    height: 560px;
+}
+
+.categoriesBoxItem {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 16px;
+
+    width: 262px;
+    height: 56px;
+
+    background: #FFFFFF;
+}
+
+.categoriesBoxItem td {
+    position: static;
+    width: 77px;
+    height: 24px;
+    top: 16px;
+
+    font-family: Lato;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+
+    color: #252525;
+}
+
+.sectionDisplayBid {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px;
+
+    position: static;
+    height: 420px;
+}
+
+.sectionDisplayBidInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 0px;
+
+    position: static;
+    width: 346px;
+    height: 420px;
+    left: 0px;
+    top: 0px;
+}
+
+.sectionDisplayBidInfo button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 16px 32px;
+
+    position: static;
+    width: 183px;
+    height: 51px;
+    left: 0px;
+    top: 369px;
+
+    /* Primary */
+
+    border: 3px solid #8367D8;
+    box-sizing: border-box;
+}
+
+.sectionDisplayBidInfo p {
+    font-family: Lato;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 19px;
+
+    /* Text/Secondary */
+
+    color: #9B9B9B;
+}
+
+.featureCollectionOne {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+
+    position: static;
+    height: 620.57px;
+}
+
+.featureCollectionOne h1 {
+    position: static;
+    height: 29px;
+    left: 0px;
+    top: 0px;
+
+    font-family: Lato;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 29px;
+
+    letter-spacing: 0.84px;
+
+    color: #000000;
+
+}
+
+.featureCollectionOne hr {
+    position: static;
+    width: 1116px;
+    height: 0px;
+    left: 0px;
+    top: 45px;
+
+    /* Border */
+
+    border: 1px solid #D8D8D8;
+}
+
+.featureCollectionOne h2 {
+    position: static;
+    width: 190px;
+    height: 29px;
+    left: 0px;
+    top: 0px;
+
+    /* H5 */
+
+    font-family: Lato;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 29px;
+    /* identical to box height */
+
+    letter-spacing: 0.84px;
+
+    /* Text/Dark */
+
+    color: #252525;
+}
+
+.featureCollectionOne h3 {
+    position: static;
+    width: 127px;
+    height: 19px;
+    left: 0px;
+    top: 37px;
+
+    /* Link/Active */
+
+    font-family: Lato;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 19px;
+
+    /* Text/Secondary */
+
+    color: #9B9B9B;
+}
+
+.featureCollectionTwo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    height: 495px;
+}
+
+.featureCollectionTwo h1 {
+    position: static;
+    height: 29px;
+    left: 0px;
+    top: 0px;
+
+    font-family: Lato;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 29px;
+
+    letter-spacing: 0.84px;
+
+    color: #000000;
+
+}
+
+.featureCollectionTwo hr {
+    position: static;
+    width: 1116px;
+    height: 0px;
+    left: 0px;
+    top: 45px;
+
+    /* Border */
+
+    border: 1px solid #D8D8D8;
+}
+
+.featureCollectionTwo h2 {
+    position: static;
+    width: 190px;
+    height: 29px;
+    left: 0px;
+    top: 0px;
+
+    /* H5 */
+
+    font-family: Lato;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 29px;
+    /* identical to box height */
+
+    letter-spacing: 0.84px;
+
+    /* Text/Dark */
+
+    color: #252525;
+}
+
+.featureCollectionTwo h3 {
+    position: static;
+    width: 127px;
+    height: 19px;
+    left: 0px;
+    top: 37px;
+
+    /* Link/Active */
+
+    font-family: Lato;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 19px;
+
+    /* Text/Secondary */
+
+    color: #9B9B9B;
+}
+
+.scrollableCollection {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.scrollableCollection h1 {
+    position: static;
+    height: 29px;
+    left: 0px;
+    top: 0px;
+
+    font-family: Lato;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 29px;
+
+    letter-spacing: 0.84px;
+
+    color: #000000;
+
+}
+
+.scrollableCollection hr {
+    position: static;
+    width: 1116px;
+    height: 0px;
+    left: 0px;
+    top: 45px;
+
+    /* Border */
+
+    border: 1px solid #D8D8D8;
+}
+
+.scrollableCollection h2 {
+    position: static;
+    width: 190px;
+    height: 29px;
+    left: 0px;
+    top: 0px;
+
+    /* H5 */
+
+    font-family: Lato;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 29px;
+    /* identical to box height */
+
+    letter-spacing: 0.84px;
+
+    /* Text/Dark */
+
+    color: #252525;
+}
+
+.scrollableCollection h3 {
+    position: static;
+    width: 127px;
+    height: 19px;
+    left: 0px;
+    top: 37px;
+
+    /* Link/Active */
+
+    font-family: Lato;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 19px;
+
+    /* Text/Secondary */
+
+    color: #9B9B9B;
+}
