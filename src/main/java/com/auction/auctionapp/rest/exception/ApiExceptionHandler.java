@@ -1,5 +1,6 @@
 package com.auction.auctionapp.rest.exception;
 
+import org.apache.juli.logging.Log;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -11,26 +12,19 @@ import java.time.ZonedDateTime;
 @ControllerAdvice
 public class ApiExceptionHandler {
 
-    @ExceptionHandler(value = {RegisterException.class})
-    public ResponseEntity<Object> handleRegisterException(RegisterException e) {
+    public ApiException createApiException(RuntimeException e) {
         ApiException exception = new ApiException(
                 e.getMessage(),
                 e,
                 HttpStatus.BAD_REQUEST,
                 ZonedDateTime.now(ZoneId.of("Z"))
         );
-        return new ResponseEntity<>(exception, HttpStatus.BAD_REQUEST);
+
+        return exception;
     }
 
-    @ExceptionHandler(value = {LoginException.class})
-    public ResponseEntity<Object> handleLoginException(LoginException e) {
-        ApiException exception = new ApiException(
-                e.getMessage(),
-                e,
-                HttpStatus.BAD_REQUEST,
-                ZonedDateTime.now(ZoneId.of("Z"))
-        );
-        return new ResponseEntity<>(exception, HttpStatus.BAD_REQUEST);
+    @ExceptionHandler({RegisterException.class, LoginException.class})
+    public ResponseEntity<Object> handleRegisterException(RuntimeException e) {
+        return new ResponseEntity<>(createApiException(e), HttpStatus.BAD_REQUEST);
     }
-
 }

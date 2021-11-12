@@ -17,6 +17,4 @@ public class RegisterResponse {
     public String getEmail() {
         return email;
     }
-
-
 }

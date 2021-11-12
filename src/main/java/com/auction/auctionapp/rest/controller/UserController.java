@@ -39,6 +39,4 @@ public class UserController {
         User createdUser = userService.loadUser(user);
         return ResponseEntity.ok(new LoginResponse(JWTUtil.addAuthentication(createdUser.getEmail())));
     }
-
 }
-

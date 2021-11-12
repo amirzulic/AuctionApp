@@ -26,8 +26,6 @@ public class UserService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    List<User> list = new ArrayList<>();
-
     public UserService() {
     }
 
@@ -39,7 +37,7 @@ public class UserService {
         return userRepository.getUserByEmail(email);
     }
 
-    public User getOneUser(Integer id) {
+    public User getUserById(Integer id) {
         return userRepository.getById(id);
     }
 
@@ -56,20 +54,19 @@ public class UserService {
     }
 
     public User saveUser(RegisterRequest requestUser) {
-
-        User user = new User(
+        User createdUser = new User(
                 requestUser.getFirstName(),
                 requestUser.getLastName(),
                 requestUser.getEmail(),
                 passwordEncoder.encode(requestUser.getPassword()));
 
-        list = userRepository.findAll();
-        for(int i = 0; i < list.size(); i++) {
-            if(list.get(i).getEmail().equals(requestUser.getEmail())) {
-                throw  new RegisterException("Email already in use!");
-            }
-        }
-        return userRepository.save(user);
-    }
+        List<User> list = userRepository.findAll();
 
+        list.forEach((user) -> {
+            if(user.getEmail().equals(requestUser.getEmail())) {
+                throw new RegisterException("Email already in use!");
+            }
+        });
+        return userRepository.save(createdUser);
+    }
 }
