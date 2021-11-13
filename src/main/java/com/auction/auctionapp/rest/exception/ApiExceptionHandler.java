@@ -23,7 +23,7 @@ public class ApiExceptionHandler {
         return exception;
     }
 
-    @ExceptionHandler({RegisterException.class, LoginException.class})
+    @ExceptionHandler({RegisterException.class, LoginException.class, InvalidTokenException.class})
     public ResponseEntity<Object> handleRegisterException(RuntimeException e) {
         return new ResponseEntity<>(createApiException(e), HttpStatus.BAD_REQUEST);
     }

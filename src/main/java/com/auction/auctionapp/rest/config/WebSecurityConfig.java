@@ -1,4 +1,4 @@
-package com.auction.auctionapp.rest.security;
+package com.auction.auctionapp.rest.config;
 
 import com.auction.auctionapp.rest.security.jwt.JWTFilter;
 import com.auction.auctionapp.rest.security.jwt.JWTUtil;

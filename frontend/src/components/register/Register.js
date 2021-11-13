@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import './register.css';
-import UserService from "../../services/UserService";
+import registerUser from "../../services/UserRegisterService";
 import {useHistory} from "react-router-dom";
 import {useFormik} from "formik";
 import * as Yup from 'yup';
@@ -37,7 +37,7 @@ function Register() {
                 password: formik.values.password
             }
             
-            UserService.registerUser(user).then(res => {
+            registerUser(user).then(res => {
                 console.log(res);
                 history.push("/");
             }).catch((err) => {

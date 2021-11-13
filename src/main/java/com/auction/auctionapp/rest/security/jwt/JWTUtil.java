@@ -28,8 +28,9 @@ public class JWTUtil {
             if (user.getEmail().equals(email)) {
                 return false;
             }
+            return true;
         }
-        return true;
+        return false;
     }
 
     public static String addAuthentication(String email) {

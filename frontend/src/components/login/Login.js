@@ -4,7 +4,7 @@ import Footer from "../Footer";
 import './login.css';
 import {useFormik} from "formik";
 import * as Yup from 'yup';
-import UserService from "../../services/UserService";
+import loginUser from "../../services/UserLoginService";
 import {useHistory} from "react-router-dom";
 
 function Login() {
@@ -32,7 +32,7 @@ function Login() {
                 password: formik.values.password
             }
 
-            UserService.loginUser(user, header).then(res => {
+            loginUser(user, header).then(res => {
                 let jwt = res.data.jwtoken;
                 header.append('Authorization', jwt)
                 localStorage.setItem('Authorization', jwt);
