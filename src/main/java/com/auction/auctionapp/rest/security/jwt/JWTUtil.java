@@ -13,11 +13,23 @@ import java.util.Date;
 
 @Component
 public class JWTUtil {
-    private static Environment environment;
+    private static String secret;
+    private static int expiration_time;
+
+    @Value("${jwt.secret}")
+    public void setJWTSecret(String secret) {
+        this.secret = secret;
+    }
+
+    @Value("${jwt.expirationTime}")
+    public void setJWTExpiration(int expiration_time) {
+        this.expiration_time = expiration_time;
+    }
+
 
     public static String getEmail(String token) {
         return  Jwts.parser()
-                .setSigningKey(environment.getProperty("jwt_secret"))
+                .setSigningKey(secret)
                 .parseClaimsJws(token)
                 .getBody()
                 .getSubject();
@@ -36,8 +48,8 @@ public class JWTUtil {
     public static String addAuthentication(String email) {
         String JWT = Jwts.builder()
                 .setSubject(email)
-                .setExpiration(new Date(System.currentTimeMillis() + environment.getProperty("jwt_expiration_time")))
-                .signWith(SignatureAlgorithm.HS512, environment.getProperty("jwt_secret"))
+                .setExpiration(new Date(System.currentTimeMillis() + expiration_time))
+                .signWith(SignatureAlgorithm.HS512, secret)
                 .compact();
 
         return JWT;
