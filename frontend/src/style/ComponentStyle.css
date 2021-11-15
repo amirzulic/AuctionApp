@@ -17,23 +17,11 @@
 }
 
 .searchBar {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding: 12px 20px;
-
     position: static;
     width: 548px;
     height: 57.94px;
-    left: 0px;
-    top: 0px;
-
     background: #FFFFFF;
     border: 1px solid #E3E3E3;
-    box-sizing: border-box;
-
-    flex: none;
 }
 
 .icon {

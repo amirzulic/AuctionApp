@@ -16,7 +16,6 @@ function App() {
       <Router>
         <div className="landingPage">
             <Header/>
-
               <Switch>
                   <Route path="/" exact component={LandingPage}/>
                   <Route path="/about-us" component={AboutUs}/>
@@ -25,7 +24,6 @@ function App() {
                   <Route path="/login" component={Login}/>
                   <Route path="/register" component={Register}/>
               </Switch>
-
             <Footer/>
         </div>
       </Router>

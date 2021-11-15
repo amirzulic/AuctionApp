@@ -168,16 +168,10 @@
 }
 
 .pageName {
-    width: available;
-    height: 60px;
     background-color: #FCFCFC;
 }
 
 .loginTitle {
-    width: 200px;
-    height: 19px;
-    left: 160px;
-    top: 151px;
 
     /* Link/Active */
 
