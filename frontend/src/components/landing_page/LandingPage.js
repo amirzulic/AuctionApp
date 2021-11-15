@@ -6,6 +6,7 @@ import FeatureCollectionPhoto from "./feature_collection1.png";
 import FeatureCollectionPhoto2 from "./feature_collection2.png";
 import FeatureCollectionPhoto3 from "./feature_collection3.png";
 
+
 function LandingPage() {
 
     let history = useHistory();
@@ -50,11 +51,13 @@ function LandingPage() {
                         </div>
                         <div className="col">
                             <img src={BidPhoto}/>
+
                         </div>
                     </div>
                 </div>
             </div>
             {/*<div className="featureCollectionOne align-items-center">
+
                 <div>
                     <h1>Feature Collection</h1>
                     <hr/>

@@ -8,7 +8,6 @@
 
     background: #FCFCFC;
 }
-
 .background {
     background: #FCFCFC;
 }
@@ -76,6 +75,7 @@
 }
 
 /*.sectionDisplayBidInfo p {
+
     font-family: Lato;
     font-style: normal;
     font-weight: 300;
@@ -85,6 +85,7 @@
 
     color: #9B9B9B;
 } */
+
 
 .featureCollectionOne {
     display: flex;
