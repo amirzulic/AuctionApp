@@ -11,12 +11,12 @@ import {Link} from "react-router-dom";
 function NavbarBlack() {
     return (
         <div>
-            <Navbar bg="dark" className="navbarBlack">
+            <nav className="navbar navbar-expand-lg navbar-dark bg-dark navbarBlack">
                 <div className="container">
-                    <div className="row container">
+                    <div className="row container align-items-center">
                         <div className="col">
                                 <a href="https://facebook.com">
-                                    <img src={facebook} className="icon"/>
+                                    <img src={facebook}/>
                                 </a>
                                 <a href="https://instagram.com">
                                     <img src={instagram} className="icon"/>
@@ -28,16 +28,26 @@ function NavbarBlack() {
                                     <img src={google} className="icon"/>
                                 </a>
                         </div>
-                        <div className="col text-lg-end">
-                            <div className="container-fluid">
-                                <Link to="/login" className="hrefText">Login </Link>
-                                or
-                                <Link to="/register" className="hrefText"> Create an account</Link>
-                            </div>
+                        <div className="col"></div>
+                        <div className="col container">
+                            {/*<Link to="/login" className="hrefText">Login </Link>
+                            or
+                            <Link to="/register" className="hrefText"> Create an account</Link>*/}
+                            <ul className="navbar-nav justify-content-end">
+                                <li className="nav-item">
+                                    <Link className="nav-link" to="/login">Login</Link>
+                                </li>
+                                <li className="nav-item">
+                                    <h1></h1>
+                                </li>
+                                <li className="nav-item">
+                                    <Link className="nav-link" to="/register">Create an account</Link>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
-            </Navbar>
+            </nav>
         </div>
     );
 }

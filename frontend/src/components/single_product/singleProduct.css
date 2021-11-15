@@ -1,0 +1,128 @@
+.pageName {
+    background-color: #FCFCFC;
+}
+
+.productTitle {
+    font-family: Lato;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 19px;
+    color: #252525;
+}
+
+p {
+    font-family: Lato;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 19px;
+
+    color: #252525;
+}
+
+h2 {
+    font-family: Lato;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 32px;
+    line-height: 51px;
+    letter-spacing: 0.84px;
+    color: #000000;
+}
+
+.textPurple {
+    font-family: Lato;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 19px;
+
+    color: #8367D8;
+}
+
+.submitBid {
+    border: 3px solid #8367D8;
+    box-sizing: border-box;
+
+    padding-left: 60px;
+    padding-right: 60px;
+}
+
+.textPurpleBold {
+    font-family: Lato;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 19px;
+    color: #8367D8;
+}
+
+.bidInfo {
+    padding: 20px;
+    width: fit-content;
+    border: 1px solid #E3E3E3;
+    box-sizing: border-box;
+}
+
+.bidInput {
+    background: #FFFFFF;
+    border: 1px solid #E3E3E3;
+    box-sizing: border-box;
+    padding-left: 31px;
+    padding-right: 31px;
+}
+
+h3 {
+    position: static;
+    width: 195px;
+    height: 29px;
+    left: 460.5px;
+    top: 0px;
+
+    /* H5 */
+
+    font-family: Lato;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 29px;
+    /* identical to box height */
+
+    letter-spacing: 0.84px;
+
+    color: #000000;
+}
+
+.relatedProducts {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+}
+
+h4 {
+    font-family: Lato;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 29px;
+    letter-spacing: 0.84px;
+
+
+    color: #252525;
+}
+
+.productParagraph {
+    /* Link/Active */
+
+    font-family: Lato;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 19px;
+
+    /* Text/Secondary */
+
+    color: #9B9B9B;
+}
