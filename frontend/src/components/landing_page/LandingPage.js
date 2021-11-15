@@ -8,6 +8,7 @@ import FeatureCollectionPhoto3 from "./feature_collection3.png";
 import {loadLandingPageProducts, loadLastChance, loadNewArrivals} from "../../services/ProductService";
 
 
+
 function LandingPage() {
 
     let history = useHistory();
