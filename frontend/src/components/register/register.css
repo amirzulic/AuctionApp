@@ -1,0 +1,94 @@
+.pageName {
+    width: available;
+    height: 60px;
+    background-color: #FCFCFC;
+}
+
+.registerTitle {
+
+    /* Link/Active */
+
+    font-family: Lato;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 19px;
+
+    /* Text/Dark */
+
+    color: #252525;
+}
+
+.registerForm {
+    background: #FFFFFF;
+    padding: 0px 0px 64px;
+
+    border: 1px solid #D8D8D8;
+    box-sizing: border-box;
+}
+
+.registerFormTitle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #FCFCFC;
+}
+
+.registerTextInput {
+    height: 63px;
+}
+
+.textPurpleBold {
+    font-family: Lato;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 19px;
+    color: #8367D8;
+}
+
+.loginRedirectBox {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+
+    position: static;
+    width: 252px;
+    height: 19px;
+
+    flex: none;
+    order: 2;
+    flex-grow: 0;
+    margin: 48px 0px;
+}
+
+.loginRedirect {
+    position: static;
+    width: 39px;
+    height: 19px;
+    top: 0px;
+
+    text-decoration: none;
+
+    font-family: Lato;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 19px;
+
+    /* Primary */
+
+    color: #8367D8;
+}
+
+.registerButton {
+    height: 59px;
+
+    background: #8367D8;
+}
+
+.registerButtons {
+    display: flex;
+    flex-direction: column;
+}
