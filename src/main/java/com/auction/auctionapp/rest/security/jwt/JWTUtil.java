@@ -34,15 +34,14 @@ public class JWTUtil {
                 .getBody()
                 .getSubject();
     }
-    public static Boolean validateToken(String token, User user) {
-        if (token != null) {
-            String email = getEmail(token);
-            if (user.getEmail().equals(email)) {
-                return false;
-            }
-            return true;
+    public static boolean validateToken(String token, User user) {
+        if (token == null) { return false; }
+        boolean isValid = false;
+        String email = getEmail(token);
+        if (user.getEmail().equals(email)) {
+            isValid = true;
         }
-        return false;
+        return isValid;
     }
 
     public static String addAuthentication(String email) {

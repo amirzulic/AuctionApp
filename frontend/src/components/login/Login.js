@@ -4,7 +4,7 @@ import Footer from "../Footer";
 import './login.css';
 import {useFormik} from "formik";
 import * as Yup from 'yup';
-import loginUser from "../../services/UserLoginService";
+import {loginUser} from "../../services/UserService";
 import {useHistory} from "react-router-dom";
 
 function Login() {
