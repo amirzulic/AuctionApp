@@ -11,27 +11,27 @@ function Footer() {
         <div className="footer">
             <div className="container">
                 <div className="row">
-                    <div className="col-md-3 col-sm-6">
+                    <div className="col">
                         <h4 className="footerTitleButton">AUCTION</h4>
                         <ul className="list-unstyled footerText">
                             <Link to="/about-us" className="hrefText">
-                                <li>About us</li>
+                                <li className="pt-1">About us</li>
                             </Link>
                             <Link to="/terms-and-conditions" className="hrefText">
-                                <li>Terms and Conditions</li>
+                                <li className="pt-1">Terms and Conditions</li>
                             </Link>
                             <Link to="/privacy-and-policy" className="hrefText">
-                                <li>Privacy and Policy</li>
+                                <li className="pt-1">Privacy and Policy</li>
                             </Link>
                         </ul>
                     </div>
 
-                    <div className="col-md-3 col-sm-6">
+                    <div className="col">
                         <h4 className="footerTitleButton">GET IN TOUCH</h4>
                         <ul className="list-unstyled footerText">
-                            <li>Call us at +123 797-567-2535</li>
-                            <li>support@auction.com</li>
-                            <li>
+                            <li className="pt-1">Call us at +123 797-567-2535</li>
+                            <li className="pt-1">support@auction.com</li>
+                            <li className="pt-2">
                                 <a href="https://facebook.com">
                                     <img src={facebook} className="icon"/>
                                 </a>
@@ -47,6 +47,7 @@ function Footer() {
                             </li>
                         </ul>
                     </div>
+                    <div className="col"></div>
                 </div>
             </div>
         </div>

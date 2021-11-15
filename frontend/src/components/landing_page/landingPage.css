@@ -1,0 +1,365 @@
+.categoriesCollection {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    height: 616px;
+    top: 0px;
+
+    background: #FCFCFC;
+}
+
+.background {
+    background: #FCFCFC;
+}
+
+.categoriesBoxItem th {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 16px;
+
+    width: 262px;
+    height: 56px;
+
+    font-family: Lato;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 24px;
+
+    background-color: transparent;
+
+    color: #8367D8;
+}
+
+.categoriesTitle h1 {
+    position: static;
+    width: 97px;
+    height: 24px;
+}
+
+.categoriesBoxItem {
+    font-family: Lato;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+    color: #252525;
+    height: 56px;
+}
+
+.categoriesBoxItem td {
+    font-family: Lato;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+    color: #252525;
+}
+
+.landingPageTitle {
+    font-family: Lato;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 19px;
+
+    color: #8367D8;
+}
+
+.bidNowButton {
+    border: 3px solid #8367D8;
+    box-sizing: border-box;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+/*.sectionDisplayBidInfo p {
+    font-family: Lato;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 19px;
+
+
+    color: #9B9B9B;
+} */
+
+.featureCollectionOne {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+
+    position: static;
+    height: 620.57px;
+}
+
+.featureCollectionOne h1 {
+    position: static;
+    height: 29px;
+    left: 0px;
+    top: 0px;
+
+    font-family: Lato;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 29px;
+
+    letter-spacing: 0.84px;
+
+    color: #000000;
+
+}
+
+.featureCollectionOne hr {
+    border: 1px solid #D8D8D8;
+}
+
+.featureCollectionOne h2 {
+    position: static;
+    width: 190px;
+    height: 29px;
+    left: 0px;
+    top: 0px;
+
+    /* H5 */
+
+    font-family: Lato;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 29px;
+    /* identical to box height */
+
+    letter-spacing: 0.84px;
+
+    /* Text/Dark */
+
+    color: #252525;
+}
+
+.featureCollectionOne h3 {
+    position: static;
+    width: 127px;
+    height: 19px;
+    left: 0px;
+    top: 37px;
+
+    /* Link/Active */
+
+    font-family: Lato;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 19px;
+
+    /* Text/Secondary */
+
+    color: #9B9B9B;
+}
+
+.featureCollectionTwo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    height: 495px;
+}
+
+.featureCollectionTwo h1 {
+    position: static;
+    height: 29px;
+    left: 0px;
+    top: 0px;
+
+    font-family: Lato;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 29px;
+
+    letter-spacing: 0.84px;
+
+    color: #000000;
+
+}
+
+.featureCollectionTwo hr {
+    position: static;
+    width: 1116px;
+    height: 0px;
+    left: 0px;
+    top: 45px;
+
+    /* Border */
+
+    border: 1px solid #D8D8D8;
+}
+
+.featureCollectionTwo h2 {
+    position: static;
+    width: 190px;
+    height: 29px;
+    left: 0px;
+    top: 0px;
+
+    /* H5 */
+
+    font-family: Lato;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 29px;
+    /* identical to box height */
+
+    letter-spacing: 0.84px;
+
+    /* Text/Dark */
+
+    color: #252525;
+}
+
+.featureCollectionTwo h3 {
+    position: static;
+    width: 127px;
+    height: 19px;
+    left: 0px;
+    top: 37px;
+
+    /* Link/Active */
+
+    font-family: Lato;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 19px;
+
+    /* Text/Secondary */
+
+    color: #9B9B9B;
+}
+
+.scrollableCollection {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.scrollableCollection h1 {
+    position: static;
+    height: 29px;
+    left: 0px;
+    top: 0px;
+
+    font-family: Lato;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 29px;
+
+    letter-spacing: 0.84px;
+
+    color: #000000;
+
+}
+
+.scrollableCollection hr {
+    position: static;
+    width: 1116px;
+    height: 0px;
+    left: 0px;
+    top: 45px;
+
+    /* Border */
+
+    border: 1px solid #D8D8D8;
+}
+
+.scrollableCollection h2 {
+    position: static;
+    width: 190px;
+    height: 29px;
+    left: 0px;
+    top: 0px;
+
+    /* H5 */
+
+    font-family: Lato;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 29px;
+    /* identical to box height */
+
+    letter-spacing: 0.84px;
+
+    /* Text/Dark */
+
+    color: #252525;
+}
+
+.scrollableCollection h3 {
+    position: static;
+    width: 127px;
+    height: 19px;
+    left: 0px;
+    top: 37px;
+
+    /* Link/Active */
+
+    font-family: Lato;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 19px;
+
+    /* Text/Secondary */
+
+    color: #9B9B9B;
+}
+
+.featureItemName {
+    font-family: Lato;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 32px;
+    line-height: 51px;
+
+    letter-spacing: 0.84px;
+
+    color: #000000;
+}
+
+.featureItemPrice {
+    font-family: Lato;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 32px;
+    line-height: 51px;
+    /* identical to box height, or 159% */
+
+    letter-spacing: 0.84px;
+
+    color: #8367D8;
+}
+
+.featureItemDescription {
+    font-family: Lato;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+    color: #9B9B9B;
+}
+
+.textPurpleBold {
+    font-family: Lato;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 19px;
+    color: #8367D8;
+}

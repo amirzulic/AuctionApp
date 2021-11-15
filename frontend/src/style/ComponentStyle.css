@@ -34,11 +34,6 @@
 }
 
 .footerTitleButton {
-    position: static;
-    width: 112px;
-    height: 24px;
-    left: 0px;
-    top: 0px;
     font-family: Lato;
     font-style: normal;
     font-weight: bold;
