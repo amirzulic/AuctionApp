@@ -17,7 +17,6 @@
 }
 
 .searchBar {
-<<<<<<< Updated upstream
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -26,8 +25,6 @@
 
     position: static;
     width: 548px;
-=======
->>>>>>> Stashed changes
     height: 57.94px;
     left: 0px;
     top: 0px;

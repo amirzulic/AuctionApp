@@ -7,28 +7,7 @@ import {Link} from "react-router-dom";
 function NavbarWhite() {
     return (
         <div>
-<<<<<<< Updated upstream
-            <nav className="navbar navbar-expand-lg navbar-light bg-transparent">
-                <div className="text-center container navbarWhite">
-                    <Link className="navbar-brand" to="/">
-                        <img src={Logo} alt="Logo"/>
-                    </Link>
-                    <div>
-                        <input className="form-control searchBar border" type="text" placeholder="Try enter:  Shoes"/>
-                    </div>
-                    <div>
-                        <ul className="navbar-nav mr-auto">
-                            <li className="nav-item">
-                                <Link className="nav-link" to="/">HOME</Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link className="nav-link" to="#">SHOP</Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link className="nav-link" to="#">MY ACCOUNT</Link>
-                            </li>
-                        </ul>
-=======
+
             <nav className="navbar navbar-expand-lg navbar-light">
                 <div className="container">
                     <div className="row container align-items-center">
@@ -53,7 +32,6 @@ function NavbarWhite() {
                                 </li>
                             </ul>
                         </div>
->>>>>>> Stashed changes
                     </div>
                 </div>
             </nav>
