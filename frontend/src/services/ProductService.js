@@ -1,14 +1,12 @@
 import axios from 'axios';
 
-const BASE_URL = "http://localhost:8080/product";
+const BASE_URL = "http://localhost:8080";
 
-
-class ProductService {
-
-    loadProduct(params) {
-        return axios.get(BASE_URL, {params})
-    }
-
+export const loadLandingPageProducts = async () => {
+    return await axios.get(BASE_URL + "/products");
 }
 
-export default new ProductService();
+export const loadProduct = async (id) => {
+    return await axios.get(BASE_URL + "/product", {params: {productId: id}});
+}
+
