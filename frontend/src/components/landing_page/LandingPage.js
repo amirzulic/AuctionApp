@@ -5,18 +5,31 @@ import BidPhoto from "./bidphoto.png";
 import FeatureCollectionPhoto from "./feature_collection1.png";
 import FeatureCollectionPhoto2 from "./feature_collection2.png";
 import FeatureCollectionPhoto3 from "./feature_collection3.png";
-import {loadLandingPageProducts} from "../../services/ProductService";
+import {loadLandingPageProducts, loadLastChance, loadNewArrivals} from "../../services/ProductService";
 
 
 function LandingPage() {
 
     let history = useHistory();
 
+    const [toggleTab, setToggleTab] = useState(1);
     const [featured, setFeatured] = useState([]);
+    const [newArrivals, setNewArrivals] = useState([]);
+    const [lastChance, setLastChance] = useState([]);
 
     useEffect(() => {
         loadLandingPageProducts().then(res => {
             setFeatured(res.data);
+        }).catch((err) => {
+            console.log(err);
+        });
+        loadNewArrivals().then(res => {
+            setNewArrivals(res.data);
+        }).catch((err) => {
+            console.log(err);
+        });
+        loadLastChance().then(res => {
+            setLastChance(res.data);
         }).catch((err) => {
             console.log(err);
         });
@@ -125,58 +138,28 @@ function LandingPage() {
             </div>*/}
             <div className="row"><br/></div>
             <div className="scrollableCollection align-items-center">
-                <div className="justify-content-start">
-                    <h1>New arrivals</h1>
-                    <hr/>
+                <div className="row container align-items-center">
+                    <div className="col-2">
+                        <h1 onClick={() => setToggleTab(1)}>New arrivals</h1>
+                    </div>
+                    <div className="col-2">
+                        <h1 onClick={() => setToggleTab(2)}>Last chance</h1>
+                    </div>
                 </div>
-                {featured.length > 0 ?
-                    <div className="row">
-                        <div className="col">
+                <div className="row"><br/></div>
+                    <div className="row container align-items-center">
+                        {newArrivals.length > 0 && toggleTab === 1 ? newArrivals.map((prod, i) =>
+                        <div className="col-3">
                             <img src={FeatureCollectionPhoto3}/>
-                            <h2>{featured[1].name}</h2>
-                            <h3>Start from <b className="textPurpleBold">{featured[1].startingPrice}$</b></h3>
-                        </div>
-                        <div className="col">
+                            <h2 key={i}>{newArrivals[i].name}</h2>
+                            <h3 key={i}>Start from <b className="textPurpleBold">{newArrivals[i].startingPrice}$</b></h3>
+                        </div>) : lastChance.map((prod, i) => <div className="col-3">
                             <img src={FeatureCollectionPhoto3}/>
-                            <h2>{featured[2].name}</h2>
-                            <h3>Start from <b className="textPurpleBold">{featured[2].startingPrice}$</b></h3>
-                        </div>
-                        <div className="col">
-                            <img src={FeatureCollectionPhoto3}/>
-                            <h2>{featured[3].name}</h2>
-                            <h3>Start from <b className="textPurpleBold">{featured[3].startingPrice}$</b></h3>
-                        </div>
-                        <div className="col">
-                            <img src={FeatureCollectionPhoto3}/>
-                            <h2>{featured[4].name}</h2>
-                            <h3>Start from <b className="textPurpleBold">{featured[4].startingPrice}$</b></h3>
-                        </div>
-                    </div> : null
-                } {featured.length > 0 ?
-                    <div className="row">
-                        <div className="col">
-                            <img src={FeatureCollectionPhoto3}/>
-                            <h2>{featured[5].name}</h2>
-                            <h3>Start from <b className="textPurpleBold">{featured[5].startingPrice}$</b></h3>
-                        </div>
-                        <div className="col">
-                            <img src={FeatureCollectionPhoto3}/>
-                            <h2>{featured[6].name}</h2>
-                            <h3>Start from <b className="textPurpleBold">{featured[6].startingPrice}$</b></h3>
-                        </div>
-                        <div className="col">
-                            <img src={FeatureCollectionPhoto3}/>
-                            <h2>{featured[7].name}</h2>
-                            <h3>Start from <b className="textPurpleBold">{featured[7].startingPrice}$</b></h3>
-                        </div>
-                        <div className="col">
-                            <img src={FeatureCollectionPhoto3}/>
-                            <h2>{featured[8].name}</h2>
-                            <h3>Start from <b className="textPurpleBold">{featured[8].startingPrice}$</b></h3>
-                        </div>
-                    </div> : null
-                }
-            </div>
+                            <h2 key={i}>{lastChance[i].name}</h2>
+                            <h3 key={i}>Start from <b className="textPurpleBold">{lastChance[i].startingPrice}$</b></h3>
+                        </div> )}
+                    </div>
+                </div>
             <div className="row"><br/></div>
         </div>
     );

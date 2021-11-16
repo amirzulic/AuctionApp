@@ -15,12 +15,18 @@ public class ProductService {
     @Autowired
     ProductRepository productRepository;
 
-    List<User> list = new ArrayList<>();
-
     public ProductService() {}
 
     public List<Product> getAllProducts() {
         return productRepository.findAll();
+    }
+
+    public List<Product> getNewArrivals() {
+        return productRepository.getNewArrivals();
+    }
+
+    public List<Product> getLastChance() {
+        return productRepository.getLastChance();
     }
 
     public Product getSingleProduct(int id) {

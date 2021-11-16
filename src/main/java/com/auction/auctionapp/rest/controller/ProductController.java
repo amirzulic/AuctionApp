@@ -21,6 +21,16 @@ public class ProductController {
         return productService.getAllProducts();
     }
 
+    @GetMapping("/products/new")
+    public List<Product> getNewArrivals() {
+        return productService.getNewArrivals();
+    }
+
+    @GetMapping("/products/last")
+    public List<Product> getLastChance() {
+        return productService.getLastChance();
+    }
+
     @GetMapping("/product")
     public Product getSingleProduct(@RequestParam(name = "productId") int id) {
         return productService.getSingleProduct(id);
