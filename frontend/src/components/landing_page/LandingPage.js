@@ -1,17 +1,43 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import "./landingPage.css";
 import {useHistory} from 'react-router-dom';
 import BidPhoto from "./bidphoto.png";
 import FeatureCollectionPhoto from "./feature_collection1.png";
 import FeatureCollectionPhoto2 from "./feature_collection2.png";
 import FeatureCollectionPhoto3 from "./feature_collection3.png";
+import {loadLandingPageProducts, loadLastChance, loadNewArrivals} from "../../services/ProductService";
+
 
 function LandingPage() {
 
     let history = useHistory();
 
+    const [toggleTab, setToggleTab] = useState(1);
+    const [featured, setFeatured] = useState([]);
+    const [newArrivals, setNewArrivals] = useState([]);
+    const [lastChance, setLastChance] = useState([]);
+
+    useEffect(() => {
+        loadLandingPageProducts().then(res => {
+            setFeatured(res.data);
+        }).catch((err) => {
+            console.log(err);
+        });
+        loadNewArrivals().then(res => {
+            setNewArrivals(res.data);
+        }).catch((err) => {
+            console.log(err);
+        });
+        loadLastChance().then(res => {
+            setLastChance(res.data);
+        }).catch((err) => {
+            console.log(err);
+        });
+    }, []);
+
+
     function handleSubmit() {
-        history.push("/product");
+        history.push("/product?productId=" + featured[0].productId);
     }
 
     return (
@@ -42,19 +68,23 @@ function LandingPage() {
                                 <tr className="categoriesBoxItem"><td>All categories</td></tr>
                             </table>
                         </div>
-                        <div className="col">
-                            <h1 className="featureItemName">Item name</h1>
-                            <h2 className="featureItemPrice">Start From Price</h2>
-                            <p className="featureItemDescription">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum hendrerit odio a erat lobortis auctor. Curabitur sodales pharetra placerat. Aenean auctor luctus tempus. Cras laoreet et magna in dignissim. Nam et tincidunt augue. Vivamus quis malesuada velit. In hac habitasse platea dictumst. </p>
-                            <button onClick={handleSubmit} className="btn bidNowButton">BID NOW ></button>
-                        </div>
+                        {featured.length > 0 ?
+                            <div className="col">
+                                <h1 className="featureItemName">{featured[0].name}</h1>
+                                <h2 className="featureItemPrice">Starts From {featured[0].startingPrice}$</h2>
+                                <p className="featureItemDescription">{featured[0].description}</p>
+                                <button onClick={handleSubmit} className="btn bidNowButton">BID NOW ></button>
+                            </div> : null
+                        }
                         <div className="col">
                             <img src={BidPhoto}/>
+
                         </div>
                     </div>
                 </div>
             </div>
             {/*<div className="featureCollectionOne align-items-center">
+
                 <div>
                     <h1>Feature Collection</h1>
                     <hr/>
@@ -108,55 +138,28 @@ function LandingPage() {
             </div>*/}
             <div className="row"><br/></div>
             <div className="scrollableCollection align-items-center">
-                <div className="justify-content-start">
-                    <h1>New arrivals</h1>
-                    <hr/>
-                </div>
-                <div className="row">
-                    <div className="col">
-                        <img src={FeatureCollectionPhoto3}/>
-                        <h2>Shoes collection</h2>
-                        <h3>Start from <b className="textPurpleBold">price</b></h3>
+                <div className="row container align-items-center">
+                    <div className="col-2">
+                        <h1 onClick={() => setToggleTab(1)}>New arrivals</h1>
                     </div>
-                    <div className="col">
-                        <img src={FeatureCollectionPhoto3}/>
-                        <h2>Shoes collection</h2>
-                        <h3>Start from <b className="textPurpleBold">price</b></h3>
-                    </div>
-                    <div className="col">
-                        <img src={FeatureCollectionPhoto3}/>
-                        <h2>Shoes collection</h2>
-                        <h3>Start from <b className="textPurpleBold">price</b></h3>
-                    </div>
-                    <div className="col">
-                        <img src={FeatureCollectionPhoto3}/>
-                        <h2>Shoes collection</h2>
-                        <h3>Start from <b className="textPurpleBold">price</b></h3>
+                    <div className="col-2">
+                        <h1 onClick={() => setToggleTab(2)}>Last chance</h1>
                     </div>
                 </div>
-                <div className="row">
-                    <div className="col">
-                        <img src={FeatureCollectionPhoto3}/>
-                        <h2>Shoes collection</h2>
-                        <h3>Start from <b className="textPurpleBold">price</b></h3>
-                    </div>
-                    <div className="col">
-                        <img src={FeatureCollectionPhoto3}/>
-                        <h2>Shoes collection</h2>
-                        <h3>Start from <b className="textPurpleBold">price</b></h3>
-                    </div>
-                    <div className="col">
-                        <img src={FeatureCollectionPhoto3}/>
-                        <h2>Shoes collection</h2>
-                        <h3>Start from <b className="textPurpleBold">price</b></h3>
-                    </div>
-                    <div className="col">
-                        <img src={FeatureCollectionPhoto3}/>
-                        <h2>Shoes collection</h2>
-                        <h3>Start from <b className="textPurpleBold">price</b></h3>
+                <div className="row"><br/></div>
+                    <div className="row container align-items-center">
+                        {newArrivals.length > 0 && toggleTab === 1 ? newArrivals.map((prod, i) =>
+                        <div className="col-3">
+                            <img src={FeatureCollectionPhoto3}/>
+                            <h2 key={i}>{newArrivals[i].name}</h2>
+                            <h3 key={i}>Start from <b className="textPurpleBold">{newArrivals[i].startingPrice}$</b></h3>
+                        </div>) : lastChance.map((prod, i) => <div className="col-3">
+                            <img src={FeatureCollectionPhoto3}/>
+                            <h2 key={i}>{lastChance[i].name}</h2>
+                            <h3 key={i}>Start from <b className="textPurpleBold">{lastChance[i].startingPrice}$</b></h3>
+                        </div> )}
                     </div>
                 </div>
-            </div>
             <div className="row"><br/></div>
         </div>
     );

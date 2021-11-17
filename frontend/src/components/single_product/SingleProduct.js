@@ -1,12 +1,28 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import './singleProduct.css';
 import LargeProductPhoto from './product_photo_large.png';
+import {useHistory} from 'react-router-dom';
 import SmallProductPhoto from './product_photo_small.png';
 import RelatedProductPhoto from './related_products_photo.png';
 import {Link} from "react-router-dom";
 import Logo from "../../images/app-logo.png";
+import {loadProduct} from "../../services/ProductService";
 
 function SingleProduct() {
+
+    let history = useHistory();
+
+    const [product, setProduct] = useState([]);
+    const [id, setId] = useState(1);
+
+    useEffect(() => {
+        loadProduct(id).then(res => {
+            setProduct(res.data);
+            setId(product.productId);
+        }).catch((err) => {
+            console.log(err);
+        });
+    }, []);
 
     return(
         <div className="container-fluid">
@@ -14,7 +30,7 @@ function SingleProduct() {
                 <div className="container">
                     <div className="row container align-items-center">
                         <div className="col container">
-                            <h1 className="productTitle">Product name</h1>
+                            {product != null ? <h1 className="productTitle">{product.name}</h1> : null}
                         </div>
                     </div>
                 </div>
@@ -42,20 +58,24 @@ function SingleProduct() {
                     </div>*/}
                 </div>
                 <div className="col">
-                    <h2>Product name</h2>
-                    <p className="textPurple">Starts from <b>price</b></p>
+                    {product != null ?
+                    <h2>{product.name}</h2> : null }
+                    {product != null ?
+                    <p className="textPurple">Starts from <b>{product.startingPrice}$</b></p> : null }
+                    {product != null ?
                     <div className="bidInfo">
                         <p>Highest bid: <b className="textPurpleBold">price</b></p>
                         <p>Number of bids: <b className="textPurpleBold">1</b> </p>
                         <p>Time left: <b className="textPurpleBold">10 weeks 6 days</b></p>
-                    </div>
+                    </div> : null }
                     <br/>
                     <form>
                         <div className="row">
                             <div className="col">
+                                {product != null ?
                                 <input type="text" className="bidInput h-100 productParagraph"
                                        id="bid" name="bid"
-                                       placeholder="Enter xx or higher"/>
+                                       placeholder={"Enter " + product.startingPrice + "$ or higher"}/> : null }
                             </div>
                             <div className="col justify-content-end">
                                 <button type="submit" className="btn submitBid">PLACE BID ></button>
@@ -71,7 +91,9 @@ function SingleProduct() {
                         <div className="row">
                             <div className="col-10">
                                 <hr/>
-                                <p className="productParagraph"><i>The Jackets is US standard size, Please choose size as your usual wear Material: 100% Polyester Detachable Liner Fabric: Warm Fleece. Detachable Functional Liner: Skin Friendly, Lightweigt and Warm. Stand Collar Liner jacket, keep you warm in cold weather. Zippered Pockets: 2 Zippered Hand Pockets, 2 Zippered Pockets on Chest (enough to keep cards or keys)and 1 Hidden Pocket Inside. Zippered Hand Pockets and Hidden Pocket keep your things secure. Humanized Design: Adjustable and Detachable Hood and Adjustable cuff to prevent the wind and water,for a comfortable fit. 3 in 1 Detachable Design provide more convenience, you can separate the coat and inner as needed, or wear it together. It is suitable for different season and help you adapt to different climates</i></p>
+                                {product != null ?
+                                    <p className="productParagraph"><i>{product.description}</i></p>
+                                : null}
                             </div>
                             <div className="col"></div>
                         </div>
