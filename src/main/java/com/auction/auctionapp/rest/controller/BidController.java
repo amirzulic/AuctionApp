@@ -27,7 +27,7 @@ public class BidController {
         return bidService.loadBids();
     }
 
-    @PostMapping("/product")
+    @PostMapping("/bid")
     public ResponseEntity<BidResponse> saveBid(@RequestBody BidRequest bid) {
         Bid createdBid = bidService.saveBid(bid);
         return ResponseEntity.ok(new BidResponse(createdBid.getPrice()));

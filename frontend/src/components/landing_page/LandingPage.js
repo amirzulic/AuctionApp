@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import "./landingPage.css";
-import {useHistory} from 'react-router-dom';
+import {useHistory, Link} from 'react-router-dom';
 import BidPhoto from "./bidphoto.png";
 import FeatureCollectionPhoto from "./feature_collection1.png";
 import FeatureCollectionPhoto2 from "./feature_collection2.png";
@@ -10,10 +10,12 @@ import {loadLandingPageProducts, loadLastChance, loadNewArrivals} from "../../se
 
 
 function LandingPage() {
-
     let history = useHistory();
 
+    const header = localStorage.getItem("Authorization");
+
     const [toggleTab, setToggleTab] = useState(1);
+
     const [featured, setFeatured] = useState([]);
     const [newArrivals, setNewArrivals] = useState([]);
     const [lastChance, setLastChance] = useState([]);
@@ -35,7 +37,6 @@ function LandingPage() {
             console.log(err);
         });
     }, []);
-
 
     function handleSubmit() {
         history.push("/product?productId=" + featured[0].productId);
@@ -71,14 +72,14 @@ function LandingPage() {
                         </div>
                         {featured.length > 0 ?
                             <div className="col">
-                                <h1 className="featureItemName">{featured[0].name}</h1>
+                                <h1 onClick={() => history.push("/product?productid=" + featured[0].productId)} className="featureItemName">{featured[0].name}</h1>
                                 <h2 className="featureItemPrice">Starts From {featured[0].startingPrice}$</h2>
                                 <p className="featureItemDescription">{featured[0].description}</p>
-                                <button onClick={handleSubmit} className="btn bidNowButton">BID NOW ></button>
+                                { header != null ?<button onClick={handleSubmit} className="btn bidNowButton">BID NOW ></button>: null}
                             </div> : null
                         }
                         <div className="col">
-                            <img src={BidPhoto}/>
+                            <img onClick={() => history.push("/product?productid=" + featured[0].productId)} src={BidPhoto}/>
 
                         </div>
                     </div>
@@ -141,21 +142,21 @@ function LandingPage() {
             <div className="scrollableCollection align-items-center">
                 <div className="row container align-items-center">
                     <div className="col-2">
-                        <h1 onClick={() => setToggleTab(1)}>New arrivals</h1>
+                        <h1 onClick={() => setToggleTab(1)} className="tabHover">New arrivals</h1>
                     </div>
                     <div className="col-2">
-                        <h1 onClick={() => setToggleTab(2)}>Last chance</h1>
+                        <h1 onClick={() => setToggleTab(2)} className="tabHover">Last chance</h1>
                     </div>
                 </div>
                 <div className="row"><br/></div>
                     <div className="row container align-items-center">
                         {newArrivals.length > 0 && toggleTab === 1 ? newArrivals.map((prod, i) =>
                         <div className="col-3">
-                            <img src={FeatureCollectionPhoto3}/>
+                            <img onClick={() => history.push("/product?productid=" + newArrivals[i].productId)} src={FeatureCollectionPhoto3}/>
                             <h2 key={i}>{newArrivals[i].name}</h2>
                             <h3 key={i}>Start from <b className="textPurpleBold">{newArrivals[i].startingPrice}$</b></h3>
                         </div>) : lastChance.map((prod, i) => <div className="col-3">
-                            <img src={FeatureCollectionPhoto3}/>
+                            <img onClick={() => history.push("/product?productid=" + lastChance[i].productId)} src={FeatureCollectionPhoto3}/>
                             <h2 key={i}>{lastChance[i].name}</h2>
                             <h3 key={i}>Start from <b className="textPurpleBold">{lastChance[i].startingPrice}$</b></h3>
                         </div> )}

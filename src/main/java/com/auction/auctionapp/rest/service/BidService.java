@@ -15,12 +15,12 @@ public class BidService {
     BidRepository bidRepository;
 
     public Bid saveBid(BidRequest bidRequest) {
-        Bid bid = new Bid(bidRequest.getPrice());
-
+        Bid bid = new Bid(bidRequest.getPrice(), bidRequest.getProductId());
         return bidRepository.save(bid);
     }
 
     public List<Bid> loadBids() {
         return bidRepository.findAll();
     }
+
 }

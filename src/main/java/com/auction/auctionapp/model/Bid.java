@@ -13,17 +13,21 @@ public class Bid {
     @Column(name = "price")
     private double price;
 
+    @Column(name = "productid")
+    private int productId;
+
     public Bid() {}
 
-    public Bid(double price) {
+    public Bid(double price, int productId) {
         this.price = price;
+        this.productId = productId;
     }
 
-    public int getBidId() {
+    public int getBidid() {
         return bidid;
     }
 
-    public void setBidId(int bidid) {
+    public void setBidid(int bidid) {
         this.bidid = bidid;
     }
 
@@ -35,4 +39,11 @@ public class Bid {
         this.price = price;
     }
 
+    public int getProductId() {
+        return productId;
+    }
+
+    public void setProductId(int productId) {
+        this.productId = productId;
+    }
 }

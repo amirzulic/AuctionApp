@@ -4,6 +4,8 @@ import com.auction.auctionapp.model.User;
 import com.auction.auctionapp.rest.exception.InvalidTokenException;
 import com.auction.auctionapp.rest.service.UserService;
 import com.auction.auctionapp.store.UserRepository;
+import io.jsonwebtoken.Jwts;
+import org.hibernate.annotations.Filter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContext;
@@ -18,19 +20,21 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 public class JWTFilter extends OncePerRequestFilter {
-    private UserRepository userRepository;
+    @Autowired
+    private UserService userService;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-
-        String JWTToken = request.getHeader("Authorization");
-        User user = userRepository.getUserByEmail(JWTUtil.getEmail(JWTToken));
-
-        if(JWTUtil.validateToken(JWTToken, user)) {
-            UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(user, user.getEmail());
-            SecurityContextHolder.getContext().setAuthentication(auth);
-        } else {
-            throw new InvalidTokenException("Token is not valid!");
+        String header = request.getHeader("Authorization");
+        if(header == null || header.isEmpty()) {
+            User user = userService.getByEmail(JWTUtil.getEmail(header));
+            if(JWTUtil.validateToken(header, user)) {
+                UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(user, user.getEmail());
+                SecurityContextHolder.getContext().setAuthentication(auth);
+            } else {
+                throw new InvalidTokenException("Token is not valid!");
+            }
         }
+        filterChain.doFilter(request, response);
     }
 }

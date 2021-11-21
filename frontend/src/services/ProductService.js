@@ -2,8 +2,8 @@ import axios from 'axios';
 
 const BASE_URL = "http://localhost:8080";
 
-export const loadLandingPageProducts = async () => {
-    return await axios.get(BASE_URL + "/products");
+export const loadLandingPageProducts = async (header) => {
+    return await axios.get(BASE_URL + "/products", {headers: {"Authorization": header}});
 }
 
 export const loadNewArrivals = async () => {

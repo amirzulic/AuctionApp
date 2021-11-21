@@ -243,6 +243,10 @@
     color: #9B9B9B;
 }
 
+.tabHover:hover {
+    color: #8367D8;
+}
+
 .scrollableCollection {
     display: flex;
     flex-direction: column;
