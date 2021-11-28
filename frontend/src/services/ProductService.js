@@ -2,8 +2,8 @@ import axios from 'axios';
 
 const BASE_URL = "http://localhost:8080";
 
-export const loadLandingPageProducts = async (header) => {
-    return await axios.get(BASE_URL + "/products", {headers: {"Authorization": header}});
+export const loadLandingPageProducts = async () => {
+    return await axios.get(BASE_URL + "/products");
 }
 
 export const loadNewArrivals = async () => {
@@ -14,7 +14,7 @@ export const loadLastChance = async () => {
     return await axios.get(BASE_URL + "/products/last");
 }
 
-export const loadProduct = async (id) => {
-    return await axios.get(BASE_URL + "/product", {params: {productId: id}});
+export const loadProduct = async (id, header) => {
+    return await axios.get(BASE_URL + "/product", {params: {productId: id}, headers: {"Authorization": header}});
 }
 
