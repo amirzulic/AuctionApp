@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -18,23 +19,23 @@ public class ProductController {
     private ProductService productService;
 
     @GetMapping("/products")
-    public ResponseEntity<ProductResponse> getProducts() {
-        return ResponseEntity.ok(new ProductResponse(productService.getAllProducts()));
+    public ResponseEntity<List<ProductResponse>> getProducts() {
+        return ResponseEntity.ok(new ArrayList<ProductResponse>(productService.getAllProducts()));
     }
 
     @GetMapping("/products/new")
-    public ResponseEntity<ProductResponse> getNewArrivals() {
-        return ResponseEntity.ok(new ProductResponse(productService.getNewArrivals()));
+    public ResponseEntity<List<ProductResponse>> getNewArrivals() {
+        return ResponseEntity.ok(new ArrayList<ProductResponse>(productService.getNewArrivals()));
     }
 
     @GetMapping("/products/last")
-    public ResponseEntity<ProductResponse> getLastChance() {
-        return ResponseEntity.ok(new ProductResponse(productService.getLastChance()));
+    public ResponseEntity<List<ProductResponse>> getLastChance() {
+        return ResponseEntity.ok(new ArrayList<ProductResponse>(productService.getLastChance()));
     }
 
     @GetMapping("/product")
-    public ProductResponse getSingleProduct(@RequestParam(name = "productId") int id) {
-        return productService.getSingleProductBid(id);
+    public ResponseEntity<ProductResponse> getSingleProduct(@RequestParam(name = "productId") int id) {
+        return ResponseEntity.ok(new ProductResponse(productService.getSingleProduct(id)));
     }
 
 }

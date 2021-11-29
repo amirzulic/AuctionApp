@@ -22,18 +22,17 @@ function LandingPage() {
 
     useEffect(() => {
         loadLandingPageProducts().then(res => {
-            setFeatured(res.data.list);
-            console.log(res.data.list);
+            setFeatured(res.data);
         }).catch((err) => {
             console.log(err);
         });
         loadNewArrivals().then(res => {
-            setNewArrivals(res.data.list);
+            setNewArrivals(res.data);
         }).catch((err) => {
             console.log(err);
         });
         loadLastChance().then(res => {
-            setLastChance(res.data.list);
+            setLastChance(res.data);
         }).catch((err) => {
             console.log(err);
         });

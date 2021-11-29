@@ -11,21 +11,25 @@ public class ProductResponse {
     private String name;
     private double startingPrice;
     private String description;
-    private double maxPrice;
+    private int size;
+    private String color;
+    private int status;
+    /*private double maxPrice;
     private int count;
-    private List<Product> productList;
+    private List<Product> productList;*/
 
-    public ProductResponse(int productId, String name, double startingPrice, String description, double maxPrice, int count) {
+    public ProductResponse(int productId, String name, double startingPrice, String description) {
         this.productId = productId;
         this.name = name;
         this.startingPrice = startingPrice;
         this.description = description;
-        this.maxPrice = maxPrice;
-        this.count = count;
     }
 
-    public ProductResponse(List<Product> productList) {
-        this.productList = productList;
+    public ProductResponse(ProductResponse singleProduct) {
+        this.productId = singleProduct.productId;
+        this.name = singleProduct.name;
+        this.startingPrice = singleProduct.startingPrice;
+        this.description = singleProduct.description;
     }
 
     public int getProductId() {
@@ -42,17 +46,5 @@ public class ProductResponse {
 
     public String getDescription() {
         return description;
-    }
-
-    public double getMaxPrice() {
-        return maxPrice;
-    }
-
-    public int getCount() {
-        return count;
-    }
-
-    public List<Product> getList() {
-        return productList;
     }
 }

@@ -7,7 +7,7 @@ import RelatedProductPhoto from './related_products_photo.png';
 import {Link} from "react-router-dom";
 import Logo from "../../images/app-logo.png";
 import {loadProduct} from "../../services/ProductService";
-import {saveBid} from "../../services/BidService";
+import {saveBid, loadBid} from "../../services/BidService";
 import {useFormik} from "formik";
 import * as Yup from 'yup';
 
@@ -18,6 +18,7 @@ const SingleProduct = ({location}) => {
     const header = localStorage.getItem("Authorization");
 
     const [product, setProduct] = useState([]);
+    const [bid, setBid] = useState([]);
 
     useEffect(() => {
         loadProduct(location.search.split("=")[1]).then(res => {
@@ -25,6 +26,12 @@ const SingleProduct = ({location}) => {
         }).catch((err) => {
             console.log(err);
         });
+        loadBid(location.search.split("=")[1]).then(res => {
+            setBid(res.data);
+            console.log(res.data);
+        }).catch((err) => {
+            console.log(err);
+        })
     }, []);
 
     const formik = useFormik({
@@ -89,20 +96,20 @@ const SingleProduct = ({location}) => {
                     <h2>{product.name}</h2> : null }
                     {product != null ?
                     <p className="textPurple">Starts from <b>{product.startingPrice}$</b></p> : null }
-                    {product != null ?
+                    {bid != null ?
                     <div className="bidInfo">
-                        <p>Highest bid: <b className="textPurpleBold">{product.maxPrice}$</b></p>
-                        <p>Number of bids: <b className="textPurpleBold">{product.count}</b> </p>
+                        <p>Highest bid: <b className="textPurpleBold">{bid.price}$</b></p>
+                        <p>Number of bids: <b className="textPurpleBold">{bid.count}</b> </p>
                         <p>Time left: <b className="textPurpleBold">10 weeks 6 days</b></p>
                     </div> : null }
                     <br/>
                     <form onSubmit={formik.handleSubmit}>
                         <div className="row">
                             <div className="col">
-                                {product != null && header != null ?
+                                {bid != null && header != null ?
                                 <input type="number" className="bidInput h-100 productParagraph"
                                        id="price" name="price"
-                                       placeholder={"Enter " + (product.maxPrice +1) + "$ or higher"}
+                                       placeholder={"Enter " + (bid.price +1) + "$ or higher"}
                                        onBlur={formik.handleBlur}
                                        onChange={formik.handleChange}/> : null }
                             </div>

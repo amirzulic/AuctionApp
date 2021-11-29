@@ -19,8 +19,11 @@ public class BidService {
         return bidRepository.save(bid);
     }
 
-    public List<Bid> loadBids() {
-        return bidRepository.findAll();
+    public double loadBidMaxPrice(int id) {
+        return bidRepository.getBidMaxPrice(id);
     }
 
+    public List<Bid> loadBidCount(int id) {
+        return bidRepository.getBidCount(id);
+    }
 }

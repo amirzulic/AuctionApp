@@ -9,10 +9,7 @@ import com.auction.auctionapp.rest.RegisterResponse;
 import com.auction.auctionapp.rest.service.BidService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -26,6 +23,11 @@ public class BidController {
     public ResponseEntity<BidResponse> saveBid(@RequestBody BidRequest bid) {
         Bid createdBid = bidService.saveBid(bid);
         return ResponseEntity.ok(new BidResponse(createdBid.getPrice()));
+    }
+
+    @GetMapping("/bid-info")
+    public ResponseEntity<BidResponse> loadBid(@RequestParam(name = "productId") int id) {
+        return ResponseEntity.ok(new BidResponse(bidService.loadBidMaxPrice(id), bidService.loadBidCount(id).size()));
     }
 
 }
