@@ -10,9 +10,9 @@ import java.util.List;
 
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Integer> {
-    @Query(value = "SELECT * FROM Product WHERE endDate IS NULL", nativeQuery = true)
+    @Query(value = "SELECT * FROM Product ORDER BY endDate ASC", nativeQuery = true)
     public List<Product> getNewArrivals();
 
-    @Query(value = "SELECT * FROM Product WHERE endDate IS NOT NULL", nativeQuery = true)
+    @Query(value = "SELECT * FROM Product ORDER BY endDate DESC", nativeQuery = true)
     public List<Product> getLastChance();
 }

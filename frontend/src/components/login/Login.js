@@ -32,7 +32,7 @@ function Login() {
                 password: formik.values.password
             }
 
-            loginUser(user, header).then(res => {
+            loginUser(user).then(res => {
                 let jwt = res.data.jwtoken;
                 header.append('Authorization', jwt)
                 localStorage.setItem('Authorization', jwt);
