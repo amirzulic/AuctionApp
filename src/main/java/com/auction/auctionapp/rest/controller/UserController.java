@@ -22,11 +22,6 @@ public class UserController {
 
     private PasswordEncoder passwordEncoder;
 
-    @GetMapping("/users")
-    public List<User> getUsers() {
-        return userService.getAllUsers();
-    }
-
     @PostMapping("/register")
     public ResponseEntity<RegisterResponse> registerUser(@RequestBody RegisterRequest user) {
         User createdUser = userService.saveUser(user);

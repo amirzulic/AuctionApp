@@ -20,7 +20,7 @@ const SingleProduct = ({location}) => {
     const [product, setProduct] = useState([]);
 
     useEffect(() => {
-        loadProduct(location.search.split("=")[1], header).then(res => {
+        loadProduct(location.search.split("=")[1]).then(res => {
             setProduct(res.data);
         }).catch((err) => {
             console.log(err);

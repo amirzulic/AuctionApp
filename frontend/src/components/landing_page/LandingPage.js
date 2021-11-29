@@ -22,24 +22,25 @@ function LandingPage() {
 
     useEffect(() => {
         loadLandingPageProducts().then(res => {
-            setFeatured(res.data);
+            setFeatured(res.data.list);
+            console.log(res.data.list);
         }).catch((err) => {
             console.log(err);
         });
         loadNewArrivals().then(res => {
-            setNewArrivals(res.data);
+            setNewArrivals(res.data.list);
         }).catch((err) => {
             console.log(err);
         });
         loadLastChance().then(res => {
-            setLastChance(res.data);
+            setLastChance(res.data.list);
         }).catch((err) => {
             console.log(err);
         });
     }, []);
 
-    function handleSubmit() {
-        history.push("/product?productId=" + featured[0].productId);
+    function redirect(id) {
+        history.push("/product?productId=" + id);
     }
 
     return (
@@ -72,15 +73,14 @@ function LandingPage() {
                         </div>
                         {featured.length > 0 ?
                             <div className="col">
-                                <h1 onClick={() => history.push("/product?productid=" + featured[0].productId)} className="featureItemName">{featured[0].name}</h1>
+                                <h1 onClick={() => redirect(featured[0].productId)} className="featureItemName">{featured[0].name}</h1>
                                 <h2 className="featureItemPrice">Starts From {featured[0].startingPrice}$</h2>
                                 <p className="featureItemDescription">{featured[0].description}</p>
-                                { header != null ?<button onClick={handleSubmit} className="btn bidNowButton">BID NOW ></button>: null}
+                                { header != null ? <button onClick={() => redirect(featured[0].productId)} className="btn bidNowButton">BID NOW ></button>: null}
                             </div> : null
                         }
                         <div className="col">
-                            <img onClick={() => history.push("/product?productid=" + featured[0].productId)} src={BidPhoto}/>
-
+                            <img onClick={() => redirect(featured[0].productId)} src={BidPhoto}/>
                         </div>
                     </div>
                 </div>
@@ -152,11 +152,11 @@ function LandingPage() {
                     <div className="row container align-items-center">
                         {newArrivals.length > 0 && toggleTab === 1 ? newArrivals.map((prod, i) =>
                         <div className="col-3">
-                            <img onClick={() => history.push("/product?productid=" + newArrivals[i].productId)} src={FeatureCollectionPhoto3}/>
+                            <img onClick={() => redirect(newArrivals[i].productId)} src={FeatureCollectionPhoto3}/>
                             <h2 key={i}>{newArrivals[i].name}</h2>
                             <h3 key={i}>Start from <b className="textPurpleBold">{newArrivals[i].startingPrice}$</b></h3>
                         </div>) : lastChance.map((prod, i) => <div className="col-3">
-                            <img onClick={() => history.push("/product?productid=" + lastChance[i].productId)} src={FeatureCollectionPhoto3}/>
+                            <img onClick={() => redirect(lastChance[i].productId)} src={FeatureCollectionPhoto3}/>
                             <h2 key={i}>{lastChance[i].name}</h2>
                             <h3 key={i}>Start from <b className="textPurpleBold">{lastChance[i].startingPrice}$</b></h3>
                         </div> )}

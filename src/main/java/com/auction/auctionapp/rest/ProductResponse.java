@@ -1,8 +1,11 @@
 package com.auction.auctionapp.rest;
 
-import java.util.Date;
+import com.auction.auctionapp.model.Product;
 
-public class SingleProductResponse {
+import java.util.Date;
+import java.util.List;
+
+public class ProductResponse {
 
     private int productId;
     private String name;
@@ -10,14 +13,19 @@ public class SingleProductResponse {
     private String description;
     private double maxPrice;
     private int count;
+    private List<Product> productList;
 
-    public SingleProductResponse(int productId, String name, double startingPrice, String description, double maxPrice, int count) {
+    public ProductResponse(int productId, String name, double startingPrice, String description, double maxPrice, int count) {
         this.productId = productId;
         this.name = name;
         this.startingPrice = startingPrice;
         this.description = description;
         this.maxPrice = maxPrice;
         this.count = count;
+    }
+
+    public ProductResponse(List<Product> productList) {
+        this.productList = productList;
     }
 
     public int getProductId() {
@@ -42,5 +50,9 @@ public class SingleProductResponse {
 
     public int getCount() {
         return count;
+    }
+
+    public List<Product> getList() {
+        return productList;
     }
 }

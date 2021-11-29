@@ -1,17 +1,14 @@
 package com.auction.auctionapp.rest.controller;
 
 import com.auction.auctionapp.model.Product;
-import com.auction.auctionapp.model.User;
-import com.auction.auctionapp.rest.SingleProductResponse;
+import com.auction.auctionapp.rest.ProductResponse;
 import com.auction.auctionapp.rest.service.ProductService;
-import org.apache.tomcat.util.http.parser.Authorization;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.net.http.HttpHeaders;
 import java.util.List;
 
 @RestController
@@ -21,22 +18,22 @@ public class ProductController {
     private ProductService productService;
 
     @GetMapping("/products")
-    public List<Product> getProducts() {
-        return productService.getAllProducts();
+    public ResponseEntity<ProductResponse> getProducts() {
+        return ResponseEntity.ok(new ProductResponse(productService.getAllProducts()));
     }
 
     @GetMapping("/products/new")
-    public List<Product> getNewArrivals() {
-        return productService.getNewArrivals();
+    public ResponseEntity<ProductResponse> getNewArrivals() {
+        return ResponseEntity.ok(new ProductResponse(productService.getNewArrivals()));
     }
 
     @GetMapping("/products/last")
-    public List<Product> getLastChance() {
-        return productService.getLastChance();
+    public ResponseEntity<ProductResponse> getLastChance() {
+        return ResponseEntity.ok(new ProductResponse(productService.getLastChance()));
     }
 
     @GetMapping("/product")
-    public SingleProductResponse getSingleProduct(@RequestParam(name = "productId") int id) {
+    public ProductResponse getSingleProduct(@RequestParam(name = "productId") int id) {
         return productService.getSingleProductBid(id);
     }
 

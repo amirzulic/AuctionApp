@@ -22,11 +22,6 @@ public class BidController {
     @Autowired
     private BidService bidService;
 
-    @GetMapping("/bids")
-    public List<Bid> allBids() {
-        return bidService.loadBids();
-    }
-
     @PostMapping("/bid")
     public ResponseEntity<BidResponse> saveBid(@RequestBody BidRequest bid) {
         Bid createdBid = bidService.saveBid(bid);
