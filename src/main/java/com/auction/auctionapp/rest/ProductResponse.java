@@ -14,9 +14,6 @@ public class ProductResponse {
     private int size;
     private String color;
     private int status;
-    /*private double maxPrice;
-    private int count;
-    private List<Product> productList;*/
 
     public ProductResponse(int productId, String name, double startingPrice, String description) {
         this.productId = productId;
