@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL = "https://backend-app-auction.herokuapp.com/";
+const BASE_URL = "https://backend-app-auction.herokuapp.com";
 
 export const loadLandingPageProducts = async () => {
     return await axios.get(BASE_URL + "/products");
