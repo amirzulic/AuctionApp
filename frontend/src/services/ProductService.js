@@ -1,18 +1,20 @@
 import axios from 'axios';
 
+const BASE_URL = "https://https://backend-app-auction.herokuapp.com/";
+
 export const loadLandingPageProducts = async () => {
-    return await axios.get("/products");
+    return await axios.get(BASE_URL + "/products");
 }
 
 export const loadNewArrivals = async () => {
-    return await axios.get("/products/new");
+    return await axios.get(BASE_URL + "/products/new");
 }
 
 export const loadLastChance = async () => {
-    return await axios.get("/products/last");
+    return await axios.get(BASE_URL + "/products/last");
 }
 
 export const loadProduct = async (id, header) => {
-    return await axios.get("/product", {params: {productId: id}});
+    return await axios.get(BASE_URL + "/product", {params: {productId: id}});
 }
 
