@@ -48,7 +48,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         CorsConfiguration configuration = new CorsConfiguration();
         configuration.setAllowedOrigins(Arrays.asList(
                 "http://localhost:3000",
-                "https://frontend-app-auction.herokuapp.com"
+                "https://frontend-app-auction.herokuapp.com",
                 "https://backend-app-auction.herokuapp.com"
         ));
         configuration.setAllowedMethods(Arrays.asList("GET","POST"));
