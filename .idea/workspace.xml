@@ -22,7 +22,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1799653a-1c39-4589-b0cb-9cfa6c3e80ad" name="Changes" comment="" />
+    <list default="true" id="1799653a-1c39-4589-b0cb-9cfa6c3e80ad" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -94,18 +96,7 @@
       <recent name="C:\Users\amirz\Praksa\AuctionApp\backend" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.start">
-    <configuration default="true" type="JetRunConfigurationType">
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <option name="filePath" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="Application.AuctionAppApplication">
     <configuration name="AuctionAppApplication" type="Application" factoryName="Application" nameIsGenerated="true">
       <envs>
         <env name="jwt_secret" value="javainuse" />
@@ -113,6 +104,17 @@
       </envs>
       <option name="MAIN_CLASS_NAME" value="com.auction.auctionapp.AuctionAppApplication" />
       <module name="auction-app" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <option name="filePath" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -153,7 +155,8 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="npm.start" />
+      <item itemvalue="Application.AuctionAppApplication" />
+      <item itemvalue="Maven.auction-app [spring-boot:run]" />
     </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -229,7 +232,7 @@
       <workItem from="1638229127679" duration="334000" />
       <workItem from="1638377295960" duration="4067000" />
       <workItem from="1638409854562" duration="56000" />
-      <workItem from="1638457363194" duration="1589000" />
+      <workItem from="1638457363194" duration="2025000" />
     </task>
     <servers />
   </component>

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL = "https://https://backend-app-auction.herokuapp.com/";
+const BASE_URL = "https://backend-app-auction.herokuapp.com/";
 
 export const registerUser = async (user) => {
     return await axios.post(BASE_URL + "/register", user);
