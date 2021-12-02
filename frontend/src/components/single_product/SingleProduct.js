@@ -96,7 +96,7 @@ const SingleProduct = ({location}) => {
                     <h2>{product.name}</h2> : null }
                     {product != null ?
                     <p className="textPurple">Starts from <b>{product.startingPrice}$</b></p> : null }
-                    {bid != null ?
+                    {bids != null ?
                     <div className="bidInfo">
                         <p>Highest bid: <b className="textPurpleBold">{bids.price}$</b></p>
                         <p>Number of bids: <b className="textPurpleBold">{bids.count}</b> </p>

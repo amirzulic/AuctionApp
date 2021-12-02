@@ -23,6 +23,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1799653a-1c39-4589-b0cb-9cfa6c3e80ad" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/AuctionApp.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/single_product/SingleProduct.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/single_product/SingleProduct.js" afterDir="false" />
     </list>
@@ -77,6 +79,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
@@ -97,7 +100,18 @@
       <recent name="C:\Users\amirz\Praksa\AuctionApp\backend" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.AuctionAppApplication">
+  <component name="RunManager" selected="npm.start">
+    <configuration default="true" type="JetRunConfigurationType">
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="AuctionAppApplication" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="ALTERNATIVE_JRE_PATH" value="17" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -107,17 +121,6 @@
       </envs>
       <option name="MAIN_CLASS_NAME" value="com.auction.auctionapp.AuctionAppApplication" />
       <module name="AuctionApp" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="JetRunConfigurationType">
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <option name="filePath" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -158,8 +161,7 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Application.AuctionAppApplication" />
-      <item itemvalue="Maven.auction-app [spring-boot:run]" />
+      <item itemvalue="npm.start" />
     </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -237,6 +239,7 @@
       <workItem from="1638409854562" duration="56000" />
       <workItem from="1638457363194" duration="3603000" />
       <workItem from="1638464674465" duration="35000" />
+      <workItem from="1638464728965" duration="679000" />
     </task>
     <servers />
   </component>
