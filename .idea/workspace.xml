@@ -22,7 +22,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1799653a-1c39-4589-b0cb-9cfa6c3e80ad" name="Changes" comment="" />
+    <list default="true" id="1799653a-1c39-4589-b0cb-9cfa6c3e80ad" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/single_product/SingleProduct.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/single_product/SingleProduct.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -96,12 +99,14 @@
   </component>
   <component name="RunManager" selected="Application.AuctionAppApplication">
     <configuration name="AuctionAppApplication" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="17" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <envs>
         <env name="jwt_secret" value="javainuse" />
         <env name="jwt_expiration_time" value="864000000" />
       </envs>
       <option name="MAIN_CLASS_NAME" value="com.auction.auctionapp.AuctionAppApplication" />
-      <module name="auction-app" />
+      <module name="AuctionApp" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -230,7 +235,8 @@
       <workItem from="1638229127679" duration="334000" />
       <workItem from="1638377295960" duration="4067000" />
       <workItem from="1638409854562" duration="56000" />
-      <workItem from="1638457363194" duration="2481000" />
+      <workItem from="1638457363194" duration="3603000" />
+      <workItem from="1638464674465" duration="35000" />
     </task>
     <servers />
   </component>
@@ -248,24 +254,6 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state width="1515" height="210" key="GridCell.Tab.0.bottom" timestamp="1638460539931">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1515" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1638460539931" />
-    <state width="1515" height="210" key="GridCell.Tab.0.center" timestamp="1638460539931">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1515" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1638460539931" />
-    <state width="1515" height="210" key="GridCell.Tab.0.left" timestamp="1638460539930">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1515" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1638460539930" />
-    <state width="1515" height="210" key="GridCell.Tab.0.right" timestamp="1638460539931">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1515" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1638460539931" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
