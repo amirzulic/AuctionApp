@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import "./landingPage.css";
 import {useHistory, Link} from 'react-router-dom';
-import BidPhoto from "./bidphoto.png";
+import BidPhoto from "./keyboard.png";
 import FeatureCollectionPhoto from "./feature_collection1.png";
 import FeatureCollectionPhoto2 from "./feature_collection2.png";
 import FeatureCollectionPhoto3 from "./feature_collection3.png";
