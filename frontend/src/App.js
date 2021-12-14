@@ -11,6 +11,7 @@ import TermsAndConditions from "./components/terms_and_conditions/TermsAndCondit
 import PrivacyAndPolicy from "./components/privacy_and_policy/PrivacyAndPolicy";
 import Register from "./components/register/Register";
 import SingleProduct from "./components/single_product/SingleProduct";
+import ShopPage from "./components/shop_page/ShopPage";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
                   <Route path="/login" component={Login}/>
                   <Route path="/register" component={Register}/>
                   <Route path="/product" component={SingleProduct}/>
+                  <Route path="/shop" component={ShopPage}/>
               </Switch>
             <Footer/>
         </div>

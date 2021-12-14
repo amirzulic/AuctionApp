@@ -1,0 +1,78 @@
+.startingPriceText {
+    position: static;
+    width: 127px;
+    height: 19px;
+    left: 0px;
+    top: 37px;
+
+    /* Link/Active */
+
+    font-family: Lato;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 19px;
+
+    /* Text/Secondary */
+
+    color: #9B9B9B;
+}
+
+.checkboxColor {
+    border: 3px solid #8367D8;
+}
+
+.itemNameText {
+
+    font-family: Lato;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 29px;
+    /* identical to box height */
+
+    letter-spacing: 0.84px;
+
+    /* Text/Dark */
+
+    color: #252525;
+}
+
+.productCategoriesBox {
+    padding: 24px 24px 32px;
+
+    background: #FFFFFF;
+
+    border: 1px solid #D8D8D8;
+    box-sizing: border-box;
+}
+
+.productCategoriesBoxTitle {
+    font-family: Lato;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 24px;
+
+    color: #8367D8;
+}
+
+.categoryName {
+    font-family: Lato;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 17px;
+
+    color: #252525;
+}
+
+.subCategoryName {
+    font-family: Lato;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 17px;
+
+    color: #9B9B9B;
+}

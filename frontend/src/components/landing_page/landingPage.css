@@ -57,6 +57,10 @@
     color: #252525;
 }
 
+.categoriesBoxItem td:hover {
+    color: #8367D8;
+}
+
 .landingPageTitle {
     font-family: Lato;
     font-style: normal;

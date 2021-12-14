@@ -15,4 +15,7 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
 
     @Query(value = "SELECT * FROM Product ORDER BY endDate DESC", nativeQuery = true)
     public List<Product> getLastChance();
+
+    @Query(value = "SELECT * FROM Product WHERE productCategoryId = ?1", nativeQuery = true)
+    public List<Product> getByCategory(int id);
 }

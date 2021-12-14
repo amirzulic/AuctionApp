@@ -28,9 +28,12 @@ public class Product {
     @Column(name = "status")
     private int status;
 
+    @Column(name = "productcategoryid")
+    private int categoryId;
+
     public Product() {}
 
-    public Product(int productidd, String name, double startingPrice, int size, String color, String description, int status) {
+    public Product(int productid, String name, double startingPrice, int size, String color, String description, int status) {
         this.productid = productid;
         this.name = name;
         this.startingPrice = startingPrice;
@@ -38,6 +41,17 @@ public class Product {
         this.color = color;
         this.description = description;
         this.status = status;
+    }
+
+    public Product(int productid, String name, double startingPrice, int size, String color, String description, int status, int categoryId) {
+        this.productid = productid;
+        this.name = name;
+        this.startingPrice = startingPrice;
+        this.size = size;
+        this.color = color;
+        this.description = description;
+        this.status = status;
+        this.categoryId = categoryId;
     }
 
     public int getProductId() {
@@ -94,5 +108,13 @@ public class Product {
 
     public void setStatus(int status) {
         this.status = status;
+    }
+
+    public int getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(int categoryId) {
+        this.categoryId = categoryId;
     }
 }
