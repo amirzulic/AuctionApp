@@ -71,7 +71,7 @@ const ShopPage = ({location}) => {
                                 <tr key={i} className="categoriesBoxItem">
                                     <td className="categoryName px-3">
                                         {categories[i].categoryName}
-                                        <img onClick={() => {onCategoryClick(categories[i].productCategoryId)}}
+                                        <img onClick={() => {categoryPressed === 0 ? onCategoryClick(categories[i].productCategoryId) : onCategoryClick(0)} }
                                              className="float-end"
                                              src={categoryPressed === categories[i].productCategoryId ? MinusIcon : PlusIcon}/>
                                         <div className="row">
