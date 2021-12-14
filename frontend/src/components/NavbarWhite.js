@@ -25,7 +25,7 @@ function NavbarWhite() {
                                     <Link className="nav-link" to="/">HOME</Link>
                                 </li>
                                 <li className="nav-item">
-                                    <Link className="nav-link" to="#">SHOP</Link>
+                                    <Link className="nav-link" to="/shop">SHOP</Link>
                                 </li>
                                 <li className="nav-item">
                                     <Link className="nav-link" to="#">MY ACCOUNT</Link>

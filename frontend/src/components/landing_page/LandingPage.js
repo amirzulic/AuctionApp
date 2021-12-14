@@ -6,7 +6,7 @@ import FeatureCollectionPhoto from "./feature_collection1.png";
 import FeatureCollectionPhoto2 from "./feature_collection2.png";
 import FeatureCollectionPhoto3 from "./feature_collection3.png";
 import {loadLandingPageProducts, loadLastChance, loadNewArrivals} from "../../services/ProductService";
-
+import {loadCategories} from "../../services/CategoryService";
 
 
 function LandingPage() {
@@ -19,6 +19,7 @@ function LandingPage() {
     const [featured, setFeatured] = useState([]);
     const [newArrivals, setNewArrivals] = useState([]);
     const [lastChance, setLastChance] = useState([]);
+    const [categories, setCategories] = useState([]);
 
     useEffect(() => {
         loadLandingPageProducts().then(res => {
@@ -36,10 +37,19 @@ function LandingPage() {
         }).catch((err) => {
             console.log(err);
         });
+        loadCategories().then(res => {
+            setCategories(res.data);
+        }).catch((err) => {
+            console.log(err);
+        });
     }, []);
 
     function redirect(id) {
         history.push("/product?productId=" + id);
+    }
+
+    function categoryRedirect(id) {
+        history.push("/shop?productCategoryId=" + id);
     }
 
     return (
@@ -58,16 +68,10 @@ function LandingPage() {
                     <div className="row container align-items-center">
                         <div className="col">
                             <table>
-                                <tr className="categoriesBoxItem"><td>Fashion</td></tr>
-                                <tr className="categoriesBoxItem"><td>Accesories</td></tr>
-                                <tr className="categoriesBoxItem"><td>Jewlery</td></tr>
-                                <tr className="categoriesBoxItem"><td>Shoes</td></tr>
-                                <tr className="categoriesBoxItem"><td>Sportware</td></tr>
-                                <tr className="categoriesBoxItem"><td>Home</td></tr>
-                                <tr className="categoriesBoxItem"><td>Electronics</td></tr>
-                                <tr className="categoriesBoxItem"><td>Mobile</td></tr>
-                                <tr className="categoriesBoxItem"><td>Computer</td></tr>
-                                <tr className="categoriesBoxItem"><td>All categories</td></tr>
+                                { categories.length > 0 ? categories.map((prod, i) =>
+                                <tr onClick={() => categoryRedirect(categories[i].productCategoryId)}
+                                    key={i} className="categoriesBoxItem"><td>{categories[i].categoryName}</td></tr>
+                                ) : null }
                             </table>
                         </div>
                         {featured.length > 0 ?

@@ -23,6 +23,11 @@ public class ProductController {
         return ResponseEntity.ok(new ArrayList<ProductResponse>(productService.getAllProducts()));
     }
 
+    @GetMapping("/shop")
+    public ResponseEntity<List<ProductResponse>> getProductsByCategory(@RequestParam(name = "productCategoryId") int id) {
+        return ResponseEntity.ok(new ArrayList<ProductResponse>(productService.getProductsByCategory(id)));
+    }
+
     @GetMapping("/products/new")
     public ResponseEntity<List<ProductResponse>> getNewArrivals() {
         return ResponseEntity.ok(new ArrayList<ProductResponse>(productService.getNewArrivals()));
