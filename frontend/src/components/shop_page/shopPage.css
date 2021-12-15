@@ -76,3 +76,35 @@
 
     color: #9B9B9B;
 }
+
+.listItemNameText {
+    font-family: Lato;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 29px;
+
+    letter-spacing: 0.84px;
+
+    color: #252525;
+}
+
+.itemDescText {
+    font-family: Lato;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+
+    color: #9B9B9B;
+}
+
+.listItemStartingPriceText {
+    font-family: Lato;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 32px;
+    line-height: 51px;
+    letter-spacing: 0.84px;
+    color: #8367D8;
+}
