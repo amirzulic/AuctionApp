@@ -21,6 +21,7 @@ const ShopPage = ({location}) => {
     const [categories, setCategories] = useState([]);
     const [subCategories, setSubCategories] = useState([]);
     const [categoryPressed, setCategoryPressed] = useState(0);
+    const [grid, setGrid] = useState(true);
 
     function onCategoryClick(id) {
         loadSubCategories(id).then(res => {
@@ -29,6 +30,14 @@ const ShopPage = ({location}) => {
             console.log(err);
         })
         setCategoryPressed(id);
+    }
+
+    function onViewChange(view) {
+        if(view === "grid") {
+            setGrid(true);
+        } else {
+            setGrid(false);
+        }
     }
 
     function onProductClick(id) {
@@ -91,15 +100,43 @@ const ShopPage = ({location}) => {
                     <div className="col">
                         <div className="row container">
                             <div className="col"></div>
-                            <div className="col"></div>
-                            <div className="row">
-                                {products.length > 0 ? products.map((prod, i) =>
-                                    <div className="col-4">
-                                        <img onClick={() => {onProductClick(products[i].productId)}} src={FilterPhoto2}/>
-                                        <h2 className="itemNameText" key={i}>{products[i].name}</h2>
-                                        <h3 className="startingPriceText" key={i}>Start from <b className="textPurpleBold">{products[i].startingPrice}$</b></h3>
-                                    </div> ) : null }
+                            <div className="col buttons">
+                                <button
+                                    onClick={() => {onViewChange("list")}}
+                                    className="float-end btn"><img  className="px-1" src={ListIcon}/>LIST</button>
+                                <button
+                                    onClick={() => {onViewChange("grid")}}
+                                    className="float-end btn"><img className="px-1" src={GridIcon}/>GRID</button>
                             </div>
+                            <div className="row"><br/></div>
+                            {grid === true ?
+                                <div className="row">
+                                    {products.length > 0 ? products.map((prod, i) =>
+                                        <div className="col-4">
+                                            <img onClick={() => {onProductClick(products[i].productId)}} src={FilterPhoto2}/>
+                                            <h2 className="itemNameText" key={i}>{products[i].name}</h2>
+                                            <h3 className="startingPriceText" key={i}>Start from <b className="textPurpleBold">{products[i].startingPrice}$</b></h3>
+                                        </div> ) : null }
+                                </div> : null }
+                                {grid === false ?
+                                <div className="row">
+                                    {products.length > 0 ? products.map((lprod, i) =>
+                                        <div className="row">
+                                            <div className="col-4">
+                                                <img onClick={() => {onProductClick(products[i].productId)}} src={FilterPhoto2}/>
+                                            </div>
+                                            <div className="col align-items-center">
+                                                <h2 className="listItemNameText" key={i}>{products[i].name}</h2>
+                                                <p className="itemDescText pt-4" key={i}>{products[i].description}</p>
+                                                <div className="row">
+                                                    <h3 className="listItemStartingPriceText pt-4" key={i}>Start from <b>{products[i].startingPrice}$</b></h3>
+                                                </div>
+                                            </div>
+                                            <div className="row"><br/></div>
+                                        </div>
+                                    ) : null }
+                                </div>
+                            : null }
                         </div>
                     </div>
                 </div>
