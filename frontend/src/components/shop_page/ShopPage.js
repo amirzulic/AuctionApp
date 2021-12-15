@@ -4,6 +4,11 @@ import {
     loadLandingPageProducts,
     loadLastChance,
     loadNewArrivals,
+    loadNewArrivalsByCategory,
+    loadLastChanceByCategory,
+    loadHighToLowByCategory,
+    loadLowToHighByCategory,
+    loadDefaultSortingByCategory,
     loadProductsByCategory
 } from "../../services/ProductService";
 import {loadCategories, loadSubCategories} from "../../services/CategoryService";
@@ -13,6 +18,7 @@ import PlusIcon from "./plus_icon.svg";
 import MinusIcon from "./minus_icon.svg";
 import GridIcon from "./grid_icon.svg";
 import ListIcon from "./list_icon.svg";
+import "bootstrap/js/src/dropdown";
 
 const ShopPage = ({location}) => {
     let history = useHistory();
@@ -22,6 +28,7 @@ const ShopPage = ({location}) => {
     const [subCategories, setSubCategories] = useState([]);
     const [categoryPressed, setCategoryPressed] = useState(0);
     const [grid, setGrid] = useState(true);
+    const [showSort, setShowSort] = useState(1);
 
     function onCategoryClick(id) {
         loadSubCategories(id).then(res => {
@@ -42,6 +49,41 @@ const ShopPage = ({location}) => {
 
     function onProductClick(id) {
         history.push("/product?productId=" + id);
+    }
+
+    function sort(type) {
+        setShowSort(type)
+        if(type === 1) {
+            loadDefaultSortingByCategory(location.search.split("=")[1]).then(res => {
+                setProducts(res.data);
+            }).catch((err) => {
+                console.log(err);
+            })
+        } else if(type === 2) {
+            loadNewArrivalsByCategory(location.search.split("=")[1]).then(res => {
+                setProducts(res.data);
+            }).catch((err) => {
+                console.log(err);
+            })
+        } else if(type === 3) {
+            loadLastChanceByCategory(location.search.split("=")[1]).then(res => {
+                setProducts(res.data);
+            }).catch((err) => {
+                console.log(err);
+            })
+        } else if(type === 4) {
+            loadLowToHighByCategory(location.search.split("=")[1]).then(res => {
+                setProducts(res.data);
+            }).catch((err) => {
+                console.log(err);
+            })
+        } else if(type === 5) {
+            loadHighToLowByCategory(location.search.split("=")[1]).then(res => {
+                setProducts(res.data);
+            }).catch((err) => {
+                console.log(err);
+            })
+        }
     }
 
     useEffect(() => {
@@ -99,7 +141,30 @@ const ShopPage = ({location}) => {
                     </div>
                     <div className="col">
                         <div className="row container">
-                            <div className="col"></div>
+                            <div className="col-4">
+                                <div className="dropdown">
+                                    <button className="btn dropdown-toggle border w-100 sortButtonText" type="button"
+                                            id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                        {showSort === 1 ? "Default Sorting"
+                                        : showSort === 2 ? "Added"
+                                        : showSort === 3 ? "Time left"
+                                        : showSort === 4 ? "Low to high"
+                                        : "High to low"}
+                                    </button>
+                                    <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                        <li className="dropdown-item"
+                                            onClick={() => {sort(1)}}>Default sorting</li>
+                                        <li className="dropdown-item"
+                                            onClick={() => {sort(2)}}>Added</li>
+                                        <li className="dropdown-item"
+                                            onClick={() => {sort(3)}}>Time left</li>
+                                        <li className="dropdown-item"
+                                            onClick={() => {sort(4)}}>Low to High</li>
+                                        <li className="dropdown-item"
+                                            onClick={() => {sort(5)}}>High to Low</li>
+                                    </ul>
+                                </div>
+                            </div>
                             <div className="col buttons">
                                 <button
                                     onClick={() => {onViewChange("list")}}
