@@ -27,7 +27,7 @@ const ShopPage = ({location}) => {
     const [categories, setCategories] = useState([]);
     const [subCategories, setSubCategories] = useState([]);
     const [categoryPressed, setCategoryPressed] = useState(0);
-    const [grid, setGrid] = useState(true);
+    const [view, setView] = useState("grid");
     const [showSort, setShowSort] = useState(1);
 
     function onCategoryClick(id) {
@@ -40,11 +40,7 @@ const ShopPage = ({location}) => {
     }
 
     function onViewChange(view) {
-        if(view === "grid") {
-            setGrid(true);
-        } else {
-            setGrid(false);
-        }
+        setView(view);
     }
 
     function onProductClick(id) {
@@ -174,7 +170,7 @@ const ShopPage = ({location}) => {
                                     className="float-end btn"><img className="px-1" src={GridIcon}/>GRID</button>
                             </div>
                             <div className="row"><br/></div>
-                            {grid === true ?
+                            {view === "grid" ?
                                 <div className="row">
                                     {products.length > 0 ? products.map((prod, i) =>
                                         <div className="col-4">
@@ -183,7 +179,7 @@ const ShopPage = ({location}) => {
                                             <h3 className="startingPriceText" key={i}>Start from <b className="textPurpleBold">{products[i].startingPrice}$</b></h3>
                                         </div> ) : null }
                                 </div> : null }
-                                {grid === false ?
+                                {view === "list" ?
                                 <div className="row">
                                     {products.length > 0 ? products.map((lprod, i) =>
                                         <div className="row">
