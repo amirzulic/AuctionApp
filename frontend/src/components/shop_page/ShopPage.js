@@ -4,11 +4,11 @@ import {
     loadLandingPageProducts,
     loadLastChance,
     loadNewArrivals,
+    loadDefaultSortingByCategory,
     loadNewArrivalsByCategory,
     loadLastChanceByCategory,
-    loadHighToLowByCategory,
     loadLowToHighByCategory,
-    loadDefaultSortingByCategory,
+    loadHighToLowByCategory,
     loadProductsByCategory
 } from "../../services/ProductService";
 import {loadCategories, loadSubCategories} from "../../services/CategoryService";
@@ -49,6 +49,7 @@ const ShopPage = ({location}) => {
 
     function sort(type) {
         setShowSort(type)
+        console.log(type);
         if(type === 1) {
             loadDefaultSortingByCategory(location.search.split("=")[1]).then(res => {
                 setProducts(res.data);
