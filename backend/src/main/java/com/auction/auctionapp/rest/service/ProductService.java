@@ -38,6 +38,11 @@ public class ProductService {
         return list.stream().map(p -> new ProductResponse(p.getProductId(), p.getName(), p.getStartingPrice(), p.getDescription())).collect(Collectors.toList());
     }
 
+    public List<ProductResponse> getDefaultSorting() {
+        List<Product> list = productRepository.getDefaultSorting();
+        return list.stream().map(p -> new ProductResponse(p.getProductId(), p.getName(), p.getStartingPrice(), p.getDescription())).collect(Collectors.toList());
+    }
+
     public List<ProductResponse> getNewArrivals() {
         List<Product> list = productRepository.getNewArrivals();
         return list.stream().map(p -> new ProductResponse(p.getProductId(), p.getName(), p.getStartingPrice(), p.getDescription())).collect(Collectors.toList());
@@ -45,6 +50,16 @@ public class ProductService {
 
     public List<ProductResponse> getLastChance() {
         List<Product> list = productRepository.getLastChance();
+        return list.stream().map(p -> new ProductResponse(p.getProductId(), p.getName(), p.getStartingPrice(), p.getDescription())).collect(Collectors.toList());
+    }
+
+    public List<ProductResponse> getHighToLow() {
+        List<Product> list = productRepository.getHighToLow();
+        return list.stream().map(p -> new ProductResponse(p.getProductId(), p.getName(), p.getStartingPrice(), p.getDescription())).collect(Collectors.toList());
+    }
+
+    public List<ProductResponse> getLowToHigh() {
+        List<Product> list = productRepository.getLowToHigh();
         return list.stream().map(p -> new ProductResponse(p.getProductId(), p.getName(), p.getStartingPrice(), p.getDescription())).collect(Collectors.toList());
     }
 
@@ -79,8 +94,23 @@ public class ProductService {
                 createdProduct.getStartingPrice(), createdProduct.getDescription());
     }
 
+    public List<ProductResponse> getProductsInRange(double low, double high) {
+        List<Product> list = productRepository.getInRange(low, high);
+        return list.stream().map(p -> new ProductResponse(p.getProductId(), p.getName(), p.getStartingPrice(), p.getDescription())).collect(Collectors.toList());
+    }
+
+    public List<ProductResponse> getProductsInRangeByCategory(int id, double low, double high) {
+        List<Product> list = productRepository.getInRangeByCategory(id, low, high);
+        return list.stream().map(p -> new ProductResponse(p.getProductId(), p.getName(), p.getStartingPrice(), p.getDescription())).collect(Collectors.toList());
+    }
+
     public List<ProductResponse> getProductsByCategory(int id) {
         List<Product> list = productRepository.getByCategory(id);
+        return list.stream().map(p -> new ProductResponse(p.getProductId(), p.getName(), p.getStartingPrice(), p.getDescription())).collect(Collectors.toList());
+    }
+
+    public List<ProductResponse> getProductsBySubCategory(String name) {
+        List<Product> list = productRepository.getBySubCategory(name);
         return list.stream().map(p -> new ProductResponse(p.getProductId(), p.getName(), p.getStartingPrice(), p.getDescription())).collect(Collectors.toList());
     }
 
