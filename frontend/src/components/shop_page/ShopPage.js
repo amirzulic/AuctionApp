@@ -15,7 +15,12 @@ import {
     loadHighToLow,
     loadProductsBySubCategory,
     loadProductsInRange,
-    loadProductsInRangeByCategory
+    loadProductsInRangeByCategory,
+    loadProductsBySubCategoryDefaultSorting,
+    loadProductsBySubCategoryHighToLow,
+    loadProductsBySubCategoryLastChance,
+    loadProductsBySubCategoryLowToHigh,
+    loadProductsBySubCategoryNewArrivals
 } from "../../services/ProductService";
 import {loadCategories, loadSubCategories} from "../../services/CategoryService";
 import "./shopPage.css";
@@ -41,25 +46,32 @@ const ShopPage = ({location}) => {
     const [value, setValue] =  React.useState([1, 500]);
     const [categoryName, setCategoryName] = useState("");
     const [subCategoryName, setSubCategoryName] = useState("");
+    const [priceRange, setPriceRange] = useState([]);
 
     const rangeSelector = (event, newValue) => {
         setValue(newValue);
 
-        if(location.search.split("=")[1] == null) {
+        if(location.search.split("=")[1] == null && checkboxCount === 0) {
             loadProductsInRange(value[0], value[1]).then(res => {
                 setProducts(res.data);
             }).catch((err) => {
                 console.log(err);
             })
-        } else {
+        } else if(location.search.split("=")[1] != null && subCategoryName === "") {
             loadProductsInRangeByCategory(location.search.split("=")[1], value[0], value[1]).then(res => {
                 setProducts(res.data);
             }).catch((err) => {
                 console.log(err);
             })
-        }
+        } else if(location.search.split("=")[1] != null && subCategoryName !== "") {
+            let new_list = []
 
-        console.log(newValue)
+            products.map((prod) => (
+                prod.startingPrice >= value[0] && prod.startingPrice <= value[1] ? new_list.push(prod) : null
+            ))
+
+            setProducts(new_list);
+        }
     };
 
     function onCategoryClick(id) {
@@ -84,6 +96,7 @@ const ShopPage = ({location}) => {
         })
         setCategoryName("");
         setSubCategoryName("");
+        setCategoryPressed(0);
     }
 
     function handleDeletePriceRangeFilter() {
@@ -98,14 +111,19 @@ const ShopPage = ({location}) => {
         } else if(categoryName !== "" && subCategoryName === ""){
             categories.map((cat) =>
                 cat.categoryName === categoryName ?
-                    loadProductsByCategory(cat.productCategoryId) : null
+                    loadProductsByCategory(cat.productCategoryId).then(res => {
+                        setProducts(res.data);
+                    }) : null
             )
-        } else {
+        } else if(categoryName !== "" && subCategoryName !== "") {
             subCategories.map((cat) =>
                 cat.subCategoryName === subCategoryName ?
-                    loadProductsBySubCategory(cat.productSubCategoryId) : null
+                    loadProductsBySubCategory(subCategoryName).then(res => {
+                        setProducts(res.data);
+                    }) : null
             )
         }
+        setCategoryPressed(0);
     }
 
     function handleClearAll() {
@@ -149,72 +167,102 @@ const ShopPage = ({location}) => {
 
     function sort(type) {
         setShowSort(type)
-        console.log(type);
         if(type === 1) {
-            if(location.search.split("=")[1] == null) {
+            if(location.search.split("=")[1] == null && checkboxCount === 0) {
                 loadDefaultSorting().then(res => {
                     setProducts(res.data);
                 }).catch((err) => {
                     console.log(err);
                 })
-            } else {
+            } else if(location.search.split("=")[1] != null && subCategoryName === "") {
                 loadDefaultSortingByCategory(location.search.split("=")[1]).then(res => {
+                    setProducts(res.data);
+                }).catch((err) => {
+                    console.log(err);
+                })
+            } else if(subCategoryName !== "" && (location.search.split("=")[1] != null || checkboxCount > 0)) {
+                loadProductsBySubCategoryDefaultSorting(subCategoryName).then(res => {
                     setProducts(res.data);
                 }).catch((err) => {
                     console.log(err);
                 })
             }
         } else if(type === 2) {
-            if(location.search.split("=")[1] == null) {
+            if(location.search.split("=")[1] == null && checkboxCount === 0) {
                 loadNewArrivals().then(res => {
                     setProducts(res.data);
                 }).catch((err) => {
                     console.log(err);
                 })
-            } else {
+            } else if(location.search.split("=")[1] != null && subCategoryName === "") {
                 loadNewArrivalsByCategory(location.search.split("=")[1]).then(res => {
+                    setProducts(res.data);
+                }).catch((err) => {
+                    console.log(err);
+                })
+            } else if(subCategoryName !== "" && (location.search.split("=")[1] != null || checkboxCount > 0)) {
+                loadProductsBySubCategoryNewArrivals(subCategoryName).then(res => {
                     setProducts(res.data);
                 }).catch((err) => {
                     console.log(err);
                 })
             }
         } else if(type === 3) {
-            if(location.search.split("=")[1] == null) {
+            if(location.search.split("=")[1] == null && checkboxCount === 0) {
                 loadLastChance().then(res => {
                     setProducts(res.data);
                 }).catch((err) => {
                     console.log(err);
                 })
-            } else {
+            } else if(location.search.split("=")[1] != null && subCategoryName === "") {
                 loadLastChanceByCategory(location.search.split("=")[1]).then(res => {
+                    setProducts(res.data);
+                }).catch((err) => {
+                    console.log(err);
+                })
+            } else if(subCategoryName !== "" && (location.search.split("=")[1] != null || checkboxCount > 0)) {
+                loadProductsBySubCategoryLastChance(subCategoryName).then(res => {
                     setProducts(res.data);
                 }).catch((err) => {
                     console.log(err);
                 })
             }
         } else if(type === 4) {
-            if(location.search.split("=")[1] == null) {
+            if(location.search.split("=")[1] == null && checkboxCount === 0) {
                 loadLowToHigh().then(res => {
                     setProducts(res.data);
                 }).catch((err) => {
                     console.log(err);
                 })
-            } else {
+            } else if(location.search.split("=")[1] != null && subCategoryName === "") {
                 loadLowToHighByCategory(location.search.split("=")[1]).then(res => {
+                    setProducts(res.data);
+                }).catch((err) => {
+                    console.log(err);
+                })
+            } else if(subCategoryName !== "" && (location.search.split("=")[1] != null || checkboxCount > 0)) {
+                loadProductsBySubCategoryLowToHigh(subCategoryName).then(res => {
                     setProducts(res.data);
                 }).catch((err) => {
                     console.log(err);
                 })
             }
         } else if(type === 5) {
-            if(location.search.split("=")[1] == null) {
+            if(location.search.split("=")[1] == null && checkboxCount === 0) {
                 loadHighToLow().then(res => {
                     setProducts(res.data);
                 }).catch((err) => {
                     console.log(err);
                 })
-            } else {
+            } else if(location.search.split("=")[1] != null && subCategoryName === "") {
                 loadHighToLowByCategory(location.search.split("=")[1]).then(res => {
+                    setProducts(res.data);
+                }).catch((err) => {
+                    console.log(err);
+                })
+            } else if(subCategoryName !== "" && (location.search.split("=")[1] != null || checkboxCount > 0)) {
+                console.log()
+                loadProductsBySubCategoryHighToLow(subCategoryName).then(res => {
                     setProducts(res.data);
                 }).catch((err) => {
                     console.log(err);
@@ -311,7 +359,7 @@ const ShopPage = ({location}) => {
                         </div>
                     </div>
                     <div className="col">
-                        {categoryPressed > 0 ?
+                        {categoryPressed > 0 || value[0] !== 1 || value[1] !== 500 ?
                             <div className="row container">
                                 <div className="col-4">
                                     <p className="filterTitle">Category</p>
@@ -320,7 +368,7 @@ const ShopPage = ({location}) => {
                                     <p className="filterTitle">Price range</p>
                                 </div>
                             </div> : null }
-                        { categoryPressed > 0 ?
+                        { categoryPressed > 0 || value[0] !== 1 || value[1] !== 500 ?
                         <div className="row container">
                             <div className="col-4">
                                 { categoryName !== "" ?

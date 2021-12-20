@@ -12,6 +12,26 @@ export const loadProductsBySubCategory = async (name) => {
     return await axios.get(process.env.REACT_APP_BASE_URL + "/shop/sub", {params: {subCategoryName: name}});
 }
 
+export const loadProductsBySubCategoryDefaultSorting = async (name) => {
+    return await axios.get(process.env.REACT_APP_BASE_URL + "/shop/sub-default", {params: {subCategoryName: name}});
+}
+
+export const loadProductsBySubCategoryNewArrivals = async (name) => {
+    return await axios.get(process.env.REACT_APP_BASE_URL + "/shop/sub-new", {params: {subCategoryName: name}});
+}
+
+export const loadProductsBySubCategoryLastChance = async (name) => {
+    return await axios.get(process.env.REACT_APP_BASE_URL + "/shop/sub-last", {params: {subCategoryName: name}});
+}
+
+export const loadProductsBySubCategoryHighToLow = async (name) => {
+    return await axios.get(process.env.REACT_APP_BASE_URL + "/shop/sub-high", {params: {subCategoryName: name}});
+}
+
+export const loadProductsBySubCategoryLowToHigh = async (name) => {
+    return await axios.get(process.env.REACT_APP_BASE_URL + "/shop/sub-low", {params: {subCategoryName: name}});
+}
+
 export const loadProductsInRange = async (low, high) => {
     return await axios.get(process.env.REACT_APP_BASE_URL + "/products/range", {params: {low: low, high: high}});
 }

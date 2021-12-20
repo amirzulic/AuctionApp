@@ -114,6 +114,31 @@ public class ProductService {
         return list.stream().map(p -> new ProductResponse(p.getProductId(), p.getName(), p.getStartingPrice(), p.getDescription())).collect(Collectors.toList());
     }
 
+    public List<ProductResponse> getProductsBySubCategoryDefaultSort(String name) {
+        List<Product> list = productRepository.getBySubCategoryDefaultSort(name);
+        return list.stream().map(p -> new ProductResponse(p.getProductId(), p.getName(), p.getStartingPrice(), p.getDescription())).collect(Collectors.toList());
+    }
+
+    public List<ProductResponse> getProductsBySubCategoryNewArrivals(String name) {
+        List<Product> list = productRepository.getBySubCategoryNewArrivals(name);
+        return list.stream().map(p -> new ProductResponse(p.getProductId(), p.getName(), p.getStartingPrice(), p.getDescription())).collect(Collectors.toList());
+    }
+
+    public List<ProductResponse> getProductsBySubCategoryLastChance(String name) {
+        List<Product> list = productRepository.getBySubCategoryLastChance(name);
+        return list.stream().map(p -> new ProductResponse(p.getProductId(), p.getName(), p.getStartingPrice(), p.getDescription())).collect(Collectors.toList());
+    }
+
+    public List<ProductResponse> getProductsBySubCategoryHighToLow(String name) {
+        List<Product> list = productRepository.getBySubCategoryHighToLow(name);
+        return list.stream().map(p -> new ProductResponse(p.getProductId(), p.getName(), p.getStartingPrice(), p.getDescription())).collect(Collectors.toList());
+    }
+
+    public List<ProductResponse> getProductsBySubCategoryLowToHigh(String name) {
+        List<Product> list = productRepository.getBySubCategoryLowToHigh(name);
+        return list.stream().map(p -> new ProductResponse(p.getProductId(), p.getName(), p.getStartingPrice(), p.getDescription())).collect(Collectors.toList());
+    }
+
     public List<ProductCategoryResponse> getAllCategories() {
         List<ProductCategory> list = productCategoryRepository.findAll();
         return list.stream().map(p -> new ProductCategoryResponse(p.getProductcategoryid(), p.getCategoryName())).collect(Collectors.toList());

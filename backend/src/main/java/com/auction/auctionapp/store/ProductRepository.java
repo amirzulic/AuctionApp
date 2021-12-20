@@ -49,6 +49,31 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
             "WHERE psc.name = :subCategoryName", nativeQuery = true)
     public List<Product> getBySubCategory(@Param("subCategoryName") String subCatName);
 
+    @Query(value = "SELECT * FROM Product p INNER JOIN ProductSubCategory psc" +
+            " ON p.productsubcategoryid = psc.productSubCategoryId " +
+            "WHERE psc.name = :subCategoryName ORDER BY p.name ASC", nativeQuery = true)
+    public List<Product> getBySubCategoryDefaultSort(@Param("subCategoryName") String subCatName);
+
+    @Query(value = "SELECT * FROM Product p INNER JOIN ProductSubCategory psc" +
+            " ON p.productsubcategoryid = psc.productSubCategoryId " +
+            "WHERE psc.name = :subCategoryName ORDER BY p.endDate ASC", nativeQuery = true)
+    public List<Product> getBySubCategoryNewArrivals(@Param("subCategoryName") String subCatName);
+
+    @Query(value = "SELECT * FROM Product p INNER JOIN ProductSubCategory psc" +
+            " ON p.productsubcategoryid = psc.productSubCategoryId " +
+            "WHERE psc.name = :subCategoryName ORDER BY p.endDate DESC", nativeQuery = true)
+    public List<Product> getBySubCategoryLastChance(@Param("subCategoryName") String subCatName);
+
+    @Query(value = "SELECT * FROM Product p INNER JOIN ProductSubCategory psc" +
+            " ON p.productsubcategoryid = psc.productSubCategoryId " +
+            "WHERE psc.name = :subCategoryName ORDER BY p.startingPrice DESC", nativeQuery = true)
+    public List<Product> getBySubCategoryHighToLow(@Param("subCategoryName") String subCatName);
+
+    @Query(value = "SELECT * FROM Product p INNER JOIN ProductSubCategory psc" +
+            " ON p.productsubcategoryid = psc.productSubCategoryId " +
+            "WHERE psc.name = :subCategoryName ORDER BY p.startingPrice ASC", nativeQuery = true)
+    public List<Product> getBySubCategoryLowToHigh(@Param("subCategoryName") String subCatName);
+
     @Query(value = "SELECT * FROM Product WHERE startingPrice BETWEEN :low AND :high", nativeQuery = true)
     public List<Product> getInRange(@Param("low") double low,
                                     @Param("high") double high);

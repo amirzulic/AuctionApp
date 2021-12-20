@@ -47,6 +47,31 @@ public class ProductController {
         return ResponseEntity.ok(new ArrayList<ProductResponse>(productService.getProductsBySubCategory(name)));
     }
 
+    @GetMapping("/shop/sub-default")
+    public ResponseEntity<List<ProductResponse>> getProductsBySubCategoryDefaultSort(@RequestParam(name = "subCategoryName") String name) {
+        return ResponseEntity.ok(new ArrayList<ProductResponse>(productService.getProductsBySubCategoryDefaultSort(name)));
+    }
+
+    @GetMapping("/shop/sub-new")
+    public ResponseEntity<List<ProductResponse>> getProductsBySubCategoryNewArrivals(@RequestParam(name = "subCategoryName") String name) {
+        return ResponseEntity.ok(new ArrayList<ProductResponse>(productService.getProductsBySubCategoryNewArrivals(name)));
+    }
+
+    @GetMapping("/shop/sub-last")
+    public ResponseEntity<List<ProductResponse>> getProductsBySubCategoryLastChance(@RequestParam(name = "subCategoryName") String name) {
+        return ResponseEntity.ok(new ArrayList<ProductResponse>(productService.getProductsBySubCategoryLastChance(name)));
+    }
+
+    @GetMapping("/shop/sub-high")
+    public ResponseEntity<List<ProductResponse>> getProductsBySubCategoryHighToLow(@RequestParam(name = "subCategoryName") String name) {
+        return ResponseEntity.ok(new ArrayList<ProductResponse>(productService.getProductsBySubCategoryHighToLow(name)));
+    }
+
+    @GetMapping("/shop/sub-low")
+    public ResponseEntity<List<ProductResponse>> getProductsBySubCategoryLowToHigh(@RequestParam(name = "subCategoryName") String name) {
+        return ResponseEntity.ok(new ArrayList<ProductResponse>(productService.getProductsBySubCategoryLowToHigh(name)));
+    }
+
     @GetMapping("/products/default-sorting")
     public ResponseEntity<List<ProductResponse>> getDefaultSorting() {
         return ResponseEntity.ok(new ArrayList<ProductResponse>(productService.getDefaultSorting()));
