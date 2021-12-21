@@ -85,4 +85,7 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
                                               @Param("low") double low,
                                               @Param("high") double high);
 
+    @Query(value = "SELECT * FROM Product WHERE userId = :userId", nativeQuery = true)
+    public List<Product> getByUserId(@Param("userId") int id);
+
 }
