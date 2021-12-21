@@ -3,6 +3,7 @@ package com.auction.auctionapp.rest.service;
 import com.auction.auctionapp.model.User;
 import com.auction.auctionapp.rest.LoginRequest;
 import com.auction.auctionapp.rest.RegisterRequest;
+import com.auction.auctionapp.rest.UpdateUserRequest;
 import com.auction.auctionapp.rest.config.Config;
 import com.auction.auctionapp.rest.exception.LoginException;
 import com.auction.auctionapp.rest.exception.RegisterException;
@@ -68,5 +69,21 @@ public class UserService {
             }
         });
         return userRepository.save(createdUser);
+    }
+
+    public User updateUser(UpdateUserRequest updateUserRequest) {
+        return userRepository.updateUserById(
+                updateUserRequest.getUserId(),
+                updateUserRequest.getFirstName(),
+                updateUserRequest.getLastName(),
+                updateUserRequest.getGender(),
+                updateUserRequest.getBirthdate(),
+                updateUserRequest.getPhone(),
+                updateUserRequest.getEmail()
+        );
+    }
+
+    public User deactivateUser(int id) {
+        return userRepository.deactivateUser(id);
     }
 }

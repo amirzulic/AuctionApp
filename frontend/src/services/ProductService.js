@@ -84,3 +84,7 @@ export const loadProduct = async (id, header) => {
     return await axios.get(process.env.REACT_APP_BASE_URL + "/product", {params: {productId: id}});
 }
 
+export const loadProductsByUserId = async (id) => {
+    return await axios.get(process.env.REACT_APP_BASE_URL + "/products-user", {params: {userId: id}});
+}
+

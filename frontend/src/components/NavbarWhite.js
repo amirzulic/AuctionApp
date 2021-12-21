@@ -1,9 +1,11 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../style/ComponentStyle.css';
 import Search from '../images/search.svg';
 import Logo from '../images/app-logo.png';
 import {Link} from "react-router-dom";
+import {loadLandingPageProducts, loadProductsByCategory} from "../services/ProductService";
+import {loadCategories} from "../services/CategoryService";
 
 function NavbarWhite() {
     return (
@@ -28,7 +30,7 @@ function NavbarWhite() {
                                     <Link className="nav-link" to="/shop">SHOP</Link>
                                 </li>
                                 <li className="nav-item">
-                                    <Link className="nav-link" to="#">MY ACCOUNT</Link>
+                                    <Link className="nav-link" to="/profile">MY ACCOUNT</Link>
                                 </li>
                             </ul>
                         </div>

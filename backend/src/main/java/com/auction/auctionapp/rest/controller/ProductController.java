@@ -127,4 +127,8 @@ public class ProductController {
         return ResponseEntity.ok(new ProductResponse(productService.getSingleProduct(id)));
     }
 
+    @GetMapping("/products-user")
+    public ResponseEntity<List<ProductResponse>> getProductsByUserId(@RequestParam(name = "userId") int id) {
+        return ResponseEntity.ok(new ArrayList<ProductResponse>(productService.getProductsByUserId(id)));
+    }
 }
