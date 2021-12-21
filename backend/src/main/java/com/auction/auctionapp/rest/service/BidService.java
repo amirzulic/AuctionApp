@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class BidService {
@@ -25,5 +26,17 @@ public class BidService {
 
     public List<Bid> loadBidCount(int id) {
         return bidRepository.getBidCount(id);
+    }
+
+    public List<Bid> getBidsByUserId(int id) {
+        return bidRepository.getBidByUserId(id);
+    }
+
+    public double loadBidMaxPriceByUserId(int id) {
+        return bidRepository.getBidMaxPriceUserId(id);
+    }
+
+    public List<Bid> loadBidCountByUserId(int id) {
+        return bidRepository.getBidCountUserId(id);
     }
 }

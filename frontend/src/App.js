@@ -12,6 +12,7 @@ import PrivacyAndPolicy from "./components/privacy_and_policy/PrivacyAndPolicy";
 import Register from "./components/register/Register";
 import SingleProduct from "./components/single_product/SingleProduct";
 import ShopPage from "./components/shop_page/ShopPage";
+import MyProfile from "./components/profile_page/MyProfile";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
                   <Route path="/register" component={Register}/>
                   <Route path="/product" component={SingleProduct}/>
                   <Route path="/shop" component={ShopPage}/>
+                  <Route path="/profile" component={MyProfile}/>
               </Switch>
             <Footer/>
         </div>

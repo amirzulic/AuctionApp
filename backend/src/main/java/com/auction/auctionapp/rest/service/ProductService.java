@@ -152,4 +152,9 @@ public class ProductService {
         List<ProductSubCategory> list = productSubCategoryRepository.getSubCategoryByCategory(id);
         return list.stream().map(p -> new ProductSubCategoryResponse(p.getProductsubcategoryid(), p.getSubCategoryName(), p.getProductCategoryId())).collect(Collectors.toList());
     }
+
+    public List<ProductResponse> getProductsByUserId(int id) {
+        List<Product> list = productRepository.getByUserId(id);
+        return list.stream().map(p -> new ProductResponse(p.getProductId(), p.getName(), p.getStartingPrice(), p.getDescription())).collect(Collectors.toList());
+    }
 }

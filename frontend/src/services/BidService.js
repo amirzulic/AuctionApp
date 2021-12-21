@@ -7,3 +7,7 @@ export const saveBid = async (bid, header) => {
 export const loadBid = async(id) => {
     return await axios.get(process.env.REACT_APP_BASE_URL + "/bid-info", {params: {productId: id}});
 }
+
+export const getBidByUserId = async (id) => {
+    return await axios.get(process.env.REACT_APP_BASE_URL + "/bid-user", {params: {userId: id}});
+}

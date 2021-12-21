@@ -1,0 +1,118 @@
+.pageName {
+    background-color: #FCFCFC;
+}
+
+.myProfileTitle {
+    font-family: Lato;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 19px;
+
+    color: #252525;
+}
+
+.profile-button {
+    border-radius: unset;
+}
+
+.profile-button:hover {
+    border-radius: unset;
+    color: white;
+    background-color: #8367D8;
+}
+
+.profilePageTitleBox {
+    background: #FCFCFC;
+    border: 1px solid #E3E3E3;
+    box-sizing: border-box;
+}
+
+.profilePageUserBox {
+    border: 1px solid #E3E3E3;
+    box-sizing: border-box;
+}
+
+.profilePageTitle {
+    font-family: Lato;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 27px;
+
+    color: #252525;
+}
+
+.changePhotoButton {
+    border: 3px solid #8367D8;
+    box-sizing: border-box;
+    border-radius: unset;
+}
+
+.profile-input {
+    border-radius: unset;
+    background: #FCFCFC;
+
+    font-family: Lato;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 27px;
+    color: #9B9B9B;
+}
+
+.sellerTabButton {
+    background: #FCFCFC;
+    border: 1px solid #D8D8D8;
+    box-sizing: border-box;
+    border-radius: unset;
+}
+
+.sellerTabButton:hover {
+    background: #8367D8;
+    color: white;
+}
+
+.noItemsText {
+    font-family: Lato;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+
+    color: #252525;
+}
+
+.itemInfoText {
+    font-family: Lato;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 27px;
+    letter-spacing: 0.63px;
+    text-transform: capitalize;
+
+    color: #252525;
+}
+
+.viewItemButton {
+    border: 3px solid #D8D8D8;
+    box-sizing: border-box;
+    border-radius: unset;
+}
+
+.deactivateText {
+    font-family: Lato;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 27px;
+
+    letter-spacing: 0.63px;
+    text-transform: capitalize;
+    color: #252525;
+}
+
+.purpleColor {
+    color: #8367D8;
+}
