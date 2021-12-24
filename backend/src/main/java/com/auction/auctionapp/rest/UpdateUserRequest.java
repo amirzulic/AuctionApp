@@ -1,13 +1,31 @@
 package com.auction.auctionapp.rest;
 
+import io.swagger.annotations.ApiModelProperty;
+
 public class UpdateUserRequest {
+
+    @ApiModelProperty(notes = "ID of a User", name = "userId")
     private int userId;
+
+    @ApiModelProperty(notes = "First name of a User", name = "firstName")
     private String firstName;
+
+    @ApiModelProperty(notes = "Last name of a User", name = "lastName")
     private String lastName;
+
+    @ApiModelProperty(notes = "Gender of a User", name = "gender")
     private String gender;
+
+    @ApiModelProperty(notes = "Birthdate of a User", name = "birthdate")
     private String birthdate;
+
+    @ApiModelProperty(notes = "Phone number of a User", name = "phone")
     private String phone;
+
+    @ApiModelProperty(notes = "Email of a User", name = "email")
     private String email;
+
+    @ApiModelProperty(notes = "Photo of a User", name = "photo")
     private String photo;
 
     public UpdateUserRequest() {}

@@ -1,8 +1,13 @@
 package com.auction.auctionapp.rest;
 
+import io.swagger.annotations.ApiModelProperty;
+
 public class BidRequest {
 
+    @ApiModelProperty(notes = "Bid price sent by the User", name = "price")
     private double price;
+
+    @ApiModelProperty(notes = "ID of the Product that the Bid was placed on", name = "productId")
     private int productId;
 
     public BidRequest() {}

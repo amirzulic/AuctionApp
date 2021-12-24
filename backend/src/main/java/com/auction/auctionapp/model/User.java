@@ -1,6 +1,7 @@
 package com.auction.auctionapp.model;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.*;
 
@@ -10,33 +11,43 @@ public class User {
 
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @ApiModelProperty(notes = "ID of the User", name = "userId")
     private int userid;
 
     @Column(name = "firstname")
+    @ApiModelProperty(notes = "First name of the User", name = "firstName")
     private String firstName;
 
     @Column(name = "lastname")
+    @ApiModelProperty(notes = "Last name of the User", name = "lastName")
     private String lastName;
 
     @Column(name = "email")
+    @ApiModelProperty(notes = "Email of the User", name = "email")
     private String email;
 
     @Column(name = "password")
+    @ApiModelProperty(notes = "Password of the User", name = "password")
     private String password;
 
     @Column(name = "phone")
+    @ApiModelProperty(notes = "Phone number of the User", name = "phone")
     private String phone;
 
     @Column(name = "birthdate")
+    @ApiModelProperty(notes = "Date of birth of the User", name = "birthdate")
     private String birthdate;
 
     @Column(name = "gender")
+    @ApiModelProperty(notes = "Gender of the User", name = "gender")
     private String gender;
 
     @Column(name = "photo")
+    @ApiModelProperty(notes = "Photo of the User", name = "photo")
     private String photo;
 
     @Column(name = "active")
+    @ApiModelProperty(notes = "User status", name = "active")
     private int active;
 
     public User(String firstName, String lastName, String email, String password) {

@@ -1,10 +1,19 @@
 package com.auction.auctionapp.rest;
 
+import io.swagger.annotations.ApiModelProperty;
+
 public class RegisterRequest {
 
+    @ApiModelProperty(notes = "First name of a User", name = "firstName")
     private String firstName;
+
+    @ApiModelProperty(notes = "Last name of a User", name = "lastName")
     private String lastName;
+
+    @ApiModelProperty(notes = "Email of a User", name = "email")
     private String email;
+
+    @ApiModelProperty(notes = "Password of a User", name = "password")
     private String password;
 
     public RegisterRequest(String firstName, String lastName, String email, String password) {
