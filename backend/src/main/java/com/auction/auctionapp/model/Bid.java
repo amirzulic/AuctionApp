@@ -1,5 +1,7 @@
 package com.auction.auctionapp.model;
 
+import io.swagger.annotations.ApiModelProperty;
+
 import javax.persistence.*;
 
 @Entity
@@ -8,12 +10,15 @@ public class Bid {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @ApiModelProperty(notes = "ID of the Bid", name = "bidId")
     private int bidid;
 
     @Column(name = "price")
+    @ApiModelProperty(notes = "Price of the Bid", name = "price")
     private double price;
 
     @Column(name = "productid")
+    @ApiModelProperty(notes = "ID of the Product on which a bid was placed", name = "productId")
     private int productId;
 
     public Bid() {}

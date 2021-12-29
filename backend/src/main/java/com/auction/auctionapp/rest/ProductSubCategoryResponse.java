@@ -1,8 +1,16 @@
 package com.auction.auctionapp.rest;
 
+import io.swagger.annotations.ApiModelProperty;
+
 public class ProductSubCategoryResponse {
+
+    @ApiModelProperty(notes = "ID of a Produt Subcategory", name = "productSubCategoryId")
     private int productSubCategoryId;
+
+    @ApiModelProperty(notes = "Name of a Subcategory", name = "subCategoryName")
     private String subCategoryName;
+
+    @ApiModelProperty(notes = "ID of a Product Category", name = "productCategoryId")
     private int productCategoryId;
 
     public ProductSubCategoryResponse(int productSubCategoryId, String subCategoryName, int productCategoryId) {

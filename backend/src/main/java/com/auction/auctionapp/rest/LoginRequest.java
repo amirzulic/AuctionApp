@@ -1,8 +1,13 @@
 package com.auction.auctionapp.rest;
 
+import io.swagger.annotations.ApiModelProperty;
+
 public class LoginRequest {
 
+    @ApiModelProperty(notes = "Email of the User that is trying to Log in", name = "email")
     private String email;
+
+    @ApiModelProperty(notes = "Password of the User that is trying to Log in", name = "password")
     private String password;
 
     public LoginRequest(String email, String password) {

@@ -1,18 +1,32 @@
 package com.auction.auctionapp.rest;
 
 import com.auction.auctionapp.model.Product;
+import io.swagger.annotations.ApiModelProperty;
 
 import java.util.Date;
 import java.util.List;
 
 public class ProductResponse {
 
+    @ApiModelProperty(notes = "ID of a Product", name = "productId")
     private int productId;
+
+    @ApiModelProperty(notes = "Name of a Product", name = "name")
     private String name;
+
+    @ApiModelProperty(notes = "Starting price of a Product", name = "startingPrice")
     private double startingPrice;
+
+    @ApiModelProperty(notes = "Description of a Product", name = "description")
     private String description;
+
+    @ApiModelProperty(notes = "Size of a Product", name = "size")
     private int size;
+
+    @ApiModelProperty(notes = "Color of a Product", name = "color")
     private String color;
+
+    @ApiModelProperty(notes = "Status of a Product", name = "status")
     private int status;
 
     public ProductResponse(int productId, String name, double startingPrice, String description) {

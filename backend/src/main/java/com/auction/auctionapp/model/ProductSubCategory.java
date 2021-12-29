@@ -1,5 +1,7 @@
 package com.auction.auctionapp.model;
 
+import io.swagger.annotations.ApiModelProperty;
+
 import javax.persistence.*;
 
 @Entity
@@ -7,12 +9,15 @@ import javax.persistence.*;
 public class ProductSubCategory {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @ApiModelProperty(notes = "ID of the Product Subcategory", name = "productSubCategoryId")
     private int productsubcategoryid;
 
     @Column(name = "name")
+    @ApiModelProperty(notes = "Name of the Subcategory", name = "subCategoryName")
     private String subCategoryName;
 
     @Column(name = "productcategoryid")
+    @ApiModelProperty(notes = "ID of the Product Category", name = "productCategoryId")
     private int productCategoryId;
 
     public ProductSubCategory() {}
