@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.ArrayList;
 import java.util.List;
 
-@ApiOperation(value = "/", tags = "Auction App Product Subcategory Controller")
 @RestController
 public class ProductSubCategoryController {
     @Autowired

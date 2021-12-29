@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@ApiOperation(value = "/", tags = "Auction App Bid Controller")
 @RestController
 public class BidController {
 

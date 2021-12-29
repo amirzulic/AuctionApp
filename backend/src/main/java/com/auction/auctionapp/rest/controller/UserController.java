@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@ApiOperation(value = "/", tags = "Auction App Product User Controller")
 @RestController
 public class UserController {
     @Autowired
