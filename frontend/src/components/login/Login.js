@@ -68,7 +68,7 @@ function Login() {
                             <form onSubmit={formik.handleSubmit}>
                                 <div className="p-3">
                                     <div className="form-group pt-2">
-                                        <label htmlFor="email">Enter email</label>
+                                        <label htmlFor="email">Enter Email</label>
                                         <input type="email" className="form-control loginTextInput"
                                                id="email" name="email"
                                                placeholder="Enter email"

@@ -30,5 +30,9 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     @Query(value = "UPDATE Users SET active = 0 WHERE userId = :userId", nativeQuery = true)
     public User deactivateUser(@Param("userId") int id);
 
+    @Query(value = "SELECT * FROM Users u" +
+            " INNER JOIN bid b ON u.userId = b.userId" +
+            " WHERE b.productId = :productId", nativeQuery = true)
+    public List<User> getBiddersByProduct(@Param("productId") int id);
 }
 

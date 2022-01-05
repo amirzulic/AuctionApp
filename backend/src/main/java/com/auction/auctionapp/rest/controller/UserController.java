@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -99,5 +100,18 @@ public class UserController {
     public ResponseEntity<RegisterResponse> deactivateUser(@RequestParam(name = "userId") int id) {
         User createdUser = userService.deactivateUser(id);
         return ResponseEntity.ok(new RegisterResponse(createdUser.getUserId(), createdUser.getEmail()));
+    }
+
+    @ApiOperation(value = "Get the Users that placed a Bid on the selected Product", response = BiddersResponse.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 500, message = "Server error"),
+            @ApiResponse(code = 200, message = "Successful retrieval",
+                    response = RegisterResponse.class, responseContainer = "List"),
+            @ApiResponse(code = 400, message = "Bad request"),
+            @ApiResponse(code = 401, message = "Unauthorized request"),
+            @ApiResponse(code = 404, message = "Not Found")})
+    @GetMapping("/bidders")
+    public ResponseEntity<List<BiddersResponse>> getBidders(@RequestParam(name = "productId") int id) {
+        return ResponseEntity.ok(new ArrayList<BiddersResponse>(userService.getBidders(id)));
     }
 }

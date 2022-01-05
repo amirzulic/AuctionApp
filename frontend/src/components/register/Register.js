@@ -71,7 +71,7 @@ function Register() {
                                 <form onSubmit={formik.handleSubmit}>
                                     <div className="p-3">
                                         <div className="form-group pt-2">
-                                            <label htmlFor="firstName">First name</label>
+                                            <label htmlFor="firstName">First Name</label>
                                             <input type="text" className="form-control registerTextInput"
                                                    id="firstName" name="firstName"
                                                    placeholder="Enter first name"
@@ -81,7 +81,7 @@ function Register() {
                                             {formik.touched.firstName && formik.errors.firstName ? <div className="text-danger">{formik.errors.firstName}</div> : null}
                                         </div>
                                         <div className="form-group pt-2">
-                                            <label htmlFor="lastName">Last name</label>
+                                            <label htmlFor="lastName">Last Name</label>
                                             <input type="text" className="form-control registerTextInput"
                                                    id="lastName" name="lastName"
                                                    placeholder="Enter last name"
@@ -91,7 +91,7 @@ function Register() {
                                             {formik.touched.lastName && formik.errors.lastName ? <div className="text-danger">{formik.errors.lastName}</div> : null}
                                         </div>
                                         <div className="form-group pt-2">
-                                            <label htmlFor="email">Enter email</label>
+                                            <label htmlFor="email">Enter Email</label>
                                             <input type="email" className="form-control registerTextInput"
                                                    id="email" name="email"
                                                    placeholder="Enter email"

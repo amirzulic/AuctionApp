@@ -2,12 +2,14 @@ import React, {useEffect, useState} from 'react';
 import './singleProduct.css';
 import LargeProductPhoto from './product_photo_large.png';
 import {useHistory} from 'react-router-dom';
+import BidderPhoto from './bidder_photo.png';
 import SmallProductPhoto from './product_photo_small.png';
 import RelatedProductPhoto from './related_products_photo.png';
 import {Link} from "react-router-dom";
 import Logo from "../../images/app-logo.png";
 import {loadProduct} from "../../services/ProductService";
-import {saveBid, loadBid} from "../../services/BidService";
+import {getUser} from "../../services/UserService";
+import {saveBid, loadBid, getBidders} from "../../services/BidService";
 import {useFormik} from "formik";
 import * as Yup from 'yup';
 
@@ -19,6 +21,8 @@ const SingleProduct = ({location}) => {
 
     const [product, setProduct] = useState([]);
     const [bids, setBids] = useState([]);
+    const [bidders, setBidders] = useState([]);
+    const [user, setUser] = useState({});
 
     useEffect(() => {
         loadProduct(location.search.split("=")[1]).then(res => {
@@ -28,7 +32,16 @@ const SingleProduct = ({location}) => {
         });
         loadBid(location.search.split("=")[1]).then(res => {
             setBids(res.data);
-            console.log(res.data);
+        }).catch((err) => {
+            console.log(err);
+        })
+        getBidders(location.search.split("=")[1]).then(res => {
+            setBidders(res.data);
+        }).catch((err) => {
+            console.log(err);
+        })
+        getUser(header).then(res => {
+            setUser(res.data);
         }).catch((err) => {
             console.log(err);
         })
@@ -41,18 +54,20 @@ const SingleProduct = ({location}) => {
         onSubmit: values => {
             let bid = {
                 price: formik.values.price,
-                productId: product.productId
+                productId: product.productId,
+                userId: user.userId
             }
 
             if(bid.price < bids.price) {
-                alert("The bid is lower than the maximum bid. Try again!");
+                alert("There are higher bids than yours. You could give it a second try!");
             } else if (bid.price === bids.price) {
-                alert("The bid is equal to the maximum bid. Try again!");
+                alert("The bid is equal to the highest bid. You could give it a second try!");
             } else {
                 saveBid(bid, header).then(res => {
                     history.push("/");
                 }).catch((err) => {
-                    alert(err);
+                    history.push("/");
+                    console.log(err);
                 })
             }
         }
@@ -134,6 +149,38 @@ const SingleProduct = ({location}) => {
                             <div className="col"></div>
                         </div>
                 </div>
+            </div>
+            <div className="container">
+                    <div className="row container biddersBox">
+                        <div className="row biddersTitleInfoBackground align-items-center">
+                            <div className="col-8">
+                                <h4 className="biddersBoxInfoTitle">Bider</h4>
+                            </div>
+                            <div className="col-2">
+                                <h4 className="biddersBoxInfoTitle">Date</h4>
+                            </div>
+                            <div className="col-2">
+                                <h4 className="biddersBoxInfoTitle">Bid</h4>
+                            </div>
+                        </div>
+                        {bidders.length > 0 ? bidders.map((bidder, i) =>
+                            <div className="row align-items-center pt-1 pb-1">
+                                <div className="col-1">
+                                    <img src={BidderPhoto}/>
+                                </div>
+                                <div className="col">
+                                    <h4 key={i} className="biddersInfoText">{bidders[i].firstName + " " + bidders[i].lastName}</h4>
+                                </div>
+                                <div className="col-2">
+                                    <h4 className="biddersInfoText">4 March 2020</h4>
+                                </div>
+                                <div className="col-2">
+                                    <h4 key={i} className="biddersInfoText text-success">{bidders[i].price}$</h4>
+                                </div>
+                            </div> ): null
+                        }
+                    </div>
+                    <div className="row"><br/></div>
             </div>
             {/*<div className="row align-items-center text-center">
                 <h3>Related products</h3>

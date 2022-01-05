@@ -10,11 +10,15 @@ public class BidRequest {
     @ApiModelProperty(notes = "ID of the Product that the Bid was placed on", name = "productId")
     private int productId;
 
+    @ApiModelProperty(notes = "ID of the User that placed the Bid", name = "userId")
+    private int userId;
+
     public BidRequest() {}
 
-    public BidRequest(double price, int productId) {
+    public BidRequest(double price, int productId, int userId) {
         this.price = price;
         this.productId = productId;
+        this.userId = userId;
     }
 
     public double getPrice() {
@@ -31,5 +35,13 @@ public class BidRequest {
 
     public void setProductId(int productId) {
         this.productId = productId;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 }
