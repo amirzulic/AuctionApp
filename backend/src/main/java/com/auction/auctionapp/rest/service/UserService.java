@@ -1,9 +1,8 @@
 package com.auction.auctionapp.rest.service;
 
+import com.auction.auctionapp.model.Product;
 import com.auction.auctionapp.model.User;
-import com.auction.auctionapp.rest.LoginRequest;
-import com.auction.auctionapp.rest.RegisterRequest;
-import com.auction.auctionapp.rest.UpdateUserRequest;
+import com.auction.auctionapp.rest.*;
 import com.auction.auctionapp.rest.config.Config;
 import com.auction.auctionapp.rest.exception.LoginException;
 import com.auction.auctionapp.rest.exception.RegisterException;
@@ -17,6 +16,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class UserService {
@@ -85,5 +85,10 @@ public class UserService {
 
     public User deactivateUser(int id) {
         return userRepository.deactivateUser(id);
+    }
+
+    public List<BiddersResponse> getBidders(int id) {
+        List<User> list = userRepository.getBiddersByProduct(id);
+        return list.stream().map(p -> new BiddersResponse(p.getFirstName(), p.getLastName(), 30)).collect(Collectors.toList());
     }
 }

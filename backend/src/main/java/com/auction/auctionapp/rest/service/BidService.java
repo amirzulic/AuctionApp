@@ -16,8 +16,7 @@ public class BidService {
     BidRepository bidRepository;
 
     public Bid saveBid(BidRequest bidRequest) {
-        Bid bid = new Bid(bidRequest.getPrice(), bidRequest.getProductId());
-        return bidRepository.save(bid);
+        return bidRepository.saveBid(bidRequest.getPrice(), bidRequest.getProductId(), bidRequest.getUserId());
     }
 
     public double loadBidMaxPrice(int id) {

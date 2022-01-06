@@ -11,3 +11,7 @@ export const loadBid = async(id) => {
 export const getBidByUserId = async (id) => {
     return await axios.get(process.env.REACT_APP_BASE_URL + "/bid-user", {params: {userId: id}});
 }
+
+export const getBidders = async (id) => {
+    return await axios.get(process.env.REACT_APP_BASE_URL + "/bidders", {params: {productId: id}});
+}

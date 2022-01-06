@@ -24,5 +24,11 @@ public interface BidRepository extends JpaRepository<Bid, Integer> {
 
     @Query(value = "SELECT * FROM Bid WHERE userId = :userId", nativeQuery = true)
     public List<Bid> getBidByUserId(@Param("userId") int id);
+
+    @Query(value = "INSERT INTO Bid (price, productId, userId) " +
+            "VALUES (:price, :productId, :userId)", nativeQuery = true)
+    public Bid saveBid(@Param("price") double price,
+                       @Param("productId") int productId,
+                       @Param("userId") int userId);
 }
 
