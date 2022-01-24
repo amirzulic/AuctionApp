@@ -24,11 +24,13 @@ const SingleProduct = ({location}) => {
     const [bids, setBids] = useState([]);
     const [bidders, setBidders] = useState([]);
     const [user, setUser] = useState({});
+    const [view, setView] = useState(1);
 
     useEffect(() => {
         loadProduct(location.search.split("=")[1]).then(res => {
             setProduct(res.data);
             console.log(res.data);
+            res.data.userId === user.userId ? setView(1) : setView(2);
         }).catch((err) => {
             console.log(err);
         });
@@ -44,6 +46,7 @@ const SingleProduct = ({location}) => {
         })
         getUser(header).then(res => {
             setUser(res.data);
+            alert(res.data.userId);
         }).catch((err) => {
             console.log(err);
         })
@@ -153,6 +156,7 @@ const SingleProduct = ({location}) => {
                         </div>
                 </div>
             </div>
+            {view === 1 ?
             <div className="container">
                     <div className="row container biddersBox">
                         <div className="row biddersTitleInfoBackground align-items-center">
@@ -185,10 +189,14 @@ const SingleProduct = ({location}) => {
                     </div>
                     <div className="row"><br/></div>
             </div>
-            {/*<div className="row align-items-center text-center">
+                : null }
+            {view === 2 ?
+            <div className="row align-items-center text-center">
                 <h3>Related products</h3>
                 <hr/>
             </div>
+                : null }
+            {view === 2 ?
             <div className="relatedProducts align-items-center">
                 <div className="row align-items-center">
                     <div className="col">
@@ -207,7 +215,7 @@ const SingleProduct = ({location}) => {
                         <p className="productParagraph">Starts from price</p>
                     </div>
                 </div>
-            </div>*/}
+            </div> : null }
         </div>
     );
 

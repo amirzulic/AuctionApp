@@ -35,7 +35,7 @@ public class ProductService {
     public ProductService() {}
 
     private List<ProductResponse> returnNewList(List<Product> list) {
-        return list.stream().map(p -> new ProductResponse(p.getProductId(), p.getName(), p.getStartingPrice(), p.getDescription(), p.getPicture())).collect(Collectors.toList());
+        return list.stream().map(p -> new ProductResponse(p.getProductId(), p.getName(), p.getStartingPrice(), p.getDescription(), p.getPicture(), p.getUserId())).collect(Collectors.toList());
     }
 
     private List<ProductSubCategoryResponse> returnNewSubCategoryList(List<ProductSubCategory> list) {
@@ -100,7 +100,7 @@ public class ProductService {
     public ProductResponse getSingleProduct(int id) {
         Product createdProduct = productRepository.findById(id).get();
         return new ProductResponse(createdProduct.getProductId(),createdProduct.getName(),
-                createdProduct.getStartingPrice(), createdProduct.getDescription(), createdProduct.getPicture());
+                createdProduct.getStartingPrice(), createdProduct.getDescription(), createdProduct.getPicture(), createdProduct.getUserId());
     }
 
     public List<ProductResponse> getProductsInRange(double low, double high) {
@@ -165,7 +165,7 @@ public class ProductService {
 
     public List<ProductResponse> getProductsByUserId(int id) {
         List<Product> list = productRepository.getByUserId(id);
-        return list.stream().map(p -> new ProductResponse(p.getProductId(), p.getName(), p.getStartingPrice(), p.getDescription(), p.getPicture())).collect(Collectors.toList());
+        return list.stream().map(p -> new ProductResponse(p.getProductId(), p.getName(), p.getStartingPrice(), p.getDescription(), p.getPicture(), p.getUserId())).collect(Collectors.toList());
     }
 
     public Product addNewProduct(NewProductRequest product) {
