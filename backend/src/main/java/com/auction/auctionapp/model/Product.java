@@ -1,8 +1,17 @@
 package com.auction.auctionapp.model;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.*;
+import java.sql.Time;
+import java.sql.Timestamp;
+import java.util.Date;
+import java.util.zip.DataFormatException;
+
+import static com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL;
 
 @Entity
 @Table(name = "Product")
@@ -20,6 +29,22 @@ public class Product {
     @Column(name = "startingprice")
     @ApiModelProperty(notes = "Starting price of the Product", name = "startingPrice")
     private double startingPrice;
+
+    @Column(name = "picture")
+    @ApiModelProperty(notes = "Picture of the Product", name = "picture")
+    private String picture;
+
+    @Column(name = "startdate")
+    @ApiModelProperty(notes = "Starting date of the Product", name = "startDate")
+    private Timestamp startDate;
+
+    @Column(name = "enddate")
+    @ApiModelProperty(notes = "Ending date of the Product", name = "endDate")
+    private Timestamp endDate;
+
+    @Column(name = "userid")
+    @ApiModelProperty(notes = "ID of the User", name = "userId")
+    private int userId;
 
     @Column(name = "size")
     @ApiModelProperty(notes = "Size of the Product", name = "size")
@@ -40,6 +65,30 @@ public class Product {
     @Column(name = "productcategoryid")
     @ApiModelProperty(notes = "Category of the Product", name = "productCategoryId")
     private int productCategoryId;
+
+    @Column(name = "productsubcategoryid")
+    @ApiModelProperty(notes = "SubCategory of the Product", name = "productSubCategoryId")
+    private int productSubCategoryId;
+
+    @Column(name = "address")
+    @ApiModelProperty(notes = "Address of the Product", name = "address")
+    private String address;
+
+    @Column(name = "country")
+    @ApiModelProperty(notes = "Country of the Product", name = "country")
+    private String country;
+
+    @Column(name = "city")
+    @ApiModelProperty(notes = "City of the Product", name = "city")
+    private String city;
+
+    @Column(name = "zipcode")
+    @ApiModelProperty(notes = "Zipcode of the Product", name = "zipcode")
+    private String zipcode;
+
+    @Column(name = "phone")
+    @ApiModelProperty(notes = "Phone number for the Product", name = "phone")
+    private String phone;
 
     public Product() {}
 
@@ -62,6 +111,23 @@ public class Product {
         this.description = description;
         this.status = status;
         this.productCategoryId = productCategoryId;
+    }
+
+    public Product(String name, double startingPrice, String picture, Timestamp startDate, Timestamp endDate, int userId, String description, int productCategoryId, int productSubCategoryId, String address, String country, String city, String zipcode, String phone) {
+        this.name = name;
+        this.startingPrice = startingPrice;
+        this.picture = picture;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.userId = userId;
+        this.description = description;
+        this.productCategoryId = productCategoryId;
+        this.productSubCategoryId = productSubCategoryId;
+        this.address = address;
+        this.country = country;
+        this.city = city;
+        this.zipcode = zipcode;
+        this.phone = phone;
     }
 
     public int getProductId() {
@@ -126,5 +192,85 @@ public class Product {
 
     public void setProductCategoryId(int productCategoryId) {
         this.productCategoryId = productCategoryId;
+    }
+
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
+    }
+
+    public Timestamp getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(Timestamp startDate) {
+        this.startDate = startDate;
+    }
+
+    public Timestamp getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(Timestamp endDate) {
+        this.endDate = endDate;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public int getProductSubCategoryId() {
+        return productSubCategoryId;
+    }
+
+    public void setProductSubCategoryId(int productSubCategoryId) {
+        this.productSubCategoryId = productSubCategoryId;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getZipcode() {
+        return zipcode;
+    }
+
+    public void setZipcode(String zipcode) {
+        this.zipcode = zipcode;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 }

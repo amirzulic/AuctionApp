@@ -1,7 +1,9 @@
 package com.auction.auctionapp.rest.controller;
 
 import com.auction.auctionapp.model.Product;
+import com.auction.auctionapp.rest.NewProductRequest;
 import com.auction.auctionapp.rest.ProductResponse;
+import com.auction.auctionapp.rest.UpdateUserRequest;
 import com.auction.auctionapp.rest.UserInfoResponse;
 import com.auction.auctionapp.rest.service.ProductService;
 import io.swagger.annotations.ApiOperation;
@@ -9,10 +11,7 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -310,5 +309,24 @@ public class ProductController {
     @GetMapping("/products-user")
     public ResponseEntity<List<ProductResponse>> getProductsByUserId(@RequestParam(name = "userId") int id) {
         return ResponseEntity.ok(new ArrayList<ProductResponse>(productService.getProductsByUserId(id)));
+    }
+
+    @ApiOperation(value = "Add a new Product as a User", response = ProductResponse.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 500, message = "Server error"),
+            @ApiResponse(code = 200, message = "Successful submit",
+                    response = ProductResponse.class, responseContainer = "List"),
+            @ApiResponse(code = 400, message = "Bad request"),
+            @ApiResponse(code = 401, message = "Unauthorized request"),
+            @ApiResponse(code = 404, message = "Not Found")})
+    @PostMapping("/add-product")
+    public ResponseEntity<ProductResponse> addNewProduct(@RequestBody NewProductRequest product) {
+        Product createdProduct = productService.addNewProduct(product);
+        return ResponseEntity.ok(new ProductResponse(
+                createdProduct.getProductId(),
+                createdProduct.getName(),
+                createdProduct.getStartingPrice(),
+                createdProduct.getDescription()
+                ));
     }
 }

@@ -13,6 +13,7 @@ import Register from "./components/register/Register";
 import SingleProduct from "./components/single_product/SingleProduct";
 import ShopPage from "./components/shop_page/ShopPage";
 import MyProfile from "./components/profile_page/MyProfile";
+import AddProduct from "./components/become_seller/AddProduct";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
                   <Route path="/product" component={SingleProduct}/>
                   <Route path="/shop" component={ShopPage}/>
                   <Route path="/profile" component={MyProfile}/>
+                  <Route path="/become-seller" component={AddProduct}/>
               </Switch>
             <Footer/>
         </div>

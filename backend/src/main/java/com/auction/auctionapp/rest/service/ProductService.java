@@ -3,6 +3,7 @@ package com.auction.auctionapp.rest.service;
 import com.auction.auctionapp.model.Product;
 import com.auction.auctionapp.model.ProductCategory;
 import com.auction.auctionapp.model.ProductSubCategory;
+import com.auction.auctionapp.rest.NewProductRequest;
 import com.auction.auctionapp.rest.ProductCategoryResponse;
 import com.auction.auctionapp.rest.ProductResponse;
 import com.auction.auctionapp.rest.ProductSubCategoryResponse;
@@ -148,6 +149,11 @@ public class ProductService {
         return list.stream().map(p -> new ProductCategoryResponse(p.getProductcategoryid(), p.getCategoryName())).collect(Collectors.toList());
     }
 
+    public List<ProductSubCategoryResponse> getAllSubCategories() {
+        List<ProductSubCategory> list = productSubCategoryRepository.findAll();
+        return list.stream().map(p -> new ProductSubCategoryResponse(p.getProductsubcategoryid(), p.getSubCategoryName(), p.getProductCategoryId())).collect(Collectors.toList());
+    }
+
     public List<ProductSubCategoryResponse> getSubCategoriesByCategory(int id) {
         List<ProductSubCategory> list = productSubCategoryRepository.getSubCategoryByCategory(id);
         return list.stream().map(p -> new ProductSubCategoryResponse(p.getProductsubcategoryid(), p.getSubCategoryName(), p.getProductCategoryId())).collect(Collectors.toList());
@@ -156,5 +162,25 @@ public class ProductService {
     public List<ProductResponse> getProductsByUserId(int id) {
         List<Product> list = productRepository.getByUserId(id);
         return list.stream().map(p -> new ProductResponse(p.getProductId(), p.getName(), p.getStartingPrice(), p.getDescription())).collect(Collectors.toList());
+    }
+
+    public Product addNewProduct(NewProductRequest product) {
+        Product newProduct = new Product(
+                product.getName(),
+                product.getStartingPrice(),
+                product.getPicture(),
+                product.getStartDate(),
+                product.getEndDate(),
+                product.getUserId(),
+                product.getDescription(),
+                product.getProductCategoryId(),
+                product.getProductSubCategoryId(),
+                product.getAddress(),
+                product.getCountry(),
+                product.getCity(),
+                product.getZipcode(),
+                product.getPhone()
+        );
+        return productRepository.save(newProduct);
     }
 }

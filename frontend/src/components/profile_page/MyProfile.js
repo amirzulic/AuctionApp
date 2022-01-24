@@ -348,7 +348,7 @@ function MyProfile () {
                                     <div className="row"><br/></div>
                                     <h2 className="noItemsText">You do not have any scheduled items for sale.</h2>
                                     <div className="row"><br/></div>
-                                    <button className="btn changePhotoButton">START SELLING</button>
+                                    <button className="btn changePhotoButton" onClick={() => {history.push("/become-seller")}}>START SELLING</button>
                                     <div className="row"><br/></div>
                                 </div>
                             </div>}

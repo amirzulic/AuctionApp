@@ -5,7 +5,7 @@ import io.swagger.annotations.ApiModelProperty;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "ProductSubCategory")
+@Table(name = "productsubcategory")
 public class ProductSubCategory {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
