@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import FilterPhoto2 from "./filter_photo2.png";
+import {Image} from 'cloudinary-react';
 import {
     loadLandingPageProducts,
     loadLastChance,
@@ -424,7 +425,9 @@ const ShopPage = ({location}) => {
                                 <div className="row">
                                     {products.length > 0 ? products.map((prod, i) =>
                                         <div className="col-4">
-                                            <img onClick={() => {onProductClick(products[i].productId)}} src={FilterPhoto2}/>
+                                            <Image onClick={() => {onProductClick(products[i].productId)}}
+                                                   cloudName="dw3duxdxo"
+                                                   publicId={products[i].picture}/>
                                             <h2 className="itemNameText" key={i}>{products[i].name}</h2>
                                             <h3 className="startingPriceText" key={i}>Start from <b className="textPurpleBold">{products[i].startingPrice}$</b></h3>
                                         </div> ) : null }
@@ -434,7 +437,9 @@ const ShopPage = ({location}) => {
                                     {products.length > 0 ? products.map((lprod, i) =>
                                         <div className="row">
                                             <div className="col-4">
-                                                <img onClick={() => {onProductClick(products[i].productId)}} src={FilterPhoto2}/>
+                                                <Image onClick={() => {onProductClick(products[i].productId)}}
+                                                     cloudName="dw3duxdxo"
+                                                     publicId={products[i].picture}/>
                                             </div>
                                             <div className="col align-items-center">
                                                 <h2 className="listItemNameText" key={i}>{products[i].name}</h2>

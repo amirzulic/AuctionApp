@@ -148,25 +148,25 @@ function MyProfile () {
             <div className="container">
                 <div className="row container">
                     <div className="col-2">
-                        <button className="btn profile-button" onMouseEnter={event => {handleTabSwitch(1)}}>
+                        <button className="btn profile-button" onClick={event => {handleTabSwitch(1)}}>
                             <img src={ProfileIcon} className="pe-2 profileIcon"/>
                             Profile
                         </button>
                     </div>
                     <div className="col-2">
-                        <button className="btn profile-button" onMouseEnter={event => {handleTabSwitch(2)}}>
+                        <button className="btn profile-button" onClick={event => {handleTabSwitch(2)}}>
                             <img src={SellerIcon} className="pe-2"/>
                             Seller
                         </button>
                     </div>
                     <div className="col-2">
-                        <button className="btn profile-button" onMouseEnter={event => {handleTabSwitch(3)}}>
+                        <button className="btn profile-button" onClick={event => {handleTabSwitch(3)}}>
                             <img src={BidsIcon} className="pe-2"/>
                             Bids
                         </button>
                     </div>
                     <div className="col-2">
-                        <button className="btn profile-button" onMouseEnter={event => {handleTabSwitch(4)}}>
+                        <button className="btn profile-button" onClick={event => {handleTabSwitch(4)}}>
                             <img src={SettingsIcon} className="pe-2"/>
                             Settings
                         </button>

@@ -1,5 +1,6 @@
 import React, {useEffect, useRef, useState} from 'react';
 import './addProduct.css';
+import axios from 'axios';
 import "react-step-progress-bar/styles.css";
 import { ProgressBar, Step } from "react-step-progress-bar";
 import {loadLandingPageProducts, loadProductsByCategory, addNewProduct} from "../../services/ProductService";
@@ -8,6 +9,7 @@ import {useFormik} from "formik";
 import * as Yup from 'yup';
 import {getUser} from "../../services/UserService";
 import {useHistory} from "react-router-dom";
+import {loadSubCategories} from "../../services/CategoryService";
 
 function AddProduct() {
     let history = useHistory();
@@ -20,10 +22,11 @@ function AddProduct() {
     const [subCategories, setSubCategories] = useState([]);
     const [countries, setCountries] = useState({});
     const [cities, setCities] = useState([]);
-    const [file, setFile] = useState(null);
     const [catId, setCatId] = useState(0);
     const [subCatId, setSubCatId] = useState(0);
     const [user, setUser] = useState({});
+    const [imageUrl, setImageUrl] = useState("");
+    const [giveCities, setGiveCities] = useState(true);
 
     const inputFile = useRef();
 
@@ -40,15 +43,38 @@ function AddProduct() {
     function mapCities(e) {
         Object.keys(countries).map((all, i) =>
             all === e.target.value ? setCities(Object.values(countries)[i]) : null)
+        setGiveCities(false);
     }
 
     function handleChangePhoto() {
         inputFile.current.click();
     }
 
+    const uploadImage = (files) => {
+        const formData = new FormData();
+        formData.append("file", files[0]);
+        formData.append("upload_preset", "auctionapp");
+
+        axios.post("https://api.cloudinary.com/v1_1/dw3duxdxo/image/upload", formData)
+            .then(res => {
+                setImageUrl(res.data.url);
+                console.log(res.data.url);
+            });
+    }
+
+    function handleSubCategories(id) {
+        setCatId(id);
+        loadSubCategories(id).then(res => {
+            setSubCategories(res.data);
+        }).catch((err) => {
+            console.log(err);
+        })
+    }
+
     function getCategoryId(e) {
         {categories.map((category, i) =>
-            category.categoryName === e.target.value ? setCatId(category.productCategoryId) : null
+            category.categoryName === e.target.value ? handleSubCategories(category.productCategoryId)
+                : null
         )}
     }
 
@@ -91,14 +117,13 @@ function AddProduct() {
         }).catch((err) => {
             console.log(err);
         })
-        mapCities();
     }, []);
 
     const formik = useFormik({
         initialValues: {
             name: '',
             startingPrice: null,
-            picture: file,
+            picture: "",
             startDate: null,
             endDate: null,
             description: '',
@@ -112,18 +137,19 @@ function AddProduct() {
         },
         validationSchema: Yup.object({
             name: Yup.string().required('Required'),
-            startingPrice: Yup.string().required('Required'),
             description: Yup.string()
-                .min(40, 'Must be 40 characters or more')
                 .max(700, 'Must be 700 characters or less')
-                .required('Required')
+                .required('Required'),
+            startDate: Yup.date().min(new Date(), "The starting date can't be in the past!")
+                .max(Yup.ref('endDate'), "The starting date can't be after the end date!"),
+            endDate: Yup.date().min(new Date(), "The ending date can't be in the past!")
         }),
         onSubmit: values => {
 
             let product = {
                 name: formik.values.name,
                 startingPrice: formik.values.startingPrice,
-                picture: "url",
+                picture: imageUrl,
                 startDate: formik.values.startDate,
                 endDate: formik.values.endDate,
                 userId: user.userId,
@@ -220,8 +246,10 @@ function AddProduct() {
                                         <label htmlFor="productName">What do you sell?</label>
                                         <input type="text" className="form-control inputStyle" id="name"
                                                placeholder="Product name"
+                                               value={formik.values.name}
                                                onBlur={formik.handleBlur}
                                                onChange={formik.handleChange}/>
+                                        {formik.touched.name && formik.errors.name ? <div className="text-danger">{formik.errors.name}</div> : null}
                                     </div>
                                     <div className="row"><br/></div>
                                     {categories.length > 0 ?
@@ -231,6 +259,7 @@ function AddProduct() {
                                                 <select className="form-control selectStyle" id="productCategoryId" placeholder="Select category"
                                                         onBlur={formik.handleBlur}
                                                         onChange={event => getCategoryId(event)}>
+                                                    <option>Select Category</option>
                                                     {categories.map((cat, i) =>
                                                     <option key={i}>{categories[i].categoryName}</option>
                                                     )}
@@ -242,9 +271,10 @@ function AddProduct() {
                                                 <select className="form-control selectStyle" id="productSubCategoryId" placeholder="Select SubCategory"
                                                         onBlur={formik.handleBlur}
                                                         onChange={event => getSubCategoryId(event)}>
-                                                    {subCategories.map((cat, i) =>
+                                                    <option>Select SubCategory</option>
+                                                    {subCategories.length > 0 ? subCategories.map((cat, i) =>
                                                         <option key={i}>{subCategories[i].subCategoryName}</option>
-                                                    )}
+                                                    ) : null}
                                                 </select>
                                             </div>
                                         </div>
@@ -256,11 +286,12 @@ function AddProduct() {
                                                   value={formik.values.description}
                                                   onBlur={formik.handleBlur}
                                                   onChange={formik.handleChange}/>
+                                        {formik.touched.description && formik.errors.description ? <div className="text-danger">{formik.errors.description}</div> : null}
                                     </div>
                                     <div className="row"><br/></div>
-                                    <div className="photoInputBox text-center" style={{height: 280 }} onClick={() => {handleChangePhoto()}}>
+                                    <div className="photoInputBox text-center" style={{height: 280 }} onClick={handleChangePhoto}>
                                         <input type='file' id='picture' ref={inputFile} style={{display: 'none'}}
-                                               onChange={() => setFile(inputFile.current.files[0])}/>
+                                               onChange={(event) => uploadImage(event.target.files)}/>
                                         <div className="row">
                                             <h2 className="uploadPhotoText">Upload Photos</h2>
                                         </div>
@@ -320,6 +351,7 @@ function AddProduct() {
                                                        value={formik.values.startDate}
                                                        onBlur={formik.handleBlur}
                                                        onChange={formik.handleChange}/>
+                                                {formik.touched.startDate && formik.errors.startDate ? <div className="text-danger">{formik.errors.startDate}</div> : null}
                                             </div>
                                         </div>
                                         <div className="col">
@@ -329,6 +361,7 @@ function AddProduct() {
                                                        value={formik.values.endDate}
                                                        onBlur={formik.handleBlur}
                                                        onChange={formik.handleChange}/>
+                                                {formik.touched.endDate && formik.errors.endDate ? <div className="text-danger">{formik.errors.endDate}</div> : null}
                                             </div>
                                         </div>
                                     </div>
@@ -383,8 +416,10 @@ function AddProduct() {
                                             <div className="form-group">
                                                 <select className="form-control selectStyle" id="city"
                                                         placeholder="Select City"
+                                                        disabled={giveCities}
                                                         onBlur={formik.handleBlur}
                                                         onChange={formik.handleChange}>
+                                                    <option>Select City</option>
                                                     {cities.length > 0 ? cities.map((city, i) =>
                                                     <option key={i}>{city}</option>
                                                     ) : null}
@@ -397,6 +432,7 @@ function AddProduct() {
                                                         placeholder="Select Country"
                                                         onBlur={formik.handleBlur}
                                                         onChange={event => mapCities(event)}>
+                                                    <option>Select Country</option>
                                                     {Object.keys(countries).map((country, i) =>
                                                         <option key={i}>{country}</option>
                                                     )}

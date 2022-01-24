@@ -326,7 +326,8 @@ public class ProductController {
                 createdProduct.getProductId(),
                 createdProduct.getName(),
                 createdProduct.getStartingPrice(),
-                createdProduct.getDescription()
+                createdProduct.getDescription(),
+                createdProduct.getPicture()
                 ));
     }
 }
