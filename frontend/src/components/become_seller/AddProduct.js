@@ -37,9 +37,9 @@ function AddProduct() {
         setProgress(progress - 50);
     }
 
-    function mapCities() {
+    function mapCities(e) {
         Object.keys(countries).map((all, i) =>
-            all === formik.values.country ? setCities(Object.values(countries)[i]) : null)
+            all === e.target.value ? setCities(Object.values(countries)[i]) : null)
     }
 
     function handleChangePhoto() {
@@ -396,7 +396,7 @@ function AddProduct() {
                                                 <select className="form-control selectStyle" id="country"
                                                         placeholder="Select Country"
                                                         onBlur={formik.handleBlur}
-                                                        onChange={() => {mapCities()}}>
+                                                        onChange={event => mapCities(event)}>
                                                     {Object.keys(countries).map((country, i) =>
                                                         <option key={i}>{country}</option>
                                                     )}
