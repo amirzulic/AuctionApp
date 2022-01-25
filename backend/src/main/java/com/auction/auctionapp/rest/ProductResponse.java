@@ -35,13 +35,18 @@ public class ProductResponse {
     @ApiModelProperty(notes = "Status of a Product", name = "status")
     private int status;
 
-    public ProductResponse(int productId, String name, double startingPrice, String description, String picture, int userId) {
+    @ApiModelProperty(notes = "ID of the Product Category", name = "productCategoryId")
+    private int productCategoryId;
+
+    public ProductResponse(int productId, String name, double startingPrice, String description, String picture, int userId, int productCategoryId) {
         this.productId = productId;
         this.name = name;
         this.startingPrice = startingPrice;
         this.description = description;
         this.picture = picture;
         this.userId = userId;
+        this.productCategoryId = productCategoryId;
+
     }
 
     public ProductResponse(ProductResponse singleProduct) {
@@ -50,6 +55,8 @@ public class ProductResponse {
         this.startingPrice = singleProduct.startingPrice;
         this.description = singleProduct.description;
         this.picture = singleProduct.picture;
+        this.userId = singleProduct.userId;
+        this.productCategoryId = singleProduct.productCategoryId;
     }
 
     public int getProductId() {
@@ -73,5 +80,9 @@ public class ProductResponse {
 
     public int getUserId() {
         return userId;
+    }
+
+    public int getProductCategoryId() {
+        return productCategoryId;
     }
 }

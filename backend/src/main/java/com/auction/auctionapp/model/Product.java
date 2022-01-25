@@ -92,7 +92,7 @@ public class Product {
 
     public Product() {}
 
-    public Product(int productid, String name, double startingPrice, int size, String color, String description, int status) {
+    public Product(int productid, String name, double startingPrice, int size, String color, String description, int status, int userId) {
         this.productid = productid;
         this.name = name;
         this.startingPrice = startingPrice;
@@ -100,6 +100,7 @@ public class Product {
         this.color = color;
         this.description = description;
         this.status = status;
+        this.userId = userId;
     }
 
     public Product(int productid, String name, double startingPrice, int size, String color, String description, int status, int productCategoryId, int userId) {
