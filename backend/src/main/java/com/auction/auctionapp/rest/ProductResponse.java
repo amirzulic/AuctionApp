@@ -77,6 +77,7 @@ public class ProductResponse {
 
     public String getPicture() {
         return picture;
+    }
 
     public int getUserId() {
         return userId;
