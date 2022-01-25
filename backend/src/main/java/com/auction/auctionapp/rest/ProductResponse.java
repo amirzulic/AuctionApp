@@ -38,7 +38,13 @@ public class ProductResponse {
     @ApiModelProperty(notes = "ID of the Product Category", name = "productCategoryId")
     private int productCategoryId;
 
-    public ProductResponse(int productId, String name, double startingPrice, String description, String picture, int userId, int productCategoryId) {
+    public ProductResponse(int productId,
+                           String name,
+                           double startingPrice,
+                           String description,
+                           String picture,
+                           int userId,
+                           int productCategoryId) {
         this.productId = productId;
         this.name = name;
         this.startingPrice = startingPrice;
