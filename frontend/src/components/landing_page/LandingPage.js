@@ -7,6 +7,7 @@ import FeatureCollectionPhoto2 from "./feature_collection2.png";
 import FeatureCollectionPhoto3 from "./feature_collection3.png";
 import {loadLandingPageProducts, loadLastChance, loadNewArrivals} from "../../services/ProductService";
 import {loadCategories} from "../../services/CategoryService";
+import {Image} from 'cloudinary-react';
 
 
 function LandingPage() {
@@ -82,9 +83,12 @@ function LandingPage() {
                                 { header != null ? <button onClick={() => redirect(featured[0].productId)} className="btn bidNowButton">BID NOW ></button>: null}
                             </div> : null
                         }
+                        {featured.length > 0 ?
                         <div className="col">
-                            <img onClick={() => redirect(featured[0].productId)} src={BidPhoto}/>
-                        </div>
+                            <Image publicId={featured[0].picture}
+                                   cloudName="dw3duxdxo"
+                                   onClick={() => redirect(featured[0].productId)}/>
+                        </div> : null }
                     </div>
                 </div>
             </div>
@@ -155,11 +159,15 @@ function LandingPage() {
                     <div className="row container align-items-center">
                         {newArrivals.length > 0 && toggleTab === 1 ? newArrivals.map((prod, i) =>
                         <div className="col-3">
-                            <img onClick={() => redirect(newArrivals[i].productId)} src={FeatureCollectionPhoto3}/>
+                            <Image cloudName={process.env.REACT_APP_CLOUD_NAME}
+                                   publicId={newArrivals[i].picture}
+                                   onClick={() => redirect(newArrivals[i].productId)}/>
                             <h2 key={i}>{newArrivals[i].name}</h2>
                             <h3 key={i}>Start from <b className="textPurpleBold">{newArrivals[i].startingPrice}$</b></h3>
                         </div>) : lastChance.map((prod, i) => <div className="col-3">
-                            <img onClick={() => redirect(lastChance[i].productId)} src={FeatureCollectionPhoto3}/>
+                            <Image cloudName={process.env.REACT_APP_CLOUD_NAME}
+                                 publicId={lastChance[i].picture}
+                                 onClick={() => redirect(lastChance[i].productId)}/>
                             <h2 key={i}>{lastChance[i].name}</h2>
                             <h3 key={i}>Start from <b className="textPurpleBold">{lastChance[i].startingPrice}$</b></h3>
                         </div> )}

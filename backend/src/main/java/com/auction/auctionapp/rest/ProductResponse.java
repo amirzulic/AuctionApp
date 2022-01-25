@@ -20,6 +20,9 @@ public class ProductResponse {
     @ApiModelProperty(notes = "Description of a Product", name = "description")
     private String description;
 
+    @ApiModelProperty(notes = "Picture of the Product", name = "picture")
+    private String picture;
+
     @ApiModelProperty(notes = "Size of a Product", name = "size")
     private int size;
 
@@ -29,11 +32,12 @@ public class ProductResponse {
     @ApiModelProperty(notes = "Status of a Product", name = "status")
     private int status;
 
-    public ProductResponse(int productId, String name, double startingPrice, String description) {
+    public ProductResponse(int productId, String name, double startingPrice, String description, String picture) {
         this.productId = productId;
         this.name = name;
         this.startingPrice = startingPrice;
         this.description = description;
+        this.picture = picture;
     }
 
     public ProductResponse(ProductResponse singleProduct) {
@@ -41,6 +45,7 @@ public class ProductResponse {
         this.name = singleProduct.name;
         this.startingPrice = singleProduct.startingPrice;
         this.description = singleProduct.description;
+        this.picture = singleProduct.picture;
     }
 
     public int getProductId() {
@@ -57,5 +62,9 @@ public class ProductResponse {
 
     public String getDescription() {
         return description;
+    }
+
+    public String getPicture() {
+        return picture;
     }
 }

@@ -12,6 +12,7 @@ import {getUser} from "../../services/UserService";
 import {saveBid, loadBid, getBidders} from "../../services/BidService";
 import {useFormik} from "formik";
 import * as Yup from 'yup';
+import {Image} from 'cloudinary-react';
 
 const SingleProduct = ({location}) => {
 
@@ -27,6 +28,7 @@ const SingleProduct = ({location}) => {
     useEffect(() => {
         loadProduct(location.search.split("=")[1]).then(res => {
             setProduct(res.data);
+            console.log(res.data);
         }).catch((err) => {
             console.log(err);
         });
@@ -87,7 +89,8 @@ const SingleProduct = ({location}) => {
             <div className="row"><br/></div>
             <div className="row">
                 <div className="col text-center">
-                    <img src={LargeProductPhoto}/>
+                    {product != null ?
+                    <Image cloudName="dw3duxdxo" publicId={product.picture}/> : null }
                     {/*<div className="row">
                         <div className="col">
                             <img src={SmallProductPhoto}/>

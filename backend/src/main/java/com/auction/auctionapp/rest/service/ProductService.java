@@ -3,6 +3,7 @@ package com.auction.auctionapp.rest.service;
 import com.auction.auctionapp.model.Product;
 import com.auction.auctionapp.model.ProductCategory;
 import com.auction.auctionapp.model.ProductSubCategory;
+import com.auction.auctionapp.rest.NewProductRequest;
 import com.auction.auctionapp.rest.ProductCategoryResponse;
 import com.auction.auctionapp.rest.ProductResponse;
 import com.auction.auctionapp.rest.ProductSubCategoryResponse;
@@ -34,7 +35,11 @@ public class ProductService {
     public ProductService() {}
 
     private List<ProductResponse> returnNewList(List<Product> list) {
-        return list.stream().map(p -> new ProductResponse(p.getProductId(), p.getName(), p.getStartingPrice(), p.getDescription())).collect(Collectors.toList());
+        return list.stream().map(p -> new ProductResponse(p.getProductId(), p.getName(), p.getStartingPrice(), p.getDescription(), p.getPicture())).collect(Collectors.toList());
+    }
+
+    private List<ProductSubCategoryResponse> returnNewSubCategoryList(List<ProductSubCategory> list) {
+        return list.stream().map(p -> new ProductSubCategoryResponse(p.getProductsubcategoryid(), p.getSubCategoryName(), p.getProductCategoryId())).collect(Collectors.toList());
     }
 
     public List<ProductResponse> getAllProducts() {
@@ -95,7 +100,7 @@ public class ProductService {
     public ProductResponse getSingleProduct(int id) {
         Product createdProduct = productRepository.findById(id).get();
         return new ProductResponse(createdProduct.getProductId(),createdProduct.getName(),
-                createdProduct.getStartingPrice(), createdProduct.getDescription());
+                createdProduct.getStartingPrice(), createdProduct.getDescription(), createdProduct.getPicture());
     }
 
     public List<ProductResponse> getProductsInRange(double low, double high) {
@@ -148,13 +153,38 @@ public class ProductService {
         return list.stream().map(p -> new ProductCategoryResponse(p.getProductcategoryid(), p.getCategoryName())).collect(Collectors.toList());
     }
 
+    public List<ProductSubCategoryResponse> getAllSubCategories() {
+        List<ProductSubCategory> list = productSubCategoryRepository.findAll();
+        return returnNewSubCategoryList(list);
+    }
+
     public List<ProductSubCategoryResponse> getSubCategoriesByCategory(int id) {
         List<ProductSubCategory> list = productSubCategoryRepository.getSubCategoryByCategory(id);
-        return list.stream().map(p -> new ProductSubCategoryResponse(p.getProductsubcategoryid(), p.getSubCategoryName(), p.getProductCategoryId())).collect(Collectors.toList());
+        return returnNewSubCategoryList(list);
     }
 
     public List<ProductResponse> getProductsByUserId(int id) {
         List<Product> list = productRepository.getByUserId(id);
-        return list.stream().map(p -> new ProductResponse(p.getProductId(), p.getName(), p.getStartingPrice(), p.getDescription())).collect(Collectors.toList());
+        return list.stream().map(p -> new ProductResponse(p.getProductId(), p.getName(), p.getStartingPrice(), p.getDescription(), p.getPicture())).collect(Collectors.toList());
+    }
+
+    public Product addNewProduct(NewProductRequest product) {
+        Product newProduct = new Product(
+                product.getName(),
+                product.getStartingPrice(),
+                product.getPicture(),
+                product.getStartDate(),
+                product.getEndDate(),
+                product.getUserId(),
+                product.getDescription(),
+                product.getProductCategoryId(),
+                product.getProductSubCategoryId(),
+                product.getAddress(),
+                product.getCountry(),
+                product.getCity(),
+                product.getZipcode(),
+                product.getPhone()
+        );
+        return productRepository.save(newProduct);
     }
 }
