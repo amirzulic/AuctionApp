@@ -299,7 +299,7 @@ function AddProduct() {
                                             <h3 className="dragAndDropText">or just drag and drop</h3>
                                         </div>
                                         <div className="row">
-                                            <h4 className="addThreeText">+Add at least 3 photos</h4>
+                                            <h4 className="addThreeText">+Add at least 1 photo</h4>
                                         </div>
                                     </div>
                                     <div className="row"><br/></div>

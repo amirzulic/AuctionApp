@@ -92,7 +92,7 @@ public class Product {
 
     public Product() {}
 
-    public Product(int productid, String name, double startingPrice, int size, String color, String description, int status) {
+    public Product(int productid, String name, double startingPrice, int size, String color, String description, int status, int userId) {
         this.productid = productid;
         this.name = name;
         this.startingPrice = startingPrice;
@@ -100,9 +100,18 @@ public class Product {
         this.color = color;
         this.description = description;
         this.status = status;
+        this.userId = userId;
     }
 
-    public Product(int productid, String name, double startingPrice, int size, String color, String description, int status, int productCategoryId) {
+    public Product(int productid,
+                   String name,
+                   double startingPrice,
+                   int size,
+                   String color,
+                   String description,
+                   int status,
+                   int productCategoryId,
+                   int userId) {
         this.productid = productid;
         this.name = name;
         this.startingPrice = startingPrice;
@@ -111,9 +120,23 @@ public class Product {
         this.description = description;
         this.status = status;
         this.productCategoryId = productCategoryId;
+        this.userId = userId;
     }
 
-    public Product(String name, double startingPrice, String picture, Timestamp startDate, Timestamp endDate, int userId, String description, int productCategoryId, int productSubCategoryId, String address, String country, String city, String zipcode, String phone) {
+    public Product(String name,
+                   double startingPrice,
+                   String picture,
+                   Timestamp startDate,
+                   Timestamp endDate,
+                   int userId,
+                   String description,
+                   int productCategoryId,
+                   int productSubCategoryId,
+                   String address,
+                   String country,
+                   String city,
+                   String zipcode,
+                   String phone) {
         this.name = name;
         this.startingPrice = startingPrice;
         this.picture = picture;

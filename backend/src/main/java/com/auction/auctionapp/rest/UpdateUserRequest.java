@@ -30,7 +30,14 @@ public class UpdateUserRequest {
 
     public UpdateUserRequest() {}
 
-    public UpdateUserRequest(int userId, String firstName, String lastName, String gender, String birthdate, String phone, String email, String photo) {
+    public UpdateUserRequest(int userId,
+                             String firstName,
+                             String lastName,
+                             String gender,
+                             String birthdate,
+                             String phone,
+                             String email,
+                             String photo) {
         this.userId = userId;
         this.firstName = firstName;
         this.lastName = lastName;

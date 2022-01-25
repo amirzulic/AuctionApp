@@ -7,7 +7,7 @@ import SmallProductPhoto from './product_photo_small.png';
 import RelatedProductPhoto from './related_products_photo.png';
 import {Link} from "react-router-dom";
 import Logo from "../../images/app-logo.png";
-import {loadProduct} from "../../services/ProductService";
+import {loadProduct, loadProductsByCategory} from "../../services/ProductService";
 import {getUser} from "../../services/UserService";
 import {saveBid, loadBid, getBidders} from "../../services/BidService";
 import {useFormik} from "formik";
@@ -24,11 +24,15 @@ const SingleProduct = ({location}) => {
     const [bids, setBids] = useState([]);
     const [bidders, setBidders] = useState([]);
     const [user, setUser] = useState({});
+    const [related, setRelated] = useState([]);
 
     useEffect(() => {
         loadProduct(location.search.split("=")[1]).then(res => {
             setProduct(res.data);
-            console.log(res.data);
+            loadProductsByCategory(res.data.productCategoryId).then(res => {
+                setRelated(res.data);
+                console.log(res.data);
+            })
         }).catch((err) => {
             console.log(err);
         });
@@ -48,6 +52,10 @@ const SingleProduct = ({location}) => {
             console.log(err);
         })
     }, []);
+
+    function handleRedirect(index) {
+        history.push("/product?productId=" + related[index].productId);
+    }
 
     const formik = useFormik({
         initialValues: {
@@ -153,8 +161,10 @@ const SingleProduct = ({location}) => {
                         </div>
                 </div>
             </div>
+            {product !== {} && user !== {} && product.userId === user.userId ?
             <div className="container">
                     <div className="row container biddersBox">
+                        {bidders.length > 0 ?
                         <div className="row biddersTitleInfoBackground align-items-center">
                             <div className="col-8">
                                 <h4 className="biddersBoxInfoTitle">Bider</h4>
@@ -165,7 +175,7 @@ const SingleProduct = ({location}) => {
                             <div className="col-2">
                                 <h4 className="biddersBoxInfoTitle">Bid</h4>
                             </div>
-                        </div>
+                        </div> : null }
                         {bidders.length > 0 ? bidders.map((bidder, i) =>
                             <div className="row align-items-center pt-1 pb-1">
                                 <div className="col-1">
@@ -185,29 +195,36 @@ const SingleProduct = ({location}) => {
                     </div>
                     <div className="row"><br/></div>
             </div>
-            {/*<div className="row align-items-center text-center">
+                : null }
+            {product !== {} && user !== {} && product.userId !== user.userId  ?
+            <div className="row align-items-center text-center">
                 <h3>Related products</h3>
                 <hr/>
             </div>
+                : null }
+            {product !== {} && user !== {} && product.userId !== user.userId ?
             <div className="relatedProducts align-items-center">
                 <div className="row align-items-center">
+                    {related.length > 0 ?
                     <div className="col">
-                        <img src={RelatedProductPhoto}/>
-                        <h4>Shoes collection</h4>
-                        <p className="productParagraph">Starts from price</p>
-                    </div>
+                        <img src={RelatedProductPhoto} onClick={() => handleRedirect(3)}/>
+                        <h4>{related[3].name}</h4>
+                        <p className="productParagraph">Starts from price {related[3].startingPrice}$</p>
+                    </div> : null }
+                    {related.length > 0 ?
                     <div className="col">
-                        <img src={RelatedProductPhoto}/>
-                        <h4>Shoes collection</h4>
-                        <p className="productParagraph">Starts from price</p>
-                    </div>
+                        <img src={RelatedProductPhoto} onClick={() => handleRedirect(1)}/>
+                        <h4>{related[1].name}</h4>
+                        <p className="productParagraph">Starts from price {related[1].startingPrice}$</p>
+                    </div> : null }
+                    {related.length > 0 ?
                     <div className="col">
-                        <img src={RelatedProductPhoto}/>
-                        <h4>Shoes collection</h4>
-                        <p className="productParagraph">Starts from price</p>
-                    </div>
+                        <img src={RelatedProductPhoto} onClick={() => handleRedirect(2)}/>
+                        <h4>{related[2].name}</h4>
+                        <p className="productParagraph">Starts from price {related[2].startingPrice}$</p>
+                    </div> : null }
                 </div>
-            </div>*/}
+            </div>  : null }
         </div>
     );
 

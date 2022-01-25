@@ -31,7 +31,15 @@ public class UserInfoResponse {
     @ApiModelProperty(notes = "Status of a User", name = "active")
     private int active;
 
-    public UserInfoResponse(int userId, String firstName, String lastName, String gender, String birthdate, String phone, String email, String photo, int active) {
+    public UserInfoResponse(int userId,
+                            String firstName,
+                            String lastName,
+                            String gender,
+                            String birthdate,
+                            String phone,
+                            String email,
+                            String photo,
+                            int active) {
         this.userId = userId;
         this.firstName = firstName;
         this.lastName = lastName;

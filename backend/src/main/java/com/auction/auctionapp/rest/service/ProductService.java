@@ -32,14 +32,25 @@ public class ProductService {
     @Autowired
     private ProductSubCategoryRepository productSubCategoryRepository;
 
-    public ProductService() {}
+    public ProductService() {
+    }
 
     private List<ProductResponse> returnNewList(List<Product> list) {
-        return list.stream().map(p -> new ProductResponse(p.getProductId(), p.getName(), p.getStartingPrice(), p.getDescription(), p.getPicture())).collect(Collectors.toList());
+        return list.stream().map(p -> new ProductResponse(
+                p.getProductId(),
+                p.getName(),
+                p.getStartingPrice(),
+                p.getDescription(),
+                p.getPicture(),
+                p.getUserId(),
+                p.getProductCategoryId())).collect(Collectors.toList());
     }
 
     private List<ProductSubCategoryResponse> returnNewSubCategoryList(List<ProductSubCategory> list) {
-        return list.stream().map(p -> new ProductSubCategoryResponse(p.getProductsubcategoryid(), p.getSubCategoryName(), p.getProductCategoryId())).collect(Collectors.toList());
+        return list.stream().map(p -> new ProductSubCategoryResponse(
+                p.getProductsubcategoryid(),
+                p.getSubCategoryName(),
+                p.getProductCategoryId())).collect(Collectors.toList());
     }
 
     public List<ProductResponse> getAllProducts() {
@@ -99,8 +110,14 @@ public class ProductService {
 
     public ProductResponse getSingleProduct(int id) {
         Product createdProduct = productRepository.findById(id).get();
-        return new ProductResponse(createdProduct.getProductId(),createdProduct.getName(),
-                createdProduct.getStartingPrice(), createdProduct.getDescription(), createdProduct.getPicture());
+        return new ProductResponse(
+                createdProduct.getProductId(),
+                createdProduct.getName(),
+                createdProduct.getStartingPrice(),
+                createdProduct.getDescription(),
+                createdProduct.getPicture(),
+                createdProduct.getUserId(),
+                createdProduct.getProductCategoryId());
     }
 
     public List<ProductResponse> getProductsInRange(double low, double high) {
@@ -150,7 +167,9 @@ public class ProductService {
 
     public List<ProductCategoryResponse> getAllCategories() {
         List<ProductCategory> list = productCategoryRepository.findAll();
-        return list.stream().map(p -> new ProductCategoryResponse(p.getProductcategoryid(), p.getCategoryName())).collect(Collectors.toList());
+        return list.stream().map(p -> new ProductCategoryResponse(
+                p.getProductcategoryid(),
+                p.getCategoryName())).collect(Collectors.toList());
     }
 
     public List<ProductSubCategoryResponse> getAllSubCategories() {
@@ -165,7 +184,14 @@ public class ProductService {
 
     public List<ProductResponse> getProductsByUserId(int id) {
         List<Product> list = productRepository.getByUserId(id);
-        return list.stream().map(p -> new ProductResponse(p.getProductId(), p.getName(), p.getStartingPrice(), p.getDescription(), p.getPicture())).collect(Collectors.toList());
+        return list.stream().map(p -> new ProductResponse(
+                p.getProductId(),
+                p.getName(),
+                p.getStartingPrice(),
+                p.getDescription(),
+                p.getPicture(),
+                p.getUserId(),
+                p.getProductCategoryId())).collect(Collectors.toList());
     }
 
     public Product addNewProduct(NewProductRequest product) {
