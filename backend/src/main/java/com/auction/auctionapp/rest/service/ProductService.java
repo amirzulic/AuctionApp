@@ -38,6 +38,10 @@ public class ProductService {
         return list.stream().map(p -> new ProductResponse(p.getProductId(), p.getName(), p.getStartingPrice(), p.getDescription(), p.getPicture())).collect(Collectors.toList());
     }
 
+    private List<ProductSubCategoryResponse> returnNewSubCategoryList(List<ProductSubCategory> list) {
+        return list.stream().map(p -> new ProductSubCategoryResponse(p.getProductsubcategoryid(), p.getSubCategoryName(), p.getProductCategoryId())).collect(Collectors.toList());
+    }
+
     public List<ProductResponse> getAllProducts() {
         List<Product> list = productRepository.findAll();
         return returnNewList(list);
@@ -151,12 +155,12 @@ public class ProductService {
 
     public List<ProductSubCategoryResponse> getAllSubCategories() {
         List<ProductSubCategory> list = productSubCategoryRepository.findAll();
-        return list.stream().map(p -> new ProductSubCategoryResponse(p.getProductsubcategoryid(), p.getSubCategoryName(), p.getProductCategoryId())).collect(Collectors.toList());
+        return returnNewSubCategoryList(list);
     }
 
     public List<ProductSubCategoryResponse> getSubCategoriesByCategory(int id) {
         List<ProductSubCategory> list = productSubCategoryRepository.getSubCategoryByCategory(id);
-        return list.stream().map(p -> new ProductSubCategoryResponse(p.getProductsubcategoryid(), p.getSubCategoryName(), p.getProductCategoryId())).collect(Collectors.toList());
+        return returnNewSubCategoryList(list);
     }
 
     public List<ProductResponse> getProductsByUserId(int id) {

@@ -159,13 +159,13 @@ function LandingPage() {
                     <div className="row container align-items-center">
                         {newArrivals.length > 0 && toggleTab === 1 ? newArrivals.map((prod, i) =>
                         <div className="col-3">
-                            <Image cloudName="dw3duxdxo"
+                            <Image cloudName={process.env.REACT_APP_CLOUD_NAME}
                                    publicId={newArrivals[i].picture}
                                    onClick={() => redirect(newArrivals[i].productId)}/>
                             <h2 key={i}>{newArrivals[i].name}</h2>
                             <h3 key={i}>Start from <b className="textPurpleBold">{newArrivals[i].startingPrice}$</b></h3>
                         </div>) : lastChance.map((prod, i) => <div className="col-3">
-                            <Image cloudName="dw3duxdxo"
+                            <Image cloudName={process.env.REACT_APP_CLOUD_NAME}
                                  publicId={lastChance[i].picture}
                                  onClick={() => redirect(lastChance[i].productId)}/>
                             <h2 key={i}>{lastChance[i].name}</h2>
